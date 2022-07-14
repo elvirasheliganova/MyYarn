@@ -15,9 +15,10 @@ const DetailsPicker = ({ route}) => {
   //const saveCone = () => setCone({image, selectedYarnType, selectedYarnWeight })
 
    //console.log(image)
+   //console.log(route.params)
+   
    console.log(yarns)
-   //console.log(cone)
-   //console.log(id)
+   console.log(cone)
 
 
    //const saveYarns = () => setYarns(prevYarns => 
@@ -117,6 +118,7 @@ const DetailsPicker = ({ route}) => {
             onPress={() =>
             {  setYarns(prevYarns => 
               [...prevYarns, cone])
+              
             }}
       >
         <Text style={{fontSize: 16}}>Save Yarn</Text>

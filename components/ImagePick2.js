@@ -9,6 +9,8 @@ export default function ImagePick2({navigation}) {
 
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null)
   const [image, setImage] = useState([])
+  const [mainImage, setMainImage] = useState()
+  const [coneImages, setConeImages] = useState([])
   //const [id, setId] = useState()
   const [yarns, setYarns] = useContext(YarnContext)
   
@@ -30,7 +32,7 @@ export default function ImagePick2({navigation}) {
     })()
   }, []) 
 
-  const pickImage = async () => {
+  const pickImage1 = async () => {
     
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -40,6 +42,37 @@ export default function ImagePick2({navigation}) {
     })
     //setGallery([...gallery, result.uri])
     //console.log(gallery)
+    //console.log(gallery[0].type)
+   
+    
+    
+
+    if (!result.cancelled){
+      //setImage(result.uri)
+     setMainImage(result.uri)
+    
+    }
+  }
+  if (hasGalleryPermission === false) {
+    return <Text>No acceess to Internal Storage</Text>
+  }
+
+  {/*const saveCone = () =>  { 
+    setCone([image, selectedYarnType, selectedYarnWeight])
+    
+    //console.log(cone)
+  }*/}
+
+  const pickImage2 = async () => {
+    
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4,3],
+      quality: 1,
+    })
+    //setGallery([...gallery, result.uri])
+    //console.log(image)
     //console.log(gallery[0].type)
    
     
@@ -63,43 +96,64 @@ export default function ImagePick2({navigation}) {
   
 
 
+  
+
+
   return (
     <View style={{flex: 1, justifyContent: 'center', }}>
-      <Button title='Pick Image' onPress={() => pickImage()} style={{marginTop: 30 }} />
-       
-        {/*{image && <Image source={{uri: image}}  style={{flex: 1/2}} />}*/}
       
+
+        <View style={{flex: 1}}>
+        <Button title='Pick Main Image' onPress={() => pickImage1()} style={{marginTop: 30 }} />
+        
+          {/*{image && <Image source={{uri: image}}  style={{flex: 1/2}} />}*/}
+        
+          <View style={{flex: 1, height: 250,  backgroundColor: 'lightpink', justifyContent: 'center', alignItems: 'center'}}>
+            <Image source={{uri: mainImage }}  style={{height: 250, width: 250, resizeMode: 'cover'}} />
+            </View>
+        </View>
+
+
         <View style={{flex: 1,}}>
-        <FlatList
-          data={image}
-          renderItem={({item}) => 
-          (<View style={{  marginBottom: 10, alignItems: 'center'}} >
-            {/*<Text style={{fontSize: 20}}>{item.type}</Text>*/}
-             <Image source={{uri: item}} style={{height: 250, width: 250, resizeMode: 'cover'}} />
-           </View>)
-          }
-          
-           />
+        <Button title='Add More Images' onPress={() => pickImage2()} style={{marginTop: 30 }} />
+        
+          {/*{image && <Image source={{uri: image}}  style={{flex: 1/2}} />}*/}
+        
+          <View  style={{ width: '100%', }}>
+          <FlatList
+            data={image}
+            numColumns={2}
+            renderItem={({item}) => 
+            (<View style={{  marginBottom: 10,  alignItems: 'center', justifyContent: 'space-evenly', backgroundColor: 'lightpink'}} >
+              {/*<Text style={{fontSize: 20}}>{item.type}</Text>*/}
+              <Image source={{uri: item}} style={{height: 160, width: 160,marginLeft: 15, resizeMode: 'cover', }} />
+             </View>)
+            }
+            
+            columnWrapperStyle={{
+              flex: 1,
+              justifyContent: 'space-evenly',
+            }}
+            
+            />
+            </View>
         </View>
        
-        {/*<TouchableOpacity
-          style={{width: 300, height: 20, backgroundColor: 'pink', justifyContent: 'center', alignSelf: 'center', alignItems: 'center'}}
-          onPress=
-          {saveCone
-            
-          }
-         >
-          <Text>Save</Text>
-        </TouchableOpacity>*/}
+        <View style={{backgroundColor: 'lightgreen'}}>
         <Button
         title="Go to Details"
         onPress={() => 
-          {navigation.navigate('Cone Details', {image: image});
+          { setConeImages(() => image.unshift(mainImage))
+            //console.log(coneImages)
+            navigation.navigate('Cone Details', {image: image});
+          
           setImage([])
+         setMainImage('')
       //console.log(image)
       //console.log(yarns)
     }}
       />
+      </View>
          
          
         
