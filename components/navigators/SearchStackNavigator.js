@@ -10,7 +10,7 @@ const SearchStackNavigator = () => {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="SearchCone" component={Search} />
+      <Stack.Screen name="SearchCone" component={Search} options={{headerShown: false}} />
       <Stack.Screen name="Cone" component={Cone} />
     </Stack.Navigator>
 

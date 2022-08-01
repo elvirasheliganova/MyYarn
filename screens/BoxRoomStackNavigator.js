@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator()
 const BoxRoomStackNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name = 'Yarns' component ={BoxRoom} />
+      <Stack.Screen name = 'Yarns' component ={BoxRoom} options={{headerStyle:{backgroundColor: '#CBE9E7BF'}}} />
       <Stack.Screen name = 'ConePage' component ={ConePage}/>
     </Stack.Navigator>
   )

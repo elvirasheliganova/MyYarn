@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Button, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker'
-import ImagePick from './components/ImagePick';
+import ImagePick from './components/ImagePicker';
 import BoxRoom from './screens/BoxRoom';
 import { YarnProvider } from './components/YarnContext';
 import { NavigationContainer } from '@react-navigation/native';

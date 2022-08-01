@@ -1,6 +1,7 @@
 import { View, Text, TextInput, FlatList, Image, TouchableOpacity} from 'react-native'
 import React, {useRef, useContext, useState} from 'react'
 import { YarnContext } from './YarnContext';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Search = ({navigation}) => {
   const [yarns, setYarns] = useContext(YarnContext)
@@ -29,14 +30,27 @@ const Search = ({navigation}) => {
   
   
   return (
-    <View >
-      <Text>Search by Yarn Type</Text>
+    <View style={{flex: 1, justifyContent: 'center'}} >
+       <LinearGradient
+        // Background Linear Gradient
+        colors={['#D2F0EE', 'transparent']}
+        style={{flex: 1,
+          
+          paddingHorizontal: 25, 
+          backgroundColor: '#C7CAB6'}}
+          
+      >
+      <View style={{paddingTop: 50,  height: 100}}>
+        <Text style={{fontSize: 24}}>Search by Yarn Type</Text>
+      </View>
       <View
       style={{
-        backgroundColor: 'pink',
+        backgroundColor: '#fdccA0',
+        marginBottom: 20,
        height: 50,
         borderColor: '#000000',
         borderWidth: 1,
+        borderRadius: 10
       }}>
       <TextInput 
         multiline
@@ -46,26 +60,28 @@ const Search = ({navigation}) => {
         style={{padding: 10}} />
         </View>
         
-          <View style={{ backgroundColor: 'lightgreen', height: 500, borderColor: '#000000',
-        borderWidth: 1}}>
-          <Text>React Examples</Text>
-          <FlatL
+          <View style={{  backgroundColor:  '#D7DCCA', height: 500, borderColor: '#000000',
+        borderWidth: 1, borderRadius: 10, padding: 10}}>
+          <Text>In Your BoxRoom You Have</Text>
+          <FlatList
           data={searchData}
           renderItem={({item, index}) => 
           <TouchableOpacity 
           onPress={() => goToYarnPage(item)}
            >
-         
           <Text>{item.selectedYarnType}</Text>
+          <Text>{item.selectedYarnWeight}</Text>
+          <Text>{item.selectedYarnManufacturer}</Text>
           <FlatList 
           data={item.image}  renderItem={({item, index}) => 
-            <Image source={{uri: item}} style={{ flex: 1/5, height: 200, width: 200, resizeMode: 'cover'}}  />
+            <Image source={{uri: item}} style={{ flex: 1/5, height: 200, width: 200, resizeMode: 'cover', borderRadius: 10}}  />
           } />
           </TouchableOpacity>
         }
           />
         
           </View>
+          </LinearGradient>
        
     </View>
   )

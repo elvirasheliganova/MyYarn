@@ -13,11 +13,19 @@ const Tab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator 
+    screenOptions={{
+      tabBarStyle: {backgroundColor: '#C7CAB6' },
+      tabBarActiveTintColor: '#3F6B66',
+    }}
+    >
       
-      <Tab.Screen name="New Cone" component={NewConeStackNavigator} />
-      <Tab.Screen name="BoxRoom" component={BoxRoomStackNavigator} />
-      <Tab.Screen name="Search" component={SearchStackNavigator} />
+      <Tab.Screen 
+      name="New Cones" 
+      component={NewConeStackNavigator}
+      options={{headerTitleStyle: {fontSize: 22, color: '#3F6B66', fontWeight: 'bold', position: 'absolute', bottom: 0, left: -180}, headerStyle: {backgroundColor: '#B7FAF480'},   } } />
+      <Tab.Screen name="BoxRoom" component={BoxRoomStackNavigator}options={{headerShown: false}} />
+      <Tab.Screen name="Search" component={SearchStackNavigator} options={{headerShown: false}} />
       
 
        
