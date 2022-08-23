@@ -1,16 +1,21 @@
-import { View, Text, TouchableOpacity, Modal, Pressable } from 'react-native'
+import { View, Text, TouchableOpacity, Modal, Pressable, TextInput } from 'react-native'
 import React, { useState, useEffect, useContext } from 'react';
 import {Picker} from '@react-native-picker/picker';
+import Pick from './Pick';
+import pickerData from '../assets/pickerData';
 import { YarnContext } from './YarnContext';
-import { Entypo } from '@expo/vector-icons';
+//import { Entypo } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import Checkbox from 'expo-checkbox';
+import ModalMix from './ModalMix';
+//import PickMix from './PickMix';
 
 const DetailsPicker = ({ route,navigation}) => {
   const {image} = route.params
   const [selectedYarnType, setSelectedYarnType] = useState()
   const [selectedYarnWeight, setSelectedYarnWeight] = useState()
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState()
+  const [selectedYarnColor, setSelectedYarnColor] = useState()
   const [id, setId] = useState()
   const [cone, setCone] = useState()
   const [yarns, setYarns] = useContext(YarnContext)
@@ -21,17 +26,56 @@ const DetailsPicker = ({ route,navigation}) => {
  
   const [mix, setMix] = useState()
   const [isMix, setIsMix] = useState(false)
-  const [modalVisible, setModalVisible] = useState(true)
-  const [selectedMerinosMix, setSelectedMerinosMix] = useState();
-  const [selectedCashMix, setSelectedCashMix] = useState();
-  const [selectedSilkMix, setSelectedSilkMix] = useState();
+  //const [modalVisible, setModalVisible] = useState(true)
+  //const [selectedMerinosMix, setSelectedMerinosMix] = useState();
+  //const [selectedCashMix, setSelectedCashMix] = useState();
+  //const [selectedSilkMix, setSelectedSilkMix] = useState();
+
+  const [weight, onChangeWeight] = useState(null);
+
+  //const dataColor = pickerData.color
+  //const dataManufacturer = pickerData.manufacturer
+
+  
+  
+
+ /*  const Pick = () => {
+    return(
+      <View style={{ justifyContent: 'center', backgroundColor: '#d5e9e3', marginBottom: 10 , marginHorizontal: 10,  borderRadius: 10,  padding: 20, 
+     shadowColor: '# 8C9284',
+     shadowOffset: {width: -2, height: -4},
+     shadowOpacity: 0.1,
+     shadowRadius: 3,  }}>
+      <View style= {{alignSelf: 'flex-start'}}>
+        <Text style={{fontSize: 18, fontWeight: 'bold', color: '#403818'}}>Manufacturer</Text>
+      </View>
+      <Picker
+        selectedValue={selectedYarnManufacturer}
+        style={{ height: 40, width: '110%', alignSelf: 'center' }}
+        onValueChange={(itemValue, itemIndex) =>
+          setSelectedYarnManufacturer(itemValue)
+        }
+        itemStyle={{fontSize: 16, height: 50, fontWeight: 'bold', color: '#201C0C' }}>
+        <Picker.Item label="Loro Piana" value="Loro Piana" />
+        <Picker.Item label="Cariaggi" value="Cariaggi" />
+        <Picker.Item label="New Mill" value="New Mill" />
+        <Picker.Item label="Linsieme" value="Linsieme" />
+        <Picker.Item label="Botto Guzeppe" value="Botto Guzeppe" />
+        <Picker.Item label="Botto Poalo" value="Botto Poalo" />
+        <Picker.Item label="Biagole Modesto" value="Biagole Modesto" />
+      
+      </Picker>
+      
+  </View>
+    )
+  } */
   
   //const saveCone = () => setCone({image, selectedYarnType, selectedYarnWeight })
 
    //console.log(image)
    //console.log(route.params)
    
-   //console.log(yarns)
+   //console.log(dataColor)
    //.log(cone)
 
 
@@ -39,7 +83,7 @@ const DetailsPicker = ({ route,navigation}) => {
    
    // [...prevYarns, cone])
 
-   console.log(yarns)
+   
    
 
   return (
@@ -54,210 +98,54 @@ const DetailsPicker = ({ route,navigation}) => {
           backgroundColor: '#C7CAB6'}}
           
       >
-    <View style={{flex: 1/5, justifyContent: 'center', backgroundColor: '#d5e9e3',
-    //'#C3DCD180',  
-    marginHorizontal: 10, marginBottom: 10 ,marginTop: 40, borderRadius: 10, padding: 20, 
-    shadowColor: '# 8C9284',
-    shadowOffset: {width: 2, height:-1},
-    shadowOpacity: 0.4,
-    shadowRadius: 3, }}>
-    <View style= {{alignSelf: 'flex-start', }}>
-      <Text style={{fontSize: 18, fontWeight: 'bold', color: '#403818'}}>Yarn Type</Text>
-    </View>
-    
-    <Picker
-      selectedValue={selectedYarnType}
-      style={{ height: 100, width: '110%', alignSelf: 'center', overflow: 'hidden'}}
-      onValueChange={(itemValue, itemIndex) =>
-       { setSelectedYarnType(itemValue)
-        setId(yarns.length + 1)
-        //console.log(selectedYarnType, mix)
-        if(selectedYarnType && itemValue === "Mix" ) {setIsMix(true)}
-      }
-    
-      }
-      itemStyle={{fontSize: 16, height: 120, fontWeight: 'bold', color: '#201C0C' }}>
-      
-      <Picker.Item label="Cashmere" value="Cashmere" />
-      <Picker.Item label="Merinos" value="Merinos" />
-      <Picker.Item label="Mix" value="Mix" />
-      <Picker.Item label="Yack" value="Yack" />
-      <Picker.Item label="Mohair" value="Mohair" />
-      <Picker.Item label="Cotton" value="Cotton" />
-      <Picker.Item label="Linen" value="Linen" />
-      <Picker.Item label="Alpaca" value="Alpaca" />
-      <Picker.Item label="Silk" value="Silk" />
-    </Picker>
-  </View>
+        <View style={{marginTop: 20 }}>
+   {/*  <Pick 
+    title = {'Yarn Type'} 
+    data = {pickerData.yarnType}
+    selectedValue={selectedYarnType} 
+    onValueChange= {(itemValue, itemIndex) =>
+{setSelectedYarnType(itemValue)
+
+
+    setId(yarns.length + 1)
+    //console.log(selectedYarnType, mix)
+    if(selectedYarnType && itemValue === "Mix" ) {setIsMix(true)}}} />
+   */}
+   {/* <PickMix 
+
+title = {'Yarn Type'} 
+data = {pickerData.yarnType}
+selectedValue={selectedYarnType} 
+onValueChange= {(itemValue, itemIndex) =>
+{setSelectedYarnType(itemValue)
+
+
+    setId(yarns.length + 1)
+    //console.log(selectedYarnType, mix)
+    if(selectedYarnType && itemValue === "Mix" ) {setIsMix(true)}}}
+   /> */}
   
-  <View style={{flex: 1/5,   justifyContent: 'center', backgroundColor:  '#d5e9e3', marginHorizontal: 10, marginBottom: 10, borderRadius: 10,  padding: 20, 
-    shadowColor: '# 8C9284',
-    shadowOffset: {width: -2, height: -4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,   }}>
-    <View style= {{alignSelf: 'flex-start'}}>
-      <Text style={{fontSize: 18, fontWeight: 'bold', color: '#403818'}}>Yarn Weight</Text>
-    </View>
+
+     
+      <Pick 
+    title = {'Yarn Type'} 
+    data = {pickerData.yarnType}
+    selectedValue={selectedYarnType} 
+    onValueChange= {(itemValue, itemIndex) =>
+{setSelectedYarnType(itemValue)
 
 
-
-    {isMix &&  (
+    setId(yarns.length + 1)
+    //console.log(selectedYarnType, mix)
+    if(selectedYarnType && itemValue === "Mix" ) {setIsMix(true)}}} />
+      {isMix &&  (
     <View style={{flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 22,}}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={{flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,}}>
-          <View style={{margin: 10, width: '90%',
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 15,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,}}>
-           {/*} <Text style={{marginBottom: 15,
-    textAlign: 'center',}}>Hello World!</Text>*/}
+      }}>
     
-    <View style={{margin: 10, width: '90%',
-    backgroundColor: 'white',
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5}}>
-    <Text>% Merinos</Text>
-    <Picker
-      selectedValue={selectedYarnType}
-      style={{ height: 100, width: '110%', alignSelf: 'center', overflow: 'hidden'}}
-      onValueChange={(itemValue, itemIndex) =>
-       { setSelectedMerinosMix(itemValue)
-        setId(yarns.length + 1)
-       // console.log(selectedMerinosMix, mix)
-        
-      }
-    
-      }
-      itemStyle={{fontSize: 14, height: 80, fontWeight: '600', color: '#201C0C' }}>
-      
-      
-      <Picker.Item label="10" value="10" />
-      <Picker.Item label="20" value="20" />
-      <Picker.Item label="30" value="30" />
-      <Picker.Item label="50" value="50" />
-      <Picker.Item label="70" value="70" />
-      
-      
-    </Picker>
-    </View>
-    <View style={{margin: 10, width: '90%',
-    backgroundColor: 'white',
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5}}>
-    <Text>% Cashmere</Text>
-    <Picker
-      selectedValue={selectedYarnType}
-      style={{ height: 100, width: '110%', alignSelf: 'center', overflow: 'hidden'}}
-      onValueChange={(itemValue, itemIndex) =>
-       { setSelectedCashMix(itemValue)
-        setId(yarns.length + 1)
-        //console.log(selectedMerinosMix, mix)
-        
-      }
-    
-      }
-      itemStyle={{fontSize: 14, height: 80, fontWeight: '600', color: '#201C0C' }}>
-      
-      <Picker.Item label="50" value="50" />
-      <Picker.Item label="70" value="70" />
-      <Picker.Item label="10" value="10" />
-      
-    </Picker>
-    </View>
-    <View style={{margin: 10, width: '90%',
-    backgroundColor: 'white',
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5}}>
-    <Text>% Silk</Text>
-    <Picker
-      selectedValue={selectedYarnType}
-      style={{ height: 100, width: '110%', alignSelf: 'center', overflow: 'hidden'}}
-      onValueChange={(itemValue, itemIndex) =>
-       { setSelectedSilkMix(itemValue)
-        
-        //console.log(selectedMerinosMix, mix)
-        
-      }
-    
-      }
-      itemStyle={{fontSize: 14, height: 80, fontWeight: '600', color: '#201C0C' }}>
-      
-      <Picker.Item label="50" value="50" />
-      <Picker.Item label="70" value="70" />
-      <Picker.Item label="10" value="10" />
-      
-    </Picker>
-    </View>
-            <Pressable
-              style={ { width: 80, borderRadius: 20, 
-                padding: 10,
-                elevation: 2,backgroundColor: '#2196F3',}}
-              onPress={() => {setModalVisible(!modalVisible) 
-                
-              setMix({selectedMerinosMix, selectedCashMix, selectedSilkMix})
-              
-              console.log(mix)
-            }
-            }
-              >
-              <Text style={{color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',}}>Sure</Text>
-            </Pressable>
-          </View>
-          
-        </View>
-        
-      </Modal>
+      <ModalMix changeMix={mix => setMix(mix)} />
+      {console.log(mix)}
 {/*   <Pressable style={ {borderRadius: 20,
                 padding: 10,
                 elevation: 2,  backgroundColor: '#F194FF',}} onPress={() => setModalVisible(true)}>
@@ -266,51 +154,57 @@ const DetailsPicker = ({ route,navigation}) => {
     textAlign: 'center',}}>Show Modal</Text>
       </Pressable>    */} 
     </View>) }
-
-
-
-    <Picker
-      selectedValue={selectedYarnWeight}
-      style={{ height: 100, width: '110%', alignSelf: 'center'}}
-      onValueChange={(itemValue, itemIndex) =>
-        setSelectedYarnWeight(itemValue)
-      }
-      itemStyle={{fontSize: 16, height: 120, fontWeight: 'bold', color: '#201C0C'}}>
-      <Picker.Item label="1/15" value="1/15" />
-      <Picker.Item label="2/28" value="2/28" />
-      <Picker.Item label="300" value="300" />
-      <Picker.Item label="550" value="550" />
-      <Picker.Item label="650" value="650" />
-      <Picker.Item label="800" value="800" />
-    </Picker>
-    </View>
-    <View style={{flex: 1/5,  justifyContent: 'center', backgroundColor: '#d5e9e3', marginHorizontal: 10,  borderRadius: 10,  padding: 20, 
-     shadowColor: '# 8C9284',
-     shadowOffset: {width: -2, height: -4},
-     shadowOpacity: 0.1,
-     shadowRadius: 3,  }}>
-      <View style= {{alignSelf: 'flex-start'}}>
-        <Text style={{fontSize: 18, fontWeight: 'bold', color: '#403818'}}>Manufacturer</Text>
-      </View>
-      <Picker
-        selectedValue={selectedYarnManufacturer}
-        style={{ height: 100, width: '110%', alignSelf: 'center' }}
-        onValueChange={(itemValue, itemIndex) =>
-          setSelectedYarnManufacturer(itemValue)
-        }
-        itemStyle={{fontSize: 16, height: 120, fontWeight: 'bold', color: '#201C0C' }}>
-        <Picker.Item label="Loro Piana" value="Loro Piana" />
-        <Picker.Item label="Cariaggi" value="Cariaggi" />
-        <Picker.Item label="New Mill" value="New Mill" />
-        <Picker.Item label="Linsieme" value="Linsieme" />
-        <Picker.Item label="Botto Guzeppe" value="Botto Guzeppe" />
-        <Picker.Item label="Botto Poalo" value="Botto Poalo" />
-        <Picker.Item label="Biagole Modesto" value="Biagole Modesto" />
       
-      </Picker>
-      
+  
+    
+    <Pick 
+    title = {'Manufacturer'} 
+    data = {pickerData.manufacturer}
+    selectedValue={selectedYarnManufacturer} 
+    onValueChange= {(itemValue, itemIndex) =>
+    setSelectedYarnManufacturer(itemValue)} 
+   />
+    <Pick 
+    title = {'Color'} 
+    data = {pickerData.color}
+    selectedValue={selectedYarnColor}
+    onValueChange= {(itemValue, itemIndex) =>
+      setSelectedYarnColor(itemValue)} 
+      />
+    <Pick 
+    title = {'Weight'} 
+    data = {pickerData.weight} 
+    selectedValue={selectedYarnWeight}
+    onValueChange= {(itemValue, itemIndex) =>
+      setSelectedYarnWeight(itemValue)} 
+     />
+
+
+
+
+  
   </View>
-  <View style={{flexDirection: 'row', justifyContent: 'space-around', marginTop: 20}}>
+  <View>
+   <TextInput
+        style={{  height: 40,
+          backgroundColor: '#BFC3AE',
+          margin: 10,
+          borderRadius: 10,
+          padding: 10,
+          fontSize: 18,
+        fontWeight: 'bold'}}
+        onChangeText={onChangeWeight}
+        value={weight}
+        placeholder="Cone Weight"
+        placeholderTextColor={'#867D59'}
+        
+        keyboardType="numeric"
+      />
+  </View>
+  
+  <View style={{flexDirection: 'row', justifyContent: 'space-around', marginTop: 20,  
+  //backgroundColor: 'green'
+  }}>
     <View style={{}}>
         <Checkbox
           style={{}}
@@ -338,8 +232,11 @@ const DetailsPicker = ({ route,navigation}) => {
         />
         <Text style={{}}>Angled</Text>
     </View>
+    
   </View>
-  <View style={{ flex: 1/8,  width: 300,  marginTop: 60,  alignSelf: 'center', justifyContent: 'space-between',  flexDirection: 'row'
+  <View style={{   width: 300, 
+  //backgroundColor: 'red',  
+  marginTop: 30,  alignSelf: 'center', justifyContent: 'space-between',  flexDirection: 'row'
 }}>
    {/*  <View style={{flexDirection:'row', justifyContent:'space-between', marginBottom: 10}}>
       <TouchableOpacity
@@ -360,9 +257,10 @@ const DetailsPicker = ({ route,navigation}) => {
     <TouchableOpacity
           style={{ height: 45, backgroundColor: '#fdccA0', borderRadius: 5, justifyContent: 'center',  alignItems: 'center', paddingHorizontal: 20 }}
           onPress= {() => {
-            setCone({id, image, selectedYarnType, isMix, mix, selectedYarnWeight, selectedYarnManufacturer, isWorsted, isAngled, isCarded })
+            setCone({id, image, selectedYarnType, isMix, mix, selectedYarnWeight, selectedYarnManufacturer, selectedYarnColor, isWorsted, isAngled, isCarded, weight })
           }}
     >
+      
       <Text style={{fontSize: 16, color:  '#413918', fontWeight: 'bold'}}>Save Cone</Text>
     </TouchableOpacity>
     
@@ -372,7 +270,7 @@ const DetailsPicker = ({ route,navigation}) => {
             {  setYarns(prevYarns => 
               [...prevYarns, cone])
               navigation.navigate('Cone Images')
-              
+              console.log(yarns)
               
             }}
       >

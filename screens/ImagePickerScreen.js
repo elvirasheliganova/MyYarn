@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button, Image, FlatList, TouchableOpacity, Pressable } from 'react-native';
+import { Text, View, Button, Image, FlatList, TouchableOpacity, Pressable, } from 'react-native';
+
 import { YarnContext } from '../components/YarnContext';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+
 import {Picker} from '@react-native-picker/picker';
 import * as ImagePicker from 'expo-image-picker'
 import { LinearGradient } from 'expo-linear-gradient';
+import { ImageBackground } from 'react-native';
 
 export default function ImagePickerScreen({navigation}) {
 
@@ -26,6 +30,7 @@ export default function ImagePickerScreen({navigation}) {
   //const [cone, setCone] = useState()
 
   //console.log(image)
+  console.log(yarns)
 
   useEffect(() => {
     (async() => {
@@ -96,59 +101,78 @@ export default function ImagePickerScreen({navigation}) {
     //console.log(cone)
   }*/}
   
-
+const deleteImage = (item) => {
+  const newImage = image.filter((i => i !== item))
+  setImage(newImage)
+}
 
   
 
 
   return (
     <View style={{flex: 1, justifyContent: 'center'}}>
-       <LinearGradient
+      <LinearGradient
         // Background Linear Gradient
         colors={['#D2F0EE', 'transparent']}
         style={{flex: 1,
+        width: '100%', 
+        paddingHorizontal: 20,
           
-          paddingHorizontal: 25,
-          alignItems: 'center',
-          justifyContent: 'center',
+          
           backgroundColor: '#C7CAB6'}}
-          start={{ x: 0.5, y: 0.3 }}
-          end={{ x: 1, y: 1}}
+          
       >
-        <View style={{flex: 1, flexDirection: 'row', marginRight: 20, }}>
-          <View style={{  paddingTop: 50, marginRight: 10
+        <View style={{flex: 1, flexDirection: 'row', 
+        //marginRight: 20, 
+        //alignSelf: 'flex-start'
+        
+        }}>
+          <View style={{ flex: 1, 
+          marginTop: 50, 
+          height: 280, width: 280, 
+          //marginRight: 10,   
         //backgroundColor: 'grey'
         }}>
           {/*<Button title='Pick Main Image' onPress={() => pickImage1()} style={{marginTop: 30 }} />*/}
         
             {/*{image && <Image source={{uri: image}}  style={{flex: 1/2}} />}*/}
         
-            <Pressable onPress={() => pickImage1()} style={{flex: 1, height: 250, width: 250,   
-              backgroundColor: '#C7CAB6',
-          //'#cadcd7', 
+            <Pressable onPress={() => pickImage1()} style={{flex: 1, height: 280, width: 280,  
+              backgroundColor: '#ccd4c3',
+              //'#cce2d0', 
              justifyContent: 'center',
-              alignItems: 'center', 
-          //alignSelf: 'center', 
+             alignItems: 'center', 
+          alignSelf: 'center', 
               borderRadius: 15,
-              borderWidth: 2,
-              borderStyle: 'dashed',
-              borderColor: 'grey'
+              borderWidth: mainImage ? 0 : 1,
+            
+              borderColor: 'silver',
               }}  
               >
-              { mainImage ? <Image source={{uri: mainImage }}  style={{flex: 1, height: 250, width: 250, borderRadius: 15, resizeMode: 'cover', alignSelf: 'center'}} />
-              : <MaterialCommunityIcons name="camera-plus-outline" size={44} color="grey" />}
+              { mainImage ? <ImageBackground source={{uri: mainImage }} style={{flex: 1, 
+                alignSelf: ' center  ',
+                }} imageStyle={{ height: 280, width: 280, borderRadius: 15, resizeMode: 'cover',  }} >
+              <Pressable style={{width: 30, height: 30 , 
+            //backgroundColor: '#C7CAB6', 
+            borderRadius: 5,
+            position: 'absolute',
+            left: 218,
+            top: 3,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+            onPress = {() => setMainImage()}>
+             <MaterialCommunityIcons name="close-box-outline" size={24} color='#fdccA0' />
+          </Pressable>
+                </ImageBackground>
+              : <MaterialCommunityIcons name="file-image-plus-outline" size={44} color="grey" />}
           
            
             </Pressable>
             
           </View>
-          <Pressable style={{width: 50, height: 50 , 
-            //backgroundColor: 'green',  
-            marginTop: 50,
-            alignSelf: 'flex-start',
-            justifyContent: 'flex-start'}}>
-              <MaterialCommunityIcons name="delete" size={30} color="grey" />
-          </Pressable>
+          
+          
         </View>
 
 
@@ -160,54 +184,65 @@ export default function ImagePickerScreen({navigation}) {
         <View style={{ 
           //backgroundColor: 'blue', 
           marginTop: 50, marginLeft: 10}}>
-        <Text  style={{  fontSize: 20, fontWeight: '600' ,  color: '#1A2728'}}>Add More </Text>
+       {/*  <Text  style={{  fontSize: 20, fontWeight: '600' ,  color: '#66fc00',}}>Add More </Text> */}
           {/*{image && <Image source={{uri: image}}  style={{flex: 1/2}} />}*/}
         </View>
 
+          {/* No images */}
           { image.length === 0 ?
 
 <View style={{flex: 1, flexDirection: 'row',marginLeft: 10, 
 //backgroundColor: 'lightgreen',  
 justifyContent:'space-between', alignItems: 'center'}}>
 <Pressable  onPress={() => pickImage2()} 
-   style={{ height: 100, width: 100, backgroundColor: '#cadcd7',  borderRadius: 10, borderWidth: 2,
-   borderStyle: 'dashed', borderColor: 'grey', justifyContent: 'center', alignItems: 'center',  marginRight: 20}}>
-       <MaterialCommunityIcons name="camera-plus-outline" size={44} color="grey" /> 
+   style={{ height: 100, width: 100, backgroundColor: '#cadcd7',  borderRadius: 10, borderWidth: 1,
+    borderColor: 'silver', justifyContent: 'center', alignItems: 'center',  marginRight: 20}}>
+       <MaterialCommunityIcons name="file-image-plus-outline"  size={30} color="grey" /> 
 </Pressable> 
-<View style={{ height: 100, width: 100, backgroundColor: '#cadcd7', borderWidth: 2,
-          borderStyle: 'dashed',  borderColor: 'grey', borderRadius: 10, justifyContent: 'center', alignItems: 'center',  marginRight: 20 }}>
+<View style={{ height: 100, width: 100, backgroundColor: '#cadcd7', borderWidth: 1,
+           borderColor: 'silver', borderRadius: 10, justifyContent: 'center', alignItems: 'center',  marginRight: 20 }}>
 
 </View>
-<View style={{ height: 100, width: 100, backgroundColor: '#cadcd7', borderWidth: 2,
-          borderStyle: 'dashed',  borderColor: 'grey', borderRadius: 10, justifyContent: 'center', alignItems: 'center',  marginRight: 20 }}>
+<View style={{ height: 100, width: 100, backgroundColor: '#cadcd7', borderWidth: 1,
+           borderColor: 'silver', borderRadius: 10, justifyContent: 'center', alignItems: 'center',  marginRight: 20 }}>
 
 </View>
 </View>
-          
+           /* One image */
+
 : image.length === 1 ?
-<View style={{flex: 1,  
+<View style={{   flex: 1,
   //backgroundColor: 'grey',   
-  justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row'}}>
+  justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row'}}>
 
-    <Pressable  onPress={() => pickImage2()} 
-   style={{ height: 100, width: 100, 
-    backgroundColor: '#D9D4D0',
-    borderWidth: 2, 
-   borderStyle: 'dashed', 
-   borderColor: 'grey', borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginRight: 20, }}>
-       <MaterialCommunityIcons name="camera-plus-outline" size={44} color="black" /> 
-    </Pressable> 
-    <View style={{}}>
+<View style={{  alignItems: 'center'}}>
       <FlatList
       data={image}
       
       renderItem={({item}) => 
-     ( <View style={{ justifyContent: 'center', alignItems: 'center',  marginRight: 20,
+     ( <View style={{ justifyContent: 'center', alignContent: 'center', 
      //backgroundColor: 'lightpink', 
-     alignSelf: 'center'}} >
+     }} >
        
-        <Image source={{uri: item}} style={{height: 100, width: 100,  borderRadius: 10,  marginHorizontal: 10,
-     resizeMode: 'cover',  }} />
+        <ImageBackground source={{uri: item}} style={{height: 100, width: 100, marginRight: 20}} imageStyle={{ flex: 1,height: 100, width: 100,  borderRadius: 10, 
+     resizeMode: 'cover',  }}>
+      <Pressable style={{width: 20, height: 20 , 
+            //backgroundColor: '#C7CAB6', 
+            borderRadius: 5,
+            position: 'absolute',
+            left: 78,
+            top: 2,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+            onPress = {() => {
+              
+              setImage('')
+              
+              }}>
+            <MaterialCommunityIcons name="close-box-outline" size={18} color='#fdccA0' />
+          </Pressable>
+     </ImageBackground>
       </View>)
       }
       horizontal
@@ -217,18 +252,28 @@ justifyContent:'space-between', alignItems: 'center'}}>
       //}}
       />  
     </View>
+
+    <Pressable  onPress={() => pickImage2()} 
+   style={{ height: 100, width: 100, 
+    backgroundColor: '#D9D4D0',
+    borderWidth: 1, 
+     
+   borderColor: 'silver', borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginRight: 20, }}>
+       <MaterialCommunityIcons name="file-image-plus-outline" size={30} color="grey" />
+    </Pressable> 
+    
     <View  
    style={{ 
     height: 100, 
     width: 100, 
     backgroundColor: '#D9D4D0', 
     borderRadius: 10, 
-    borderWidth: 2, 
-    borderStyle: 'dashed', 
-    borderColor: 'grey',
+    borderWidth: 1, 
+   
+    borderColor: 'silver',
     justifyContent: 'center', 
     alignItems: 'center', 
-    marginRight: 20, }}>
+     }}>
        {/*  <MaterialCommunityIcons name="camera-plus-outline" size={44} color="black" /> */}
     </View>  
     
@@ -255,14 +300,7 @@ image.length === 2 ?
 //backgroundColor: 'grey',  
 justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
 
-<Pressable  onPress={() => pickImage2()} 
-style={{ height: 100, width: 100, backgroundColor: 'lightgrey',borderWidth: 2, 
-borderStyle: 'dashed', 
-borderColor: 'grey',  borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
-   <MaterialCommunityIcons name="camera-plus-outline" size={44} color="black" /> 
-</Pressable> 
-
-<View style={{marginLeft: 10}}>
+<View style={{}}>
   <FlatList
   data={image}
   
@@ -271,7 +309,21 @@ borderColor: 'grey',  borderRadius: 10, justifyContent: 'center', alignItems: 'c
  //backgroundColor: 'lightpink' 
 }} >
    
-    <Image source={{uri: item}} style={{height: 100, width: 100,  borderRadius: 10, resizeMode: 'cover',  marginHorizontal: 10 }} />
+   <ImageBackground source={{uri: item}} style={{height: 100, width: 100, marginRight: 20}} imageStyle={{ flex: 1,height: 100, width: 100,  borderRadius: 10, 
+     resizeMode: 'cover',  }}>
+     <Pressable style={{width: 20, height: 20 , 
+            //backgroundColor: '#C7CAB6', 
+            borderRadius: 5,
+            position: 'absolute',
+            left: 78,
+            top: 2,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+            onPress = {() => deleteImage(item)}>
+            <MaterialCommunityIcons name="close-box-outline" size={18} color='#fdccA0' />
+          </Pressable>
+     </ImageBackground>
   </View>)
   }
   horizontal
@@ -281,6 +333,15 @@ borderColor: 'grey',  borderRadius: 10, justifyContent: 'center', alignItems: 'c
   //}}
   />  
 </View>
+
+<Pressable  onPress={() => pickImage2()} 
+style={{ height: 100, width: 100, backgroundColor: 'lightgrey',borderWidth: 1, 
+
+borderColor: 'silver',  borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
+   <MaterialCommunityIcons name="file-image-plus-outline" size={30} color="grey" />
+</Pressable> 
+
+
  
 
 
@@ -315,7 +376,21 @@ borderColor: 'grey',  borderRadius: 10, justifyContent: 'center', alignItems: 'c
  //backgroundColor: 'lightpink'
  }} >
    
-    <Image source={{uri: item}} style={{height: 100, width: 100,  borderRadius: 10, resizeMode: 'cover', marginRight: 20 }} />
+   <ImageBackground source={{uri: item}} style={{height: 100, width: 100, marginRight: 20}} imageStyle={{ flex: 1,height: 100, width: 100,  borderRadius: 10, 
+     resizeMode: 'cover',  }}>
+      <Pressable style={{width: 20, height: 20 , 
+            //backgroundColor: '#C7CAB6', 
+            borderRadius: 5,
+            position: 'absolute',
+            left: 78,
+            top: 2,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+            onPress = {() => setMainImage()}>
+            <MaterialCommunityIcons name="close-box-outline" size={18} color='#fdccA0' />
+          </Pressable>
+     </ImageBackground>
   </View>)
   }
   horizontal
@@ -357,7 +432,9 @@ borderColor: 'grey',  borderRadius: 10, justifyContent: 'center', alignItems: 'c
         
         <View style={{ width: '100%', marginBottom: 50, marginTop: 20, borderRadius: 5,  alignItems: 'flex-end'  }}>
         <Pressable
-        style={{flexDirection: 'row', width: '50%', justifyContent: 'center',   backgroundColor: '#fdccA0', paddingVertical: 10, paddingHorizontal: 20, marginRight: 10, borderRadius: 5}}
+        style={{flexDirection: 'row', width: '50%', justifyContent: 'center',   
+        backgroundColor:'#fdccA0', 
+        paddingVertical: 10, paddingHorizontal: 20, marginRight: 10, borderRadius: 5}}
         onPress={() => 
           { setConeImages(() => image.unshift(mainImage))
             //console.log(coneImages)
@@ -369,8 +446,8 @@ borderColor: 'grey',  borderRadius: 10, justifyContent: 'center', alignItems: 'c
       //console.log(yarns)
     }}
       >
-        <Text style={{fontSize: 20, fontWeight: '600', color: '#1A2728',  marginRight: 10}}>Next</Text>
-        <MaterialCommunityIcons name="arrow-right" size={24} color="#1A2728" />
+        <Text style={{fontSize: 20, fontWeight: '600', color: '#07544b',  marginRight: 10}}>Next</Text>
+        <MaterialCommunityIcons name="arrow-right" size={24} color="#07544b" />
       </Pressable>
       </View>
          

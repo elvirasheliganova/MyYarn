@@ -68,8 +68,9 @@ const BoxRoom = ({navigation}) => {
           {item.mix.selectedCashMix && <Text style={{fontSize: 12}}>Cash {item.mix.selectedCashMix}%</Text>}
           {item.mix.selectedSilkMix && <Text style={{fontSize: 12}}>Silk {item.mix.selectedSilkMix}%</Text>}
         </View>}
-        <Text style={{marginRight: 5,  marginBottom: 2, fontWeight: '600'}}>{item.selectedYarnWeight}</Text>
+        <Text style={{marginRight: 5,  marginBottom: 2, fontWeight: '600'}}>{item.selectedYarnWeight} m</Text>
         <Text style={{marginRight: 5,  marginBottom: 2, fontWeight: '600'}}>{item.selectedYarnManufacturer}</Text>
+        
       </View>
      
     </Pressable>
