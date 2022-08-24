@@ -7,7 +7,7 @@ import BoxRoom from './screens/BoxRoom';
 import { YarnProvider } from './components/YarnContext';
 import { NavigationContainer } from '@react-navigation/native';
 import BottomTabNavigator from './components/navigators/BottomTabNavigator';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 
@@ -39,13 +39,8 @@ export default function App() {
   if (hasGalleryPermission === false) {
     return <Text>No acceess to Internal Storage</Text>
   }
-  const saveData = () => {
-      
-  }
 
-  const loadData = () => {
-
-  }
+  
   return (
     <NavigationContainer>
       

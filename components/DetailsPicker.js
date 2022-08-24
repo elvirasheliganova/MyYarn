@@ -270,7 +270,7 @@ onValueChange= {(itemValue, itemIndex) =>
             {  setYarns(prevYarns => 
               [...prevYarns, cone])
               navigation.navigate('Cone Images')
-              console.log(yarns)
+             // console.log(yarns)
               
             }}
       >

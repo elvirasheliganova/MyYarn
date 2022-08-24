@@ -10,6 +10,7 @@ import * as ImagePicker from 'expo-image-picker'
 const ConePage = ({ route}) => {
 
   const [yarns, setYarns] = useContext(YarnContext)
+  const [cone, setCone] = useContext(YarnContext)
   const {coneId} = route.params
   
   //
@@ -32,8 +33,19 @@ const onPress =()  => {
   yarn.gauge = gauge
   yarn.needles = needles
   yarn.good = good
+  yarn.gaugeImage = gaugeImage
   setIsGauge(true)
-  console.log(yarn.gauge)
+  setCone(prevCone => 
+    [...prevCone, gauge, needles, good, gaugeImage ]) 
+   
+  setYarns(prevYarns => 
+      [...prevYarns, cone])
+  
+  //saveData()   
+     // console.log(yarns)  
+    
+    console.log(cone)
+  //console.log(yarn.gaugeImage)
 }
 const pickImage3 = async () => {
     
@@ -53,7 +65,7 @@ const pickImage3 = async () => {
  
     //setImage(result.uri)
   { setGaugeImage(result.uri)
-    console.log(gaugeImage)
+   // console.log(gaugeImage)
   }
   
 }
@@ -219,7 +231,10 @@ const pickImage3 = async () => {
           </> } 
               </View>
 
-                <Pressable  onPress={() => pickImage3()} 
+                <Pressable  onPress={() =>{ 
+                  pickImage3()
+                   
+                  }} 
               style={{ height:  130 , width: 130, 
                 shadowColor: '# 8C9284',
      shadowOffset: {width: -2, height: -4},

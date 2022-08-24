@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { View, Text, FlatList, Image, TouchableOpacity, Pressable, ScrollView } from 'react-native'
 import { YarnContext } from '../components/YarnContext'
 import { LinearGradient } from 'expo-linear-gradient';
@@ -6,6 +6,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 const BoxRoom = ({navigation}) => {
 
   const [yarns, setYarns] = useContext(YarnContext)
+ 
+
 
   const goToYarnPage = (cone) => {
     navigation.navigate('ConePage', {coneId: cone.id }
@@ -13,6 +15,8 @@ const BoxRoom = ({navigation}) => {
     )}
   
 //console.log(yarns)
+
+
 
   return (
     <View style={{flex: 1, alignItems: 'center', }}>
@@ -31,8 +35,12 @@ const BoxRoom = ({navigation}) => {
       <FlatList
       
   data={yarns}
+  
   renderItem={ ({item, index}) => (
-    <Pressable style={{ 
+    
+    <Pressable 
+    key={item.id}
+    style={{ 
       
       borderRadius: 10,
       backgroundColor: '#D7DCCA80',
@@ -45,6 +53,7 @@ const BoxRoom = ({navigation}) => {
         <Pressable style={{margin:10, padding: 5, }}>
         <Image source={{uri: item.image[0]}} style={{  height:  200, width: 200,  borderRadius: 10, resizeMode: 'cover'}} />
         </Pressable>
+        {console.log(item)}
       
        {/* <FlatList data={item.image} renderItem={({ item, index}) => (
         
@@ -76,6 +85,7 @@ const BoxRoom = ({navigation}) => {
     </Pressable>
   )}
   
+  extraData={yarns}
   />
   </LinearGradient>
     </View>

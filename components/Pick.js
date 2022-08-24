@@ -24,8 +24,8 @@ const Pick = ({title, data, onValueChange, selectedValue}) => {
         }
         itemStyle={{fontSize: 16, height: 40, fontWeight: 'bold', color: '#201C0C', }}>
 
-        {data.map(item => (
-          <Picker.Item label={item.label} value={item.value} />
+        {data.map((item, index) => (
+          <Picker.Item label={item.label} value={item.value} key={index} />
         ))}
         
       

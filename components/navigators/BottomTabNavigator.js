@@ -1,8 +1,9 @@
 import { View, Text } from 'react-native'
 
-import React from 'react'
+import React, { useEffect, useContext} from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { YarnContext } from '../YarnContext';
 
 import BoxRoom from '../../screens/BoxRoom';
 import NewConeStackNavigator from './NewConeStackNavigator';
@@ -10,10 +11,34 @@ import { Fontisto } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import SearchStackNavigator from './SearchStackNavigator';
 import BoxRoomStackNavigator from '../../screens/BoxRoomStackNavigator';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
+
+  const [yarns, setYarns] = useContext(YarnContext)
+  const [cone, setCone] = useContext(YarnContext)
+
+  /* useEffect(() => {
+    loadData()
+  }, [])
+
+  useEffect(() => {
+    saveData()
+  }, [yarns])
+  
+  const saveData = async () => {
+    await AsyncStorage.setItem('yarns', JSON.stringify(yarns)) 
+  }
+
+  const loadData = async () => {
+    const loadedYarnsValue = await AsyncStorage.getItem('yarns')
+    const loadedYarns = JSON.parse(loadedYarnsValue)
+    if (loadedYarns) {
+      setYarns(loadedYarns)
+    }
+  } */
   return (
     <Tab.Navigator 
     screenOptions={({route}) => ({
