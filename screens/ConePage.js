@@ -5,46 +5,66 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import * as ImagePicker from 'expo-image-picker'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const ConePage = ({ route}) => {
 
   const [yarns, setYarns] = useContext(YarnContext)
-  const [cone, setCone] = useContext(YarnContext)
-  const {coneId} = route.params
+  //const [cone, setCone] = useContext(YarnContext)
+  const {coneId, cone} = route.params
   
   //
   
 
   const yarn = yarns.find(yarn => yarn.id === coneId)
-  console.log(yarn)
+  
 
   const [gauge, onChangeGauge] = useState(null);
   const [needles, onChangeNeedles] = useState(null);
   const [good, onChangeGood] = useState(null);
   const [isGauge, setIsGauge] = useState(false)
   const [gaugeImage, setGaugeImage] = useState()
+
+  const saveData = async () => {
+    await AsyncStorage.setItem('yarns', JSON.stringify(yarns)) 
+  }
+
+ useEffect(() => {
+if(yarn.gauge ) setIsGauge(true)
+else setIsGauge(false)
+}, []) 
+
+   
+ // setYarns(newYarns)
+  
   
 
-
-
-  //console.warn(gauge)
+ 
 const onPress =()  => {
+
   yarn.gauge = gauge
   yarn.needles = needles
   yarn.good = good
-  yarn.gaugeImage = gaugeImage
+ yarn.gaugeImage = gaugeImage
   setIsGauge(true)
-  setCone(prevCone => 
+
+  var index = yarns.indexOf(yarn)
+  if (index !== -1) {
+    yarns[index] = yarn;
+}
+setYarns(yarns)
+saveData()
+   /*setCone(prevCone => 
     [...prevCone, gauge, needles, good, gaugeImage ]) 
    
   setYarns(prevYarns => 
       [...prevYarns, cone])
-  
+   */
   //saveData()   
-     // console.log(yarns)  
+     
     
-    console.log(cone)
+    
   //console.log(yarn.gaugeImage)
 }
 const pickImage3 = async () => {
@@ -277,7 +297,7 @@ const pickImage3 = async () => {
             </View>
 
             <View style={ {flexDirection: 'row',  marginTop: 10, alignItems: 'center', justifyContent: 'space-between' }}>
-             {isGauge === false ? <>
+             {isGauge === false  ? <>
              <View>
                 <Text style={{color: '#312d09', fontSize: 14, fontWeight:'bold'}}>Is goog for </Text>
             
@@ -310,7 +330,7 @@ const pickImage3 = async () => {
             
 
             <Pressable style={{  backgroundColor: '#fdccA0', padding: 8, width: 130, borderRadius: 5, marginTop: 10, alignSelf: 'flex-end', alignItems: 'center'}}
-            onPress={onPress}>
+            onPress={ onPress}>
               <Text style={{color: '#312d09', fontSize: 16, fontWeight:'bold'}}>Save Gauge</Text>
 
             </Pressable>

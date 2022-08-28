@@ -33,11 +33,13 @@ const DetailsPicker = ({ route,navigation}) => {
 
   const [weight, onChangeWeight] = useState(null);
 
+  
+
   //const dataColor = pickerData.color
   //const dataManufacturer = pickerData.manufacturer
 
   
-  
+  console.log(yarns)
 
  /*  const Pick = () => {
     return(
@@ -134,8 +136,8 @@ onValueChange= {(itemValue, itemIndex) =>
     onValueChange= {(itemValue, itemIndex) =>
 {setSelectedYarnType(itemValue)
 
-
-    setId(yarns.length + 1)
+      setId(Date.now())
+   // setId(yarns.length + 1)
     //console.log(selectedYarnType, mix)
     if(selectedYarnType && itemValue === "Mix" ) {setIsMix(true)}}} />
       {isMix &&  (
@@ -144,7 +146,9 @@ onValueChange= {(itemValue, itemIndex) =>
       alignItems: 'center',
       }}>
     
-      <ModalMix changeMix={mix => setMix(mix)} />
+      <ModalMix changeMix={
+        mix => setMix(mix)
+        } />
       {console.log(mix)}
 {/*   <Pressable style={ {borderRadius: 20,
                 padding: 10,

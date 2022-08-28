@@ -30,7 +30,7 @@ export default function ImagePickerScreen({navigation}) {
   //const [cone, setCone] = useState()
 
   //console.log(image)
-  console.log(yarns)
+  //console.log(yarns)
 
   useEffect(() => {
     (async() => {

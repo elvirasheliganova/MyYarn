@@ -20,7 +20,7 @@ function BottomTabNavigator() {
   const [yarns, setYarns] = useContext(YarnContext)
   const [cone, setCone] = useContext(YarnContext)
 
-  /* useEffect(() => {
+  useEffect(() => {
     loadData()
   }, [])
 
@@ -38,7 +38,19 @@ function BottomTabNavigator() {
     if (loadedYarns) {
       setYarns(loadedYarns)
     }
-  } */
+  }  
+/*   const clearAll = async () => {
+    try {
+      await AsyncStorage.clear()
+    } catch(e) {
+      // clear error
+    }
+  
+    console.log('Done.')
+  }
+
+  clearAll()  */
+
   return (
     <Tab.Navigator 
     screenOptions={({route}) => ({
@@ -89,7 +101,7 @@ function BottomTabNavigator() {
         headerShown: false,
         tabBarIcon: ({color}) => <MaterialCommunityIcons name="library-shelves" size={24} color={color} />
          }} />
-      <Tab.Screen name="Search2" component={SearchStackNavigator} 
+      <Tab.Screen name="Search" component={SearchStackNavigator} 
       options={{
         headerShown: false,
         tabBarIcon: ({color}) => <Ionicons name="search" size={24} color={color}  />

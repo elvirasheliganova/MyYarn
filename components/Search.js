@@ -42,6 +42,7 @@ const Search = ({navigation}) => {
   
   
   return (
+    
     <View style={{flex: 1, justifyContent: 'center'}} >
        <LinearGradient
         // Background Linear Gradient
@@ -131,10 +132,12 @@ const Search = ({navigation}) => {
             
               >
                 <View  style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-                  <View style={{ width: '65%', flexDirection: 'row', }}>
-                    <View style={{  alignItems: 'center',  alignItems: 'stretch' }}>
-                      <Text style={{fontSize: 18, fontWeight: 'bold',  }}>{item.selectedYarnType} </Text>
-                      <Text style={{fontSize: 18, paddingTop: 5}}>{item.weight}gr </Text>
+                  <View style={{ width: '65%',
+                   
+                    }}>
+                    <View style={{ flexDirection: 'row', alignContent: 'center',   }}>
+                      <Text style={{fontSize: 18, fontWeight: '700', color: '#3B3629' }}>{item.selectedYarnType} </Text>
+                      <Text style={{fontSize: 18,  color: '#3B3629', fontWeight: '500', }}> {item.weight}gr </Text>
                      
                      
                     </View>
@@ -162,17 +165,39 @@ const Search = ({navigation}) => {
               horizontal
               showsHorizontalScrollIndicator={false}
               />
+             { console.log(item.isWorsted)}
               </View>
               <View style={{ flexDirection: 'row',  alignItems: 'center' }}>
-                      <View style={{backgroundColor: 'lightyellow', borderRadius: 8, padding: 5, marginHorizontal: 5, height: 30}}>
+                      <View style={{backgroundColor: '#C0D3C7', borderRadius: 8, padding: 5, marginHorizontal: 5, height: 30}}>
                         <Text style={{fontSize: 14}}>{item.selectedYarnWeight}m </Text>
                       </View>
-                      <View style={{backgroundColor: 'lightyellow', borderRadius: 8, padding: 5, marginHorizontal: 5,  height: 30}}>
+                      <View style={{backgroundColor: '#C0D3C7', borderRadius: 8, padding: 5, marginHorizontal: 5,  height: 30}}>
                         <Text style={{fontSize: 14}}>{item.selectedYarnManufacturer} </Text>
                       </View>
-                      { yarn.isWorsted ? <Text style={{fontSize: 14,  fontWeight: '600'}}>Worsted</Text> : null}
-                { yarn.isCarded ? <Text style={{fontSize: 14,  fontWeight: '600'}}>Carded</Text> : null}
-                { yarn.isAngled ? <Text style={{fontSize: 14,  fontWeight: '600'}}>Angled </Text> : null}
+                      {item.isWorsted === true ? 
+                      <View style={{backgroundColor: '#C0D3C7', borderRadius: 8, padding: 5, marginHorizontal: 5,  height: 30}}>
+                      <Text style={{fontSize: 14}}>Worsted</Text> 
+                    </View>
+                    : null
+                      }
+                      {item.isCarded === true ? 
+                      <View style={{backgroundColor: '#C0D3C7', borderRadius: 8, padding: 5, marginHorizontal: 5,  height: 30}}>
+                      <Text style={{fontSize: 14}}>Carded</Text> 
+                    </View>
+                    : null
+                      }
+                      {item.isAngled === true ? 
+                      <View style={{backgroundColor: '#C0D3C7'
+                       //'#D2E5DC'
+                       , borderRadius: 8, padding: 5, marginHorizontal: 5,  height: 30}}>
+                      <Text style={{fontSize: 14}}>Angled</Text> 
+                    </View>
+                    : null
+                      }
+                      
+                     
+               
+                      
                     </View>
             </View>
           }

@@ -104,7 +104,7 @@ elevation: 5}}>
   style={{ height: 100, width: '110%', alignSelf: 'center', overflow: 'hidden'}}
   onValueChange={(itemValue, itemIndex) =>
    { setSelectedCashMix(itemValue)
-    setId(yarns.length + 1)
+   // setId(yarns.length + 1)
     //console.log(selectedMerinosMix, mix)
     
   }
