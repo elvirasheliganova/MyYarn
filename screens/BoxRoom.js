@@ -73,7 +73,6 @@ const BoxRoom = ({navigation}) => {
           }}
             onPress = {() => 
               {removeYarn(item)
-              //console.log(item)
             }
             }>
              <MaterialCommunityIcons name="close-box-outline" size={24} color='#6D645A' />
@@ -100,14 +99,17 @@ const BoxRoom = ({navigation}) => {
         horizontal
 
         />*/}
-        <View style={{width: '100%', paddingHorizontal: 15, paddingBottom: 10}}>
-          <Text style={{marginRight: 5, fontSize: 18, fontWeight: 'bold', marginBottom: 5, color:'#372310' }}>{item.selectedYarnType}</Text>
-          {item.selectedYarnType === 'Mix' && 
-          <View style={{backgroundColor: 'lightgrey',width: '40%', borderRadius: 5, padding: 2,  marginBottom: 5}}>
-            { item.mix.selectedMerinosMix && <Text style={{fontSize: 12,  color:'#372310'}}>Merino {item.mix.selectedMerinosMix}%</Text>}
-            {item.mix.selectedCashMix && <Text style={{fontSize: 12,  color:'#372310'}}>Cash {item.mix.selectedCashMix}%</Text>}
-            {item.mix.selectedSilkMix && <Text style={{fontSize: 12,  color:'#372310'}}>Silk {item.mix.selectedSilkMix}%</Text>}
-          </View>}
+        <View style={{width: '100%',  paddingHorizontal: 15, paddingBottom: 10}}>
+          <View style={{flexDirection: 'row', backgroundColor: '#d2d9c0', borderRadius: 5, padding: 2,  marginBottom: 5, alignItems: 'flex-end', justifyContent: 'space-between'}}>
+            <Text style={{marginRight: 25, fontSize: 18, fontWeight: 'bold', color:'#07544b',  }}>{item.selectedYarnType}</Text>
+            {item.selectedYarnType === 'Mix' && 
+            <View style={{ flexDirection: 'row'  }}>
+              { item.mix.selectedMerinosMix && <Text style={{fontSize: 14, fontWeight: 'bold',  color:'#07544b'}}>Merino {item.mix.selectedMerinosMix} </Text>}
+              {item.mix.selectedCashMix && <Text style={{fontSize: 14, fontWeight: 'bold', color:'#07544b'}}>Cash {item.mix.selectedCashMix} </Text>}
+              {item.mix.selectedSilkMix && <Text style={{fontSize: 14, fontWeight: 'bold', color:'#07544b'}}>Silk {item.mix.selectedSilkMix}</Text>}
+            </View>}
+          </View>
+         
           <Text style={{marginRight: 5,  marginBottom: 2, fontWeight: '600',  color:'#372310'}}>{item.selectedYarnWeight} m</Text>
           <Text style={{marginRight: 5,  marginBottom: 2, fontWeight: '600',  color:'#372310'}}>{item.selectedYarnManufacturer}</Text>
           

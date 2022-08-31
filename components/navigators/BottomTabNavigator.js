@@ -39,7 +39,7 @@ function BottomTabNavigator() {
       setYarns(loadedYarns)
     }
   }  
-/*   const clearAll = async () => {
+ /*  const clearAll = async () => {
     try {
       await AsyncStorage.clear()
     } catch(e) {
@@ -49,7 +49,7 @@ function BottomTabNavigator() {
     console.log('Done.')
   }
 
-  clearAll()  */
+  clearAll()   */
 
   return (
     <Tab.Navigator 

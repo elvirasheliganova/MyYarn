@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Modal, Pressable, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, Modal, Pressable, TextInput, Alert } from 'react-native'
 import React, { useState, useEffect, useContext } from 'react';
 import {Picker} from '@react-native-picker/picker';
 import Pick from './Pick';
@@ -259,24 +259,55 @@ onValueChange= {(itemValue, itemIndex) =>
       </TouchableOpacity>
     </View> */}
     <TouchableOpacity
-          style={{ height: 45, backgroundColor: '#fdccA0', borderRadius: 5, justifyContent: 'center',  alignItems: 'center', paddingHorizontal: 20 }}
-          onPress= {() => {
+          style={{ height: 45, backgroundColor: '#DCFC98', borderRadius: 5, justifyContent: 'center',  alignItems: 'center', paddingHorizontal: 20 }}
+          onPress= {() =>{ 
+            if (selectedYarnType, selectedYarnWeight, selectedYarnColor, selectedYarnManufacturer)
+            {
             setCone({id, image, selectedYarnType, isMix, mix, selectedYarnWeight, selectedYarnManufacturer, selectedYarnColor, isWorsted, isAngled, isCarded, weight })
-          }}
+          }
+          else {
+            Alert.alert(
+              "No full yarn data",
+              "Please choose  Yarn Type, Manufacturer, Color and Weight",
+              [
+                
+                { text: "OK",
+                 //onPress: () => console.log("OK Pressed") 
+                }
+              ]
+            );
+          }
+        }
+        }
     >
       
-      <Text style={{fontSize: 16, color:  '#413918', fontWeight: 'bold'}}>Save Cone</Text>
+      <Text style={{fontSize: 16, color:  '#413918', fontWeight: 'bold'}}>Confirm</Text>
     </TouchableOpacity>
     
       <TouchableOpacity
-            style={{ height: 45,  backgroundColor: '#DCFC98',  borderRadius: 5, justifyContent: 'center',  alignItems: 'center', paddingHorizontal: 20 }}
-            onPress={() =>
+            style={{ height: 45,  backgroundColor: '#fdccA0',  borderRadius: 5, justifyContent: 'center',  alignItems: 'center', paddingHorizontal: 20 }}
+            onPress={() => {
+              if (cone)
             {  setYarns(prevYarns => 
               [...prevYarns, cone])
               navigation.navigate('Cone Images')
              // console.log(yarns)
               
-            }}
+            }
+            else {
+              Alert.alert(
+                "Please confirm ",
+                "Please confirm cone data",
+                [
+                  
+                  { text: "OK",
+                   //onPress: () => console.log("OK Pressed") 
+                  }
+                ]
+              );
+            }
+          }
+          }
       >
         <Text style={{fontSize: 16, color:  '#413918', fontWeight: 'bold'}}>Save Yarn</Text>
       </TouchableOpacity>

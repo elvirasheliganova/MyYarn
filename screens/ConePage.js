@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image, TextInput, Pressable, ImageBackground } from 'react-native'
+import { View, Text, FlatList, Image, TextInput, Pressable, ImageBackground, Alert } from 'react-native'
 import React, { useState, useContext, useEffect } from 'react'
 import { YarnContext } from '../components/YarnContext'
 import { LinearGradient } from 'expo-linear-gradient';
@@ -43,18 +43,7 @@ else setIsGauge(false)
  
 const onPress =()  => {
 
-  yarn.gauge = gauge
-  yarn.needles = needles
-  yarn.good = good
- yarn.gaugeImage = gaugeImage
-  setIsGauge(true)
-
-  var index = yarns.indexOf(yarn)
-  if (index !== -1) {
-    yarns[index] = yarn;
-}
-setYarns(yarns)
-saveData()
+  
    /*setCone(prevCone => 
     [...prevCone, gauge, needles, good, gaugeImage ]) 
    
@@ -108,7 +97,7 @@ const pickImage3 = async () => {
           
       >
         <View style={{}}>
-        <View style={{marginHorizontal: 15, paddingHorizontal: 15, paddingVertical: 10, marginTop: 10,
+        <View style={{marginHorizontal: 15, paddingHorizontal: 15, paddingVertical: 10, marginTop: 5,
             backgroundColor: '#D7DCCA80'
             //'#EFECE7'
             , 
@@ -118,28 +107,47 @@ const pickImage3 = async () => {
            shadowOpacity: 0.1,
             //shadowRadius: 3, 
              }}>
-              <View style={{ flexDirection:'row', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 10}}>
+              {console.log(yarn)}
+              <View style={{  flexDirection:'row', alignItems: 'flex-end', justifyContent: 'space-between', }}>
+                <View style={{width: '100%', flexDirection:'row', justifyContent: 'space-between', backgroundColor:  '#DCFC98', 
+                //borderWidth:  1 , 
+                
+                //borderColor: 'silver', 
+                borderRadius: 10, 
+                //shadowColor: '# 8C9284',
+     //shadowOffset: {width: 2, height: 4},
+     //shadowOpacity: 0.1,
+     //shadowRadius: 2,  
+    padding: 5}}>
                 <Text style={{fontSize: 18, fontWeight: '600' }}>{yarn.selectedYarnType} </Text>
+                  <View style={{ flexDirection:'row', justifyContent: 'space-between', alignItems: 'flex-end'}}>
+                  { yarn.mix  && yarn.mix.selectedCashMix ? <Text style={{fontSize: 14, fontWeight: '600' }}>Cash {yarn.mix.selectedCashMix} /</Text> : null}
+                  { yarn.mix  && yarn.mix.selectedMerinosMix ? <Text style={{fontSize: 14, fontWeight: '600' }}> Merinos {yarn.mix.selectedMerinosMix} /</Text> : null}
+                  { yarn.mix  && yarn.mix.selectedSilkMix ? <Text style={{fontSize: 14, fontWeight: '600' }}> Silk {yarn.mix.selectedSilkMix} /</Text> : null}
+                  </View>
+                </View>
+                
+                
                
                
                 
               </View>
-              <View style={{marginTop: 5, flexDirection:'row', alignItems: 'flex-end',  justifyContent: 'space-between'}}>
+              <View style={{marginTop: 5, flexDirection:'row', alignItems: 'flex-end',  justifyContent: 'space-between',  paddingHorizontal: 5}}>
                 <Text style={{fontSize: 14,  fontWeight: '600'}}>{yarn.selectedYarnWeight} mts per 100 grams</Text>
                 <Text style={{fontSize: 14, color: 'grey'}}>Weight </Text>
                
               </View>
-              <View style={{marginTop: 5, flexDirection:'row', alignItems: 'flex-end',  justifyContent: 'space-between'}}>
+              <View style={{marginTop: 5, flexDirection:'row', alignItems: 'flex-end',  justifyContent: 'space-between',  paddingHorizontal: 5}}>
                 <Text style={{fontSize: 14,  fontWeight: '600'}}>{yarn.selectedYarnManufacturer} </Text>
                 <Text style={{fontSize: 14, color: 'grey'}}>Manufactured by </Text>
                 
               </View>
-              <View style={{marginTop: 5, flexDirection:'row', alignItems: 'flex-end',  justifyContent: 'space-between'}}>
+              <View style={{marginTop: 5, flexDirection:'row', alignItems: 'flex-end',  justifyContent: 'space-between',  paddingHorizontal: 5}}>
                 <Text style={{fontSize: 14,  fontWeight: '600'}}>{yarn.weight} grams </Text>
                 <Text style={{fontSize: 14, color: 'grey'}}>Cone weight </Text>
                 
               </View>
-              <View style={{marginTop: 5, flexDirection:'row', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+              <View style={{marginTop: 5, flexDirection:'row', alignItems: 'flex-end', justifyContent: 'space-between',  paddingHorizontal: 5 }}>
                 { yarn.isWorsted ? <Text style={{fontSize: 14,  fontWeight: '600'}}>Worsted</Text> : null}
                 { yarn.isCarded ? <Text style={{fontSize: 14,  fontWeight: '600'}}>Carded</Text> : null}
                 { yarn.isAngled ? <Text style={{fontSize: 14,  fontWeight: '600'}}>Angled </Text> : null}
@@ -147,7 +155,7 @@ const pickImage3 = async () => {
                 
               </View>
             </View>
-            <View style={{marginHorizontal: 20, marginVertical: 15,
+            <View style={{marginHorizontal: 20, marginVertical: 15, 
             shadowColor: '# 8C9284',
             shadowOffset: {width: -2, height: -4},
             shadowOpacity: 0.1,
@@ -156,10 +164,10 @@ const pickImage3 = async () => {
             
                 <View
             
-                style={{ marginRight: 20  
-            //backgroundColor: 'lightblue'
+                style={{ marginRight: 20, 
+            
                 }}>
-                  <Image source={{uri: item}} style={{  height:  260, width: 260,  borderRadius: 10, resizeMode: 'cover'}} />
+                  <Image source={{uri: item}} style={{  height:  250, width: 250,  borderRadius: 10, resizeMode: 'cover'}} />
                 </View>
                 ) 
               }
@@ -181,9 +189,17 @@ const pickImage3 = async () => {
               <View style={{ 
                 //backgroundColor: 'pink', 
                 }}>
-              <View style={{ marginBottom: 20, 
-                //backgroundColor: 'lightgreen' 
-                }}>
+              <View style={{ marginBottom: 20, flexDirection:'row', justifyContent: 'space-between', backgroundColor:  '#DCFC98', 
+                //borderWidth:  1 , 
+                
+                //borderColor: 'silver', 
+                borderRadius: 10, 
+                //shadowColor: '# 8C9284',
+     //shadowOffset: {width: 2, height: 4},
+     //shadowOpacity: 0.1,
+     //shadowRadius: 2,  
+    padding: 5}}>
+              
                 <Text style={{fontSize: 18, fontWeight: '600'}}>Gauge</Text>
               </View>
               { isGauge === false ? 
@@ -209,7 +225,7 @@ const pickImage3 = async () => {
               onChangeText={ (value) => onChangeGauge(value)}
               
               value={gauge}
-              placeholder="gauge"
+              placeholder="32r x 20s"
               placeholderTextColor={'#867D59'}
         
               keyboardType="numeric"
@@ -233,7 +249,7 @@ const pickImage3 = async () => {
                 textAlign = {'center'}
               onChangeText={ (value) => onChangeNeedles(value)}
               value={needles}
-              placeholder="needles"
+              placeholder="3mm"
               placeholderTextColor={'#867D59'}
         
               keyboardType="numeric"
@@ -260,16 +276,18 @@ const pickImage3 = async () => {
      shadowOffset: {width: -2, height: -4},
      shadowOpacity: 0.1,
      shadowRadius: 3, 
-                backgroundColor: '#D9D4D0',
+                backgroundColor: '#d4e3d9'
+                //'#D9D4D0'
+                ,
                 marginLeft: 10,
-                borderWidth: gaugeImage ?  0 : 2 , 
-                borderStyle:  'dashed', 
-                borderColor: 'grey', borderRadius: 10, justifyContent: 'center', alignItems: 'center',  }}>
+                borderWidth: gaugeImage ?  0 : 1 , 
+                
+                borderColor: 'silver', borderRadius: 10, justifyContent: 'center', alignItems: 'center',  }}>
                   {gaugeImage ? <ImageBackground source={{uri: gaugeImage }} style={{flex: 1, alignSelf: 'flex-start', shadowColor: '# 8C9284',
      shadowOffset: {width: -2, height: -4},
      shadowOpacity: 0.1,
      shadowRadius: 3, }} imageStyle={{ height: 130, width: 130, borderRadius: 10, resizeMode: 'cover',   }} >
-              <Pressable style={{width: 15, height: 15 , 
+        {   !yarn.gaugeImage ?   <Pressable style={{width: 15, height: 15 , 
             backgroundColor: '#C7CAB6', 
             borderRadius: 5,
             position: 'absolute',
@@ -280,7 +298,7 @@ const pickImage3 = async () => {
           }}
             onPress = {() => setGaugeImage()}>
              <MaterialCommunityIcons name="close-box-outline" size={14} color='#fdccA0' />
-          </Pressable>
+          </Pressable> : null}
                 </ImageBackground> :
                     <MaterialCommunityIcons name="file-image-plus-outline" size={30} color="grey" /> }
                 </Pressable> 
@@ -330,7 +348,31 @@ const pickImage3 = async () => {
             
 
             <Pressable style={{  backgroundColor: '#fdccA0', padding: 8, width: 130, borderRadius: 5, marginTop: 10, alignSelf: 'flex-end', alignItems: 'center'}}
-            onPress={ onPress}>
+            onPress= {() => {
+              if (gauge && needles && good && gaugeImage) {yarn.gauge = gauge
+                yarn.needles = needles
+                yarn.good = good
+               yarn.gaugeImage = gaugeImage
+                setIsGauge(true)
+              
+                var index = yarns.indexOf(yarn)
+                if (index !== -1) {
+                  yarns[index] = yarn;
+              }
+              setYarns(yarns)
+              saveData()}
+              else {
+                Alert.alert(
+                  "No full gauge data",
+                  "Please enter gauge, needles, photo and what your yarn is good for",
+                  [
+                    
+                    { text: "OK",
+                     //onPress: () => console.log("OK Pressed") 
+                    }
+                  ]
+                );
+              }}}>
               <Text style={{color: '#312d09', fontSize: 16, fontWeight:'bold'}}>Save Gauge</Text>
 
             </Pressable>

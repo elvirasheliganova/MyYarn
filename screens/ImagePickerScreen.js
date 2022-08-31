@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button, Image, FlatList, TouchableOpacity, Pressable, } from 'react-native';
+import { Text, View, Button, Image, FlatList, TouchableOpacity, Pressable, Alert } from 'react-native';
 
 import { YarnContext } from '../components/YarnContext';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -194,7 +194,19 @@ const deleteImage = (item) => {
 <View style={{flex: 1, flexDirection: 'row',marginLeft: 10, 
 //backgroundColor: 'lightgreen',  
 justifyContent:'space-between', alignItems: 'center'}}>
-<Pressable  onPress={() => pickImage2()} 
+<Pressable  onPress={() => {if (mainImage){pickImage2()}
+else {
+  Alert.alert(
+    "No photo chosen",
+    "Please choose main cone photo from gallery",
+    [
+      
+      { text: "OK",
+       //onPress: () => console.log("OK Pressed") 
+      }
+    ]
+  );
+}}} 
    style={{ height: 100, width: 100, backgroundColor: '#cadcd7',  borderRadius: 10, borderWidth: 1,
     borderColor: 'silver', justifyContent: 'center', alignItems: 'center',  marginRight: 20}}>
        <MaterialCommunityIcons name="file-image-plus-outline"  size={30} color="grey" /> 
@@ -435,7 +447,9 @@ borderColor: 'silver',  borderRadius: 10, justifyContent: 'center', alignItems: 
         style={{flexDirection: 'row', width: '50%', justifyContent: 'center',   
         backgroundColor:'#fdccA0', 
         paddingVertical: 10, paddingHorizontal: 20, marginRight: 10, borderRadius: 5}}
-        onPress={() => 
+        onPress={() => {
+          if( mainImage)
+       
           { setConeImages(() => image.unshift(mainImage))
             //console.log(coneImages)
             navigation.navigate('Cone Details', {image: image});
@@ -444,7 +458,19 @@ borderColor: 'silver',  borderRadius: 10, justifyContent: 'center', alignItems: 
          setMainImage('')
       //console.log(image)
       //console.log(yarns)
-    }}
+    } else {
+      Alert.alert(
+        "No photo chosen",
+        "Please choose main cone photo from gallery",
+        [
+          
+          { text: "OK",
+           //onPress: () => console.log("OK Pressed") 
+          }
+        ]
+      );
+    }
+  }}
       >
         <Text style={{fontSize: 20, fontWeight: '600', color: '#07544b',  marginRight: 10}}>Next</Text>
         <MaterialCommunityIcons name="arrow-right" size={24} color="#07544b" />

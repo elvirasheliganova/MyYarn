@@ -155,9 +155,10 @@ elevation: 5}}>
           style={ { width: 80, borderRadius: 20, 
             padding: 10,
             elevation: 2,backgroundColor: '#2196F3',}}
-          onPress={() => {setModalVisible(!modalVisible) 
+          onPress={() => { 
            
-        
+            props.changeMix(mix)
+            setModalVisible(!modalVisible)
           
          
         }
@@ -175,7 +176,9 @@ textAlign: 'center',}}>Sure</Text>
             padding: 10,
             elevation: 2,backgroundColor: '#2196F3',}}
           onPress={
-            () => props.changeMix(mix)
+            () => {
+             
+            }
            
             
           
