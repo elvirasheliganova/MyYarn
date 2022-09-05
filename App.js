@@ -11,6 +11,7 @@ import BottomTabNavigator from './components/navigators/BottomTabNavigator';
 
 
 
+
 export default function App() {
 
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null)
@@ -45,8 +46,9 @@ export default function App() {
     <NavigationContainer>
       
         <YarnProvider>
+         
       
-          <BottomTabNavigator />
+          <BottomTabNavigator /> 
         
         </YarnProvider>
      

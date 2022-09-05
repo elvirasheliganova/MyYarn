@@ -9,8 +9,8 @@ import BoxRoom from '../../screens/BoxRoom';
 import NewConeStackNavigator from './NewConeStackNavigator';
 import { Fontisto } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import SearchStackNavigator from './SearchStackNavigator';
-import BoxRoomStackNavigator from '../../screens/BoxRoomStackNavigator';
+import Search from '../../screens/Search';
+import BoxRoomStackNavigator from '../navigators/BoxRoomStackNavigator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
@@ -101,7 +101,7 @@ function BottomTabNavigator() {
         headerShown: false,
         tabBarIcon: ({color}) => <MaterialCommunityIcons name="library-shelves" size={24} color={color} />
          }} />
-      <Tab.Screen name="Search" component={SearchStackNavigator} 
+      <Tab.Screen name="Search" component={Search} 
       options={{
         headerShown: false,
         tabBarIcon: ({color}) => <Ionicons name="search" size={24} color={color}  />

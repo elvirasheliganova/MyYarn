@@ -1,13 +1,13 @@
 import { View, Text, TouchableOpacity, Modal, Pressable, TextInput, Alert } from 'react-native'
 import React, { useState, useEffect, useContext } from 'react';
 import {Picker} from '@react-native-picker/picker';
-import Pick from './Pick';
+import Pick from '../components/Pick';
 import pickerData from '../assets/pickerData';
-import { YarnContext } from './YarnContext';
+import { YarnContext } from '../components/YarnContext';
 //import { Entypo } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import Checkbox from 'expo-checkbox';
-import ModalMix from './ModalMix';
+import ModalMix from '../components/ModalMix';
 //import PickMix from './PickMix';
 
 const DetailsPicker = ({ route,navigation}) => {

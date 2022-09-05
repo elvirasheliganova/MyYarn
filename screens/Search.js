@@ -1,7 +1,7 @@
 import { View, Text, TextInput, FlatList, Image, TouchableOpacity, Pressable} from 'react-native'
 import Checkbox from 'expo-checkbox'
 import React, {useRef, useContext, useState} from 'react'
-import { YarnContext } from './YarnContext';
+import { YarnContext } from '../components/YarnContext';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Search = ({navigation}) => {

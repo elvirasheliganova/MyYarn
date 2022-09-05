@@ -54,9 +54,6 @@ const BoxRoom = ({navigation}) => {
       key={item.id}
       style={{ 
         
-        //borderColor: 'red',
-       //borderWidth: 2,
-        
        
         }}
       onPress={() => goToYarnPage(item)}
