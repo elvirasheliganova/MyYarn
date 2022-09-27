@@ -15,6 +15,7 @@ const BoxRoom = ({ navigation }) => {
 
   const goToYarnPage = (cone) => {
     navigation.navigate('ConePage', { coneId: cone.id, cone: cone })
+    console.log(cone)
   }
   const removeYarn = (cone) => {
     const coneIndex = yarns.findIndex((yarn) => yarn.id === cone.id)
@@ -38,7 +39,8 @@ const BoxRoom = ({ navigation }) => {
               <View style={{ backgroundColor: '#D7DCCA80', marginVertical: 10, borderRadius: 10, }}>
                 <Pressable
                   key={item.id}
-                  onPress={() => goToYarnPage(item)}
+                  onPress={() => { goToYarnPage(item) }}
+
                 >
                   <Pressable style={styles.delete}
                     onPress={() => {

@@ -18,6 +18,7 @@ import { Feather } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { particularitiesLabels } from "./DetailsPicker";
+import Gauge from "../components/Gauge";
 
 
 const ConePage = ({ route }) => {
@@ -28,6 +29,7 @@ const ConePage = ({ route }) => {
   //
 
   const yarn = yarns.find((yarn) => yarn.id === coneId);
+  //console.log(yarn)
 
   const [gauge, onChangeGauge] = useState(null);
   const [needles, onChangeNeedles] = useState(null);
@@ -198,6 +200,7 @@ const ConePage = ({ route }) => {
           <View
             style={styles.gaugeContainer}
           >
+            {/*   <Gauge yarn={yarn} /> */}
             <>
               <View
                 style={styles.gaugeImageData}
@@ -384,7 +387,8 @@ const ConePage = ({ route }) => {
 const styles = StyleSheet.create({
   linearGradientContainer: {
     flex: 1,
-    backgroundColor: '#C7CAB6'
+    backgroundColor: '#C7CAB6',
+
   },
   mainDataContainer: {
     marginHorizontal: 15,
@@ -470,31 +474,37 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   gaugeContainer: {
+
     backgroundColor: "#c4d2c9",
     marginHorizontal: 15,
     padding: 10,
     borderRadius: 10,
+
   },
   gaugeImageData: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-start",
+
   },
-  gaugeData: {
+  gaugeTitle: {
     marginBottom: 20,
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: "#DCFC98",
     borderRadius: 10,
     padding: 5,
+
   },
   gaugeLineShort: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    height: 25,
+    marginBottom: 5,
   },
   gaugeInputShort: {
-    height: 25,
+
     backgroundColor: "#BFC3AE",
     width: 95,
     marginLeft: 5,
