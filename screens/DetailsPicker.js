@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, TextInput, Alert, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Alert, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, StyleSheet, ScrollView } from 'react-native'
 import React, { useState, useContext, useCallback } from 'react';
 import Pick from '../components/Pick';
 import pickerData from '../assets/pickerData';
@@ -6,6 +6,7 @@ import { YarnContext } from '../components/YarnContext';
 import { LinearGradient } from 'expo-linear-gradient';
 import Checkbox from 'expo-checkbox';
 import ModalMix from '../components/ModalMix';
+
 export const particularitiesLabels = {
   isCarded: "Carded",
   isWorsted: "Worsted",
@@ -46,127 +47,132 @@ const DetailsPicker = ({ route, navigation }) => {
       style={{ flex: 1 }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <LinearGradient
-          colors={['#D2F0EE', 'transparent']}
-          style={styles.gradientContainer} >
-          <View style={{ paddingBottom: 20, paddingTop: 20 }}>
-            <View>
-              <View style={{ marginTop: 20, }}>
-                <Pick
-                  title={'Yarn Type'}
-                  data={pickerData.yarnType}
-                  selectedValue={selectedYarnType}
-                  onValueChange={(itemValue, itemIndex) => {
-                    setSelectedYarnType(itemValue)
-                    if (selectedYarnType && itemValue === "Mix") { setIsMix(true) }
-                  }} />
-                {isMix && (
-                  <View style={styles.modalContainer} >
-                    <ModalMix changeMix={(mix) => setMix(mix)} />
-                  </View>
-                )}
-                <Pick
-                  title={'Manufacturer'}
-                  data={pickerData.manufacturer}
-                  selectedValue={selectedYarnManufacturer}
-                  onValueChange={(itemValue, itemIndex) =>
-                    setSelectedYarnManufacturer(itemValue)}
-                />
-                <Pick
-                  title={'Color'}
-                  data={pickerData.color}
-                  selectedValue={selectedYarnColor}
-                  onValueChange={(itemValue, itemIndex) =>
-                    setSelectedYarnColor(itemValue)}
-                />
-                <Pick
-                  title={'Weight'}
-                  data={pickerData.weight}
-                  selectedValue={selectedYarnWeight}
-                  onValueChange={(itemValue, itemIndex) =>
-                    setSelectedYarnWeight(itemValue)}
+        <ScrollView>
+          <LinearGradient
+            colors={['#D2F0EE', 'transparent']}
+            style={styles.gradientContainer} >
+            <View style={{ paddingBottom: 20, paddingTop: 20 }}>
+              <View>
+                <View style={{ marginTop: 20, }}>
+                  <Pick
+                    title={'Yarn Type'}
+                    data={pickerData.yarnType}
+                    selectedValue={selectedYarnType}
+                    onValueChange={(itemValue, itemIndex) => {
+                      setSelectedYarnType(itemValue)
+                      setId(Date.now())
+                      if (selectedYarnType && itemValue === "Mix") { setIsMix(true) }
+                    }} />
+                  {isMix && (
+                    <View style={styles.modalContainer} >
+                      <ModalMix changeMix={(mix) => setMix(mix)} />
+                    </View>
+                  )}
+                  <Pick
+                    title={'Manufacturer'}
+                    data={pickerData.manufacturer}
+                    selectedValue={selectedYarnManufacturer}
+                    onValueChange={(itemValue, itemIndex) =>
+                      setSelectedYarnManufacturer(itemValue)}
+                  />
+                  <Pick
+                    title={'Color'}
+                    data={pickerData.color}
+                    selectedValue={selectedYarnColor}
+                    onValueChange={(itemValue, itemIndex) =>
+                      setSelectedYarnColor(itemValue)}
+                  />
+                  <Pick
+                    title={'Weight'}
+                    data={pickerData.weight}
+                    selectedValue={selectedYarnWeight}
+                    onValueChange={(itemValue, itemIndex) =>
+                      setSelectedYarnWeight(itemValue)}
+                  />
+                </View>
+              </View>
+              <View style={{ paddingTop: 10, }}>
+                <TextInput
+                  style={styles.textInput}
+                  onChangeText={onChangeWeight}
+                  value={weight}
+                  placeholder="Quantity"
+                  placeholderTextColor={'#867D59'}
+                  keyboardType="numeric"
                 />
               </View>
+              <View style={styles.checkboxContainer}>
+                {Object.keys(particularities).map((particularity) => {
+                  return (
+                    <View style={{ alignItems: 'center', }}>
+                      <Checkbox
+                        style={{}}
+                        value={particularities[particularity]}
+                        onValueChange={onParticularityChange(particularity)}
+                        color={particularities[particularity] ? '#4630EB' : undefined}
+                      />
+                      <Text style={{ fontWeight: '600', color: '#42370B' }}>{particularitiesLabels[particularity]}</Text>
+                    </View>
+                  )
+                })}
+              </View>
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                  style={styles.confirmContainer}
+                  onPress={() => {
+                    if (selectedYarnType, selectedYarnWeight, selectedYarnColor, selectedYarnManufacturer) {
+
+
+                      setCone({ id, image, selectedYarnType, isMix, mix, selectedYarnWeight, selectedYarnManufacturer, selectedYarnColor, particularities, weight })
+                    }
+                    else {
+                      Alert.alert(
+                        "No full yarn data",
+                        "Please choose  Yarn Type, Manufacturer, Color and Weight",
+                        [{
+                          text: "OK",
+                        }]
+                      );
+                    }
+                  }}
+                >
+                  <Text style={styles.confirmText}>Confirm</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.saveYarnContainer}
+                  onPress={() => {
+                    if (cone) {
+                      setYarns(prevYarns =>
+                        [...prevYarns, cone])
+                      Alert.alert(
+                        "You've saved New Cone! ",
+                        "Choose what's next",
+                        [
+                          {
+                            text: "Add more cones",
+                            onPress: () => navigation.navigate('Cone Images'),
+                          },
+                          { text: "Go to YarnBox", onPress: () => navigation.navigate('Yarn Box') }
+                        ]
+                      );
+                    }
+                    else {
+                      Alert.alert(
+                        "Please confirm ",
+                        "Please confirm cone data",
+                        [{
+                          text: "OK",
+                        }]
+                      );
+                    }
+                  }}
+                >
+                  <Text style={styles.saveYarnText}>Save Yarn</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            <View style={{ paddingTop: 10, }}>
-              <TextInput
-                style={styles.textInput}
-                onChangeText={onChangeWeight}
-                value={weight}
-                placeholder="Quantity"
-                placeholderTextColor={'#867D59'}
-                keyboardType="numeric"
-              />
-            </View>
-            <View style={styles.checkboxContainer}>
-              {Object.keys(particularities).map((particularity) => {
-                return (
-                  <View style={{ alignItems: 'center', }}>
-                    <Checkbox
-                      style={{}}
-                      value={particularities[particularity]}
-                      onValueChange={onParticularityChange(particularity)}
-                      color={particularities[particularity] ? '#4630EB' : undefined}
-                    />
-                    <Text style={{ fontWeight: '600', color: '#42370B' }}>{particularitiesLabels[particularity]}</Text>
-                  </View>
-                )
-              })}
-            </View>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                style={styles.confirmContainer}
-                onPress={() => {
-                  if (selectedYarnType, selectedYarnWeight, selectedYarnColor, selectedYarnManufacturer) {
-                    setCone({ id, image, selectedYarnType, isMix, mix, selectedYarnWeight, selectedYarnManufacturer, selectedYarnColor, particularities, weight })
-                  }
-                  else {
-                    Alert.alert(
-                      "No full yarn data",
-                      "Please choose  Yarn Type, Manufacturer, Color and Weight",
-                      [{
-                        text: "OK",
-                      }]
-                    );
-                  }
-                }}
-              >
-                <Text style={styles.confirmText}>Confirm</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.saveYarnContainer}
-                onPress={() => {
-                  if (cone) {
-                    setYarns(prevYarns =>
-                      [...prevYarns, cone])
-                    Alert.alert(
-                      "You've saved New Cone! ",
-                      "Choose what's next",
-                      [
-                        {
-                          text: "Add more cones",
-                          onPress: () => navigation.navigate('Cone Images'),
-                        },
-                        { text: "Go to YarnBox", onPress: () => navigation.navigate('Yarn Box') }
-                      ]
-                    );
-                  }
-                  else {
-                    Alert.alert(
-                      "Please confirm ",
-                      "Please confirm cone data",
-                      [{
-                        text: "OK",
-                      }]
-                    );
-                  }
-                }}
-              >
-                <Text style={styles.saveYarnText}>Save Yarn</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </LinearGradient>
+          </LinearGradient>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   )

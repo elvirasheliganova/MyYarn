@@ -15,7 +15,7 @@ const BoxRoom = ({ navigation }) => {
 
   const goToYarnPage = (cone) => {
     navigation.navigate('ConePage', { coneId: cone.id, cone: cone })
-    console.log(cone)
+
   }
   const removeYarn = (cone) => {
     const coneIndex = yarns.findIndex((yarn) => yarn.id === cone.id)

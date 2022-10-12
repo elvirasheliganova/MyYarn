@@ -15,7 +15,7 @@ const Search = ({ navigation }) => {
     isManufactirer: false
   })
   const searchComposition = yarns.filter(yarn => yarn.selectedYarnType.includes(value))
-  const searchWeight = yarns.filter(yarn => yarn.selectedYarnWeight.includes(value))
+  const searchWeight = yarns.filter(yarn => parseInt(yarn.weight) >= value)
   const searchColor = yarns.filter(yarn => yarn.selectedYarnColor.includes(value))
   const searchManufacturer = yarns.filter(yarn => yarn.selectedYarnManufacturer.includes(value))
 
@@ -28,7 +28,7 @@ const Search = ({ navigation }) => {
 
   const checkedBoxesLabels = {
     isComposition: "Composition",
-    isWeight: "Weight",
+    isWeight: "Quantity",
     isColor: "Color",
     isManufactirer: "Manufacturer"
   }
@@ -39,7 +39,7 @@ const Search = ({ navigation }) => {
       [checkedBox]: newValue
     })
   }, [])
-
+  console.log(yarns)
   return (
 
     <View style={{ flex: 1, justifyContent: 'center' }} >
@@ -78,7 +78,8 @@ const Search = ({ navigation }) => {
           <View style={{ flex: 1, }}>
             <View style={{}}>
               <FlatList
-                data={Object.keys(checkedBoxes)[0] ? searchComposition : Object.keys(checkedBoxes)[1] ? searchWeight : Object.keys(checkedBoxes)[2] ? searchColor : searchManufacturer}
+                // data={Object.keys(checkedBoxes)[0] ? searchComposition : Object.keys(checkedBoxes)[1] ? searchWeight : Object.keys(checkedBoxes)[2] ? searchColor : searchManufacturer}
+                data={checkedBoxes.isComposition ? searchComposition : checkedBoxes.isWeight ? searchWeight : checkedBoxes.isColor ? searchColor : searchManufacturer}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item, index }) =>
                   <View style={styles.yarnDataContainer}>

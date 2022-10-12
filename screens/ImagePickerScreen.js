@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker'
 import { LinearGradient } from 'expo-linear-gradient';
 import { ImageBackground } from 'react-native';
+import { Dimensions } from 'react-native';
 
 export default function ImagePickerScreen({ navigation }) {
 
@@ -11,6 +12,8 @@ export default function ImagePickerScreen({ navigation }) {
   const [image, setImage] = useState([])
   const [mainImage, setMainImage] = useState()
   const [coneImages, setConeImages] = useState([])
+  const windowHeight = Dimensions.get('window').height
+
 
   useEffect(() => {
     (async () => {
@@ -31,6 +34,7 @@ export default function ImagePickerScreen({ navigation }) {
     }
   }
   if (hasGalleryPermission === false) {
+
     return <Text>No acceess to Internal Storage</Text>
   }
 
@@ -61,14 +65,14 @@ export default function ImagePickerScreen({ navigation }) {
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer} >
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          <View style={styles.mainImageContainer}>
-            <Pressable onPress={() => pickImage1()} style={[styles.pickImage1Container, { borderWidth: mainImage ? 0 : 1 }]}>
+          <View style={[styles.mainImageContainer, { height: windowHeight > 2533 ? 280 : 200 }, { width: windowHeight > 2533 ? 200 : 180 }]}>
+            <Pressable onPress={() => pickImage1()} style={[styles.pickImage1Container, { borderWidth: mainImage ? 0 : 1 }, { height: windowHeight > 2533 ? 280 : 180 }, { width: windowHeight > 2533 ? 280 : 180 }]}>
               {mainImage ?
                 <ImageBackground
                   source={{ uri: mainImage }}
                   style={{ flex: 1, alignSelf: ' center  ', }}
-                  imageStyle={{ height: 280, width: 280, borderRadius: 15, resizeMode: 'cover' }} >
-                  <Pressable style={styles.mainImagePressable}
+                  imageStyle={{ height: windowHeight > 2533 ? 280 : 200, width: windowHeight > 2533 ? 280 : 200, borderRadius: 15, resizeMode: 'cover' }} >
+                  <Pressable style={[styles.mainImagePressable, { left: windowHeight > 2533 ? 248 : 150 }]}
                     onPress={() => setMainImage()}>
                     <MaterialCommunityIcons name="close-box-outline" size={24} color='#fdccA0' />
                   </Pressable>
@@ -162,12 +166,12 @@ export default function ImagePickerScreen({ navigation }) {
                   </Pressable>
                 </View>
 
-                : <View style={styles.moreImagesContainer}>
-                  <View style={{ width: '100%', }}>
+                : <View style={[styles.moreImagesContainer, { width: '110%' }]}>
+                  <View style={{ width: '100%' }}>
                     <FlatList
                       data={image}
                       renderItem={({ item }) =>
-                      (<View style={{ justifyContent: 'center', alignItems: 'center', }} >
+                      (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }} >
                         <ImageBackground
                           source={{ uri: item }}
                           style={{ height: 100, width: 100, marginRight: 20 }}
@@ -226,39 +230,42 @@ const styles = StyleSheet.create({
   mainImageContainer: {
     flex: 1,
     marginTop: 50,
-    height: 280,
-    width: 280,
+    //height: 280,
+
+
   },
   pickImage1Container: {
-    flex: 1, height: 280, width: 280,
+    flex: 1,
+    // height: 280 ,
+    width: 280,
     backgroundColor: '#ccd4c3',
     //'#cce2d0', 
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     borderRadius: 15,
-
-
     borderColor: 'silver',
   },
+
   mainImagePressable: {
     width: 30,
     height: 30,
     borderRadius: 5,
     position: 'absolute',
-    left: 248,
-    top: 3,
+    //left: 248,
+    //top: 3,
     justifyContent: 'center',
     alignItems: 'center'
   },
 
   moreImagesContainer: {
     flex: 1,
-    //backgroundColor: 'grey', 
-    marginLeft: 10,
+    //backgroundColor: 'grey',
+    marginLeft: 20,
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignSelf: 'center'
   },
   moreImage: {
     height: 100,
@@ -269,7 +276,8 @@ const styles = StyleSheet.create({
     borderColor: 'silver',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 20
+    marginRight: 20,
+
   },
   smallDelete: {
     width: 20,

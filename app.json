@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "MyYarn",
+    "name": "My Yarn",
     "slug": "MyYarn",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon5.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",

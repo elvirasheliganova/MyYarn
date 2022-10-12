@@ -63,7 +63,7 @@ const Gauge = ({ yarn }) => {
                   value={gauge}
                   placeholder="32r x 20s"
                   placeholderTextColor={"#867D59"}
-                  keyboardType="numeric"
+                  keyboardType="default"
                 />
               </View>
               <View style={styles.gaugeLineShort}>
@@ -96,19 +96,21 @@ const Gauge = ({ yarn }) => {
             </>
           )}
         </View>
+
         <Pressable
           onPress={() => {
             pickImage3();
           }}
           style={[styles.gaugeImageMask, { borderWidth: gaugeImage ? 0 : 1 }]}
+          disabled={!isGauge ? false : true}
         >
-          {gaugeImage && !isGauge ? (
+          {gaugeImage ? (
             <ImageBackground
               source={{ uri: gaugeImage }}
               style={styles.gaugeImageContainer}
               imageStyle={styles.gaugeImage}
             >
-              {!yarn.gaugeImage ? (
+              {!isGauge ? (
                 <Pressable
                   style={styles.gaugeImageDelete}
                   onPress={() => setGaugeImage()}
@@ -121,24 +123,24 @@ const Gauge = ({ yarn }) => {
                 </Pressable>
               ) : null}
             </ImageBackground>
-          ) : isGauge ? (
-            <ImageBackground
-              source={{ uri: yarn.gaugeImage }}
-              style={styles.gaugeImageContainer}
-              imageStyle={styles.gaugeImage}
-            >
+          )
+            : isGauge ? (
 
-
-            </ImageBackground>
-          ) :
-
-            (
-              <MaterialCommunityIcons
-                name="file-image-plus-outline"
-                size={30}
-                color="grey"
+              <ImageBackground
+                source={{ uri: yarn.gaugeImage }}
+                style={styles.gaugeImageContainer}
+                imageStyle={styles.gaugeImage}
               />
-            )}
+
+            ) :
+
+              (
+                <MaterialCommunityIcons
+                  name="file-image-plus-outline"
+                  size={30}
+                  color="grey"
+                />
+              )}
         </Pressable>
       </View>
 
@@ -174,7 +176,7 @@ const Gauge = ({ yarn }) => {
               value={good}
               placeholder="arans/stockinet/openwork "
               placeholderTextColor={"#867D59"}
-              keyboardType="numeric"
+              keyboardType="default"
             />
           </>
         ) : (
@@ -185,7 +187,6 @@ const Gauge = ({ yarn }) => {
           </View>
         )}
       </View>
-
       <Pressable
         style={styles.saveGaugeButton}
         onPress={() => {
@@ -250,7 +251,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   gaugeInputShort: {
-
     backgroundColor: "#BFC3AE",
     width: 95,
     marginLeft: 5,
@@ -266,8 +266,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   gaugeImageMask: {
-    height: 130,
-    width: 130,
+    height: 115,
+    width: 115,
     shadowColor: "# 8C9284",
     shadowOffset: { width: -2, height: -4 },
     shadowOpacity: 0.1,
@@ -288,8 +288,8 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
   },
   gaugeImage: {
-    height: 130,
-    width: 130,
+    height: 115,
+    width: 115,
     borderRadius: 10,
     resizeMode: "cover",
   },
@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#C7CAB6",
     borderRadius: 5,
     position: "absolute",
-    left: 110,
+    left: 98,
     top: 3,
     justifyContent: "center",
     alignItems: "center",

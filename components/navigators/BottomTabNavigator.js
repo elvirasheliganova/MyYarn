@@ -8,7 +8,9 @@ import NewConeStackNavigator from './NewConeStackNavigator';
 import { Ionicons } from '@expo/vector-icons';
 import Search from '../../screens/Search';
 import BoxRoomStackNavigator from '../navigators/BoxRoomStackNavigator';
+import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +18,8 @@ function BottomTabNavigator() {
 
   const [yarns, setYarns] = useContext(YarnContext)
   const [cone, setCone] = useContext(YarnContext)
+  const windowHeight = Dimensions.get('window').height
+
 
   useEffect(() => {
     loadData()
@@ -53,7 +57,7 @@ function BottomTabNavigator() {
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: '#07544b',
         tabBarLabelStyle: { fontSize: 16, fontWeight: 'bold' },
-        tabBarStyle: { backgroundColor: '#C7CAB6', height: 100, borderTopWidth: 0, paddingTop: 10 },
+        tabBarStyle: { backgroundColor: '#C7CAB6', height: windowHeight > 2533 ? 100 : 80, borderTopWidth: 0, paddingTop: 10 },
         tabBarInactiveTintColor: 'grey',
       })}
     >

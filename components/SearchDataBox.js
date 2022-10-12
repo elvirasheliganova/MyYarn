@@ -4,7 +4,7 @@ import React from 'react'
 const SearchDataBox = (data) => {
 
 
-  console.log(data)
+  // console.log(data)
   return (
     <View
       style={{

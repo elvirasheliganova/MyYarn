@@ -29,7 +29,7 @@ const ConePage = ({ route }) => {
   //
 
   const yarn = yarns.find((yarn) => yarn.id === coneId);
-  //console.log(yarn)
+  console.log(coneId)
 
   const [gauge, onChangeGauge] = useState(null);
   const [needles, onChangeNeedles] = useState(null);
@@ -70,6 +70,7 @@ const ConePage = ({ route }) => {
   }, [yarn.particularities]);
 
   return (
+
     <ScrollView style={{ flex: 1 }}>
       <LinearGradient
         colors={["#D2F0EE", "transparent"]}
@@ -200,12 +201,12 @@ const ConePage = ({ route }) => {
           <View
             style={styles.gaugeContainer}
           >
-            {/*   <Gauge yarn={yarn} /> */}
-            <>
+            <Gauge yarn={yarn} />
+            {/* <>
               <View
                 style={styles.gaugeImageData}
               >
-                <View
+                 <View
                   style={{}}
                 >
                   <View
@@ -376,11 +377,12 @@ const ConePage = ({ route }) => {
                   Save Gauge
                 </Text>
               </Pressable>
-            </>
+            </> */}
           </View>
         </View>
       </LinearGradient>
     </ScrollView>
+
   );
 };
 
@@ -479,6 +481,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     padding: 10,
     borderRadius: 10,
+    marginBottom: 50
 
   },
   gaugeImageData: {
