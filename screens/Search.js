@@ -20,10 +20,13 @@ const Search = ({ navigation }) => {
   const searchManufacturer = yarns.filter(yarn => yarn.selectedYarnManufacturer.includes(value))
 
   const goToYarnPage = (cone) => {
-    navigation.navigate('Yarn Box', {
-      screen: 'ConePage',
-      params: { coneId: cone.id }
-    })
+    {
+      navigation.navigate('Yarn Box', {
+        screen: 'ConePage',
+        params: { coneId: cone.id }
+      }),
+        onChangeText(value)
+    }
   }
 
   const checkedBoxesLabels = {
@@ -52,12 +55,13 @@ const Search = ({ navigation }) => {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15, marginTop: 15 }} >
             {Object.keys(checkedBoxes).map((checkedBox) => {
               return (
-                <View style={{ flexDirection: 'row', }}>
+                <View style={{ flexDirection: 'row', }} key={checkedBox}>
                   <Checkbox
                     style={{ marginRight: 3 }}
                     value={checkedBoxes[checkedBox]}
                     onValueChange={onChangeChekedBoxes(checkedBox)}
                     color={checkedBoxes[checkedBox] ? '#4630EB' : undefined}
+
                   />
                   <Text style={{ fontSize: 12, color: '#42370B', fontWeight: 'bold' }}>{checkedBoxesLabels[checkedBox]}</Text>
                 </View>

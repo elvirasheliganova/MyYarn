@@ -2,9 +2,6 @@ import { View, Text } from 'react-native'
 import React from 'react'
 
 const SearchDataBox = (data) => {
-
-
-  // console.log(data)
   return (
     <View
       style={{

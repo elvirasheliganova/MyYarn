@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList, Pressable, Alert, StyleSheet } from 'react-native';
+import { SafeAreaView, Text, View, FlatList, Pressable, Alert, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker'
 import { LinearGradient } from 'expo-linear-gradient';
 import { ImageBackground } from 'react-native';
-import { Dimensions } from 'react-native';
 
 export default function ImagePickerScreen({ navigation }) {
 
@@ -12,8 +11,6 @@ export default function ImagePickerScreen({ navigation }) {
   const [image, setImage] = useState([])
   const [mainImage, setMainImage] = useState()
   const [coneImages, setConeImages] = useState([])
-  const windowHeight = Dimensions.get('window').height
-
 
   useEffect(() => {
     (async () => {
@@ -59,20 +56,20 @@ export default function ImagePickerScreen({ navigation }) {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
 
       <LinearGradient
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer} >
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          <View style={[styles.mainImageContainer, { height: windowHeight > 2533 ? 280 : 200 }, { width: windowHeight > 2533 ? 200 : 180 }]}>
-            <Pressable onPress={() => pickImage1()} style={[styles.pickImage1Container, { borderWidth: mainImage ? 0 : 1 }, { height: windowHeight > 2533 ? 280 : 180 }, { width: windowHeight > 2533 ? 280 : 180 }]}>
+          <View style={styles.mainImageContainer}>
+            <Pressable onPress={() => pickImage1()} style={[styles.pickImage1Container, { borderWidth: mainImage ? 0 : 1 }]}>
               {mainImage ?
                 <ImageBackground
                   source={{ uri: mainImage }}
                   style={{ flex: 1, alignSelf: ' center  ', }}
-                  imageStyle={{ height: windowHeight > 2533 ? 280 : 200, width: windowHeight > 2533 ? 280 : 200, borderRadius: 15, resizeMode: 'cover' }} >
-                  <Pressable style={[styles.mainImagePressable, { left: windowHeight > 2533 ? 248 : 150 }]}
+                  imageStyle={{ width: 280, height: 280, borderRadius: 15, resizeMode: 'cover' }} >
+                  <Pressable style={styles.mainImagePressable}
                     onPress={() => setMainImage()}>
                     <MaterialCommunityIcons name="close-box-outline" size={24} color='#fdccA0' />
                   </Pressable>
@@ -214,32 +211,28 @@ export default function ImagePickerScreen({ navigation }) {
           </Pressable>
         </View>
       </LinearGradient>
-    </View>
+    </SafeAreaView>
   );
-
-
 }
 
 const styles = StyleSheet.create({
   gradientContainer: {
     flex: 1,
     width: '100%',
+    height: '100%',
     paddingHorizontal: 20,
-    backgroundColor: '#C7CAB6'
+    backgroundColor: '#C7CAB6',
   },
   mainImageContainer: {
     flex: 1,
-    marginTop: 50,
-    //height: 280,
-
-
+    marginTop: 30,
+    height: 280,
   },
   pickImage1Container: {
     flex: 1,
-    // height: 280 ,
+    height: 280,
     width: 280,
     backgroundColor: '#ccd4c3',
-    //'#cce2d0', 
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
@@ -252,15 +245,14 @@ const styles = StyleSheet.create({
     height: 30,
     borderRadius: 5,
     position: 'absolute',
-    //left: 248,
-    //top: 3,
+    left: 248,
+    top: 3,
     justifyContent: 'center',
     alignItems: 'center'
   },
 
   moreImagesContainer: {
-    flex: 1,
-    //backgroundColor: 'grey',
+    marginTop: 50,
     marginLeft: 20,
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -282,7 +274,6 @@ const styles = StyleSheet.create({
   smallDelete: {
     width: 20,
     height: 20,
-    //backgroundColor: '#C7CAB6', 
     borderRadius: 5,
     position: 'absolute',
     left: 78,
@@ -306,7 +297,5 @@ const styles = StyleSheet.create({
     color: '#07544b',
     marginRight: 10
   },
-
-
 })
 

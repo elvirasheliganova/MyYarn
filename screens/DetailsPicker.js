@@ -15,10 +15,10 @@ export const particularitiesLabels = {
 const DetailsPicker = ({ route, navigation }) => {
   const { image } = route.params
   const [yarns, setYarns] = useContext(YarnContext)
-  const [selectedYarnType, setSelectedYarnType] = useState()
-  const [selectedYarnWeight, setSelectedYarnWeight] = useState()
-  const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState()
-  const [selectedYarnColor, setSelectedYarnColor] = useState()
+  const [selectedYarnType, setSelectedYarnType] = useState("Cashmere")
+  const [selectedYarnWeight, setSelectedYarnWeight] = useState("1/15")
+  const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState("Loro Piana")
+  const [selectedYarnColor, setSelectedYarnColor] = useState("White")
   const [id, setId] = useState()
   const [cone, setCone] = useState()
   //const [pickerSelection, setPickerSelection] = useState()
@@ -44,10 +44,10 @@ const DetailsPicker = ({ route, navigation }) => {
   return (
 
     <KeyboardAvoidingView
-      style={{ flex: 1 }}
+      style={{ flex: 1, }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView>
+        <View style={{ flex: 1, }}>
           <LinearGradient
             colors={['#D2F0EE', 'transparent']}
             style={styles.gradientContainer} >
@@ -55,7 +55,7 @@ const DetailsPicker = ({ route, navigation }) => {
               <View>
                 <View style={{ marginTop: 20, }}>
                   <Pick
-                    title={'Yarn Type'}
+                    title={'Composition'}
                     data={pickerData.yarnType}
                     selectedValue={selectedYarnType}
                     onValueChange={(itemValue, itemIndex) => {
@@ -104,12 +104,13 @@ const DetailsPicker = ({ route, navigation }) => {
               <View style={styles.checkboxContainer}>
                 {Object.keys(particularities).map((particularity) => {
                   return (
-                    <View style={{ alignItems: 'center', }}>
+                    <View style={{ alignItems: 'center', }} key={particularity}>
                       <Checkbox
                         style={{}}
                         value={particularities[particularity]}
                         onValueChange={onParticularityChange(particularity)}
                         color={particularities[particularity] ? '#4630EB' : undefined}
+
                       />
                       <Text style={{ fontWeight: '600', color: '#42370B' }}>{particularitiesLabels[particularity]}</Text>
                     </View>
@@ -124,6 +125,7 @@ const DetailsPicker = ({ route, navigation }) => {
 
 
                       setCone({ id, image, selectedYarnType, isMix, mix, selectedYarnWeight, selectedYarnManufacturer, selectedYarnColor, particularities, weight })
+                      console.log(selectedYarnType)
                     }
                     else {
                       Alert.alert(
@@ -144,17 +146,17 @@ const DetailsPicker = ({ route, navigation }) => {
                     if (cone) {
                       setYarns(prevYarns =>
                         [...prevYarns, cone])
-                      Alert.alert(
-                        "You've saved New Cone! ",
-                        "Choose what's next",
-                        [
-                          {
-                            text: "Add more cones",
-                            onPress: () => navigation.navigate('Cone Images'),
-                          },
-                          { text: "Go to YarnBox", onPress: () => navigation.navigate('Yarn Box') }
-                        ]
-                      );
+                      /*  Alert.alert(
+                         "You've saved New Cone! ",
+                         "Choose what's next",
+                         [
+                           {
+                             text: "Add more cones",
+                             onPress: () => navigation.navigate('Cone Images'),
+                           },
+                           { text: "Go to YarnBox", onPress: () => navigation.navigate('Yarn Box') }
+                         ]
+                       ); */
                     }
                     else {
                       Alert.alert(
@@ -172,7 +174,7 @@ const DetailsPicker = ({ route, navigation }) => {
               </View>
             </View>
           </LinearGradient>
-        </ScrollView>
+        </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   )
@@ -181,7 +183,8 @@ const DetailsPicker = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   gradientContainer: {
     flex: 1,
-    justifyContent: 'flex-end',
+
+    justifyContent: 'center',
     backgroundColor: '#C7CAB6'
   },
   modalContainer: {

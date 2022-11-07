@@ -32,12 +32,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'lightgrey',
-    padding: 20,
+    padding: 15,
   },
   text: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#0f3e2be6'
+    color: '#0f3e2be6',
+
   },
   pickerItem: {
     fontSize: 16,

@@ -29,19 +29,12 @@ const Gauge = ({ yarn }) => {
       aspect: [4, 3],
       quality: 1,
     });
-    {
-      setGaugeImage(result.uri);
-    }
+    { setGaugeImage(result.uri) }
   };
-  console.log(yarn)
   return (
     <>
-      <View
-        style={styles.gaugeImageData}
-      >
-        <View
-          style={{}}
-        >
+      <View style={styles.gaugeImageData} >
+        <View style={{}} >
           <View style={styles.gaugeTitle}>
             <Text style={{ fontSize: 18, fontWeight: "600" }}>
               Gauge
@@ -125,15 +118,12 @@ const Gauge = ({ yarn }) => {
             </ImageBackground>
           )
             : isGauge ? (
-
               <ImageBackground
                 source={{ uri: yarn.gaugeImage }}
                 style={styles.gaugeImageContainer}
                 imageStyle={styles.gaugeImage}
               />
-
             ) :
-
               (
                 <MaterialCommunityIcons
                   name="file-image-plus-outline"
@@ -143,7 +133,6 @@ const Gauge = ({ yarn }) => {
               )}
         </Pressable>
       </View>
-
       <View
         style={{
           flexDirection: "row",
@@ -196,11 +185,6 @@ const Gauge = ({ yarn }) => {
             yarn.good = good;
             yarn.gaugeImage = gaugeImage;
             setIsGauge(true);
-
-            /*  var index = yarns.indexOf(yarn);
-             if (index !== -1) {
-               yarns[index] = yarn;
-             } */
             const cone = yarn
             setYarns(yarns);
             saveData(yarns);
@@ -211,7 +195,6 @@ const Gauge = ({ yarn }) => {
               "Please enter gauge, needles, photo and what your yarn is good for",
               [{
                 text: "OK",
-                //onPress: () => console.log("OK Pressed")
               },]
             );
           }

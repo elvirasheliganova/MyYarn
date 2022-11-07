@@ -51,13 +51,21 @@ function BottomTabNavigator() {
    }
  
    clearAll() */
+  console.log(windowHeight)
 
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: '#07544b',
-        tabBarLabelStyle: { fontSize: 16, fontWeight: 'bold' },
-        tabBarStyle: { backgroundColor: '#C7CAB6', height: windowHeight > 2533 ? 100 : 80, borderTopWidth: 0, paddingTop: 10 },
+        tabBarLabelStyle: { fontSize: 16, fontWeight: 'bold', },
+        tabBarStyle: [
+          {
+            backgroundColor: '#C7CAB6',
+            borderTopWidth: 0
+          },
+          { height: windowHeight < 812 ? 60 : 100 },
+          { paddingBottom: windowHeight < 812 ? 5 : 25 }],
+
         tabBarInactiveTintColor: 'grey',
       })}
     >
@@ -65,15 +73,17 @@ function BottomTabNavigator() {
         name="New Yarn"
         component={NewConeStackNavigator}
         options={{
-          headerTitleStyle: { fontSize: 22, color: '#3F6B66', fontWeight: 'bold', position: 'absolute', bottom: 0, left: -180 },
+          headerTitleStyle: { fontSize: 22, color: '#3F6B66', fontWeight: 'bold', bottom: 0, },
           headerStyle: { backgroundColor: '#B7FAF480' }, unmountOnBlur: true,
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="shopping-outline" size={24} color={color} />
         }} />
+
       <Tab.Screen name="Yarn Box" component={BoxRoomStackNavigator}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="library-shelves" size={24} color={color} />
         }} />
+
       <Tab.Screen name="Search" component={Search}
         options={{
           headerShown: false,
@@ -82,7 +92,5 @@ function BottomTabNavigator() {
     </Tab.Navigator>
   );
 }
-
-
 
 export default BottomTabNavigator

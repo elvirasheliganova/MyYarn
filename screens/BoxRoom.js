@@ -36,9 +36,9 @@ const BoxRoom = ({ navigation }) => {
           <FlatList
             data={yarns}
             renderItem={({ item, index }) => (
-              <View style={{ backgroundColor: '#D7DCCA80', marginVertical: 10, borderRadius: 10, }}>
+              <View style={{ backgroundColor: '#D7DCCA80', marginVertical: 10, borderRadius: 10, }} key={item.id}>
                 <Pressable
-                  key={item.id}
+
                   onPress={() => { goToYarnPage(item) }}
 
                 >
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
   gradientContainer: {
     flex: 1,
     width: '100%',
+    height: '100%',
     paddingHorizontal: 20,
     backgroundColor: '#C7CAB6'
   },
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     height: 30,
     borderRadius: 5,
     position: 'absolute',
-    left: 310,
+    left: 300,
     top: 15,
     justifyContent: 'center',
     alignItems: 'center'

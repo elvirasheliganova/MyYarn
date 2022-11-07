@@ -5,8 +5,6 @@ import {
   Image,
   TextInput,
   Pressable,
-  ImageBackground,
-  Alert,
   StyleSheet,
   ScrollView
 } from "react-native";
@@ -23,14 +21,8 @@ import Gauge from "../components/Gauge";
 
 const ConePage = ({ route }) => {
   const [yarns, setYarns] = useContext(YarnContext);
-  //const [cone, setCone] = useContext(YarnContext)
   const { coneId, cone } = route.params;
-
-  //
-
   const yarn = yarns.find((yarn) => yarn.id === coneId);
-  console.log(coneId)
-
   const [gauge, onChangeGauge] = useState(null);
   const [needles, onChangeNeedles] = useState(null);
   const [good, onChangeGood] = useState(null);
@@ -59,7 +51,6 @@ const ConePage = ({ route }) => {
       setGaugeImage(result.uri);
     }
   };
-
   const particularitiesList = useMemo(() => {
     return Object.keys(yarn.particularities).map((particularity) => {
       return (
@@ -71,12 +62,12 @@ const ConePage = ({ route }) => {
 
   return (
 
-    <ScrollView style={{ flex: 1 }}>
+    <View style={{ flex: 1, }}>
       <LinearGradient
         colors={["#D2F0EE", "transparent"]}
         style={styles.linearGradientContainer}
       >
-        <View style={{}}>
+        <View style={{ flex: 1, height: '100%', justifyContent: 'space-around' }}>
           <View style={styles.mainDataContainer}>
             <View style={styles.yarnTitle} >
               <View style={{}}>
@@ -170,8 +161,8 @@ const ConePage = ({ route }) => {
             ) : null}
 
             <View style={styles.yarnDetails} >
-              {particularitiesList.map((particularity) => (
-                <Text style={{ fontSize: 14, fontWeight: "600" }}>
+              {particularitiesList.map((particularity, index) => (
+                <Text style={{ fontSize: 14, fontWeight: "600" }} key={index}>
                   {particularity}
                 </Text>
               ))}
@@ -198,190 +189,13 @@ const ConePage = ({ route }) => {
             />
           </View>
 
-          <View
-            style={styles.gaugeContainer}
-          >
+          <View style={styles.gaugeContainer}>
             <Gauge yarn={yarn} />
-            {/* <>
-              <View
-                style={styles.gaugeImageData}
-              >
-                 <View
-                  style={{}}
-                >
-                  <View
-                    style={styles.gaugeData}
-                  >
-                    <Text style={{ fontSize: 18, fontWeight: "600" }}>
-                      Gauge
-                    </Text>
-                  </View>
-                  {isGauge === false ? (
-                    <View style={{}}>
-                      <View style={styles.gaugeLineShort} >
-                        <View>
-                          <Text style={styles.gaugeLineText}>
-                            {" "}Yarn gauge is{" "}
-                          </Text>
-                        </View>
-                        <TextInput
-                          style={styles.gaugeInputShort}
-                          textAlign={"center"}
-                          onChangeText={(value) => onChangeGauge(value)}
-                          value={gauge}
-                          placeholder="32r x 20s"
-                          placeholderTextColor={"#867D59"}
-                          keyboardType="numeric"
-                        />
-                      </View>
-                      <View style={styles.gaugeLineShort}>
-                        <View>
-                          <Text style={styles.gaugeLineText}>
-                            {" "}on needles{" "}
-                          </Text>
-                        </View>
-                        <TextInput
-                          style={styles.gaugeInputShort}
-                          textAlign={"center"}
-                          onChangeText={(value) => onChangeNeedles(value)}
-                          value={needles}
-                          placeholder="3mm"
-                          placeholderTextColor={"#867D59"}
-                          keyboardType="numeric"
-                        />
-                      </View>
-                    </View>
-                  ) : (
-                    <>
-                      <View style={{ marginTop: 10 }}>
-                        <Text style={[styles.gaugeLineText, { marginBottom: 5 }]}>
-                          Yarn gauge is {yarn.gauge}{" "}
-                        </Text>
-                        <Text style={styles.gaugeLineText}>
-                          on needles {yarn.needles}
-                        </Text>
-                      </View>
-                    </>
-                  )}
-                </View>
-                <Pressable
-                  onPress={() => {
-                    pickImage3();
-                  }}
-                  style={[styles.gaugeImageMask, { borderWidth: gaugeImage ? 0 : 1 }]}
-                >
-                  {gaugeImage ? (
-                    <ImageBackground
-                      source={{ uri: gaugeImage }}
-                      style={styles.gaugeImageContainer}
-                      imageStyle={styles.gaugeImage}
-                    >
-                      {yarn.gaugeImage ? (
-                        <Pressable
-                          style={styles.gaugeImageDelete}
-                          onPress={() => setGaugeImage()}
-                        >
-                          <MaterialCommunityIcons
-                            name="close-box-outline"
-                            size={14}
-                            color="#fdccA0"
-                          />
-                        </Pressable>
-                      ) : null}
-                    </ImageBackground>
-                  ) : (
-                    <MaterialCommunityIcons
-                      name="file-image-plus-outline"
-                      size={30}
-                      color="grey"
-                    />
-                  )}
-                </Pressable>
-              </View>
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginLeft: 25,
-                  alignItems: "center",
-                }}
-              >
-                <View></View>
-              </View>
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginTop: 10,
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                {isGauge === false ? (
-                  <>
-                    <View>
-                      <Text style={styles.gaugeLineText}>
-                        Is goog for{" "}
-                      </Text>
-                    </View>
-                    <TextInput
-                      style={styles.gaugeInputLong}
-                      textAlign={"center"}
-                      onChangeText={onChangeGood}
-                      value={good}
-                      placeholder="arans/stockinet/openwork "
-                      placeholderTextColor={"#867D59"}
-                      keyboardType="numeric"
-                    />
-                  </>
-                ) : (
-                  <View>
-                    <Text style={styles.gaugeLineText}>
-                      Is goog for {yarn.good}
-                    </Text>
-                  </View>
-                )}
-              </View>
-
-              <Pressable
-                style={styles.saveGaugeButton}
-                onPress={() => {
-                  if (gauge && needles && good && gaugeImage) {
-                    yarn.gauge = gauge;
-                    yarn.needles = needles;
-                    yarn.good = good;
-                    yarn.gaugeImage = gaugeImage;
-                    setIsGauge(true);
-
-                    var index = yarns.indexOf(yarn);
-                    if (index !== -1) {
-                      yarns[index] = yarn;
-                    }
-                    setYarns(yarns);
-                    saveData();
-                  } else {
-                    Alert.alert(
-                      "No full gauge data",
-                      "Please enter gauge, needles, photo and what your yarn is good for",
-                      [{
-                        text: "OK",
-                        //onPress: () => console.log("OK Pressed")
-                      },]
-                    );
-                  }
-                }}
-              >
-                <Text
-                  style={{ color: "#312d09", fontSize: 16, fontWeight: "bold" }}
-                >
-                  Save Gauge
-                </Text>
-              </Pressable>
-            </> */}
           </View>
+
         </View>
       </LinearGradient>
-    </ScrollView>
+    </View>
 
   );
 };
@@ -389,6 +203,7 @@ const ConePage = ({ route }) => {
 const styles = StyleSheet.create({
   linearGradientContainer: {
     flex: 1,
+
     backgroundColor: '#C7CAB6',
 
   },
@@ -463,7 +278,7 @@ const styles = StyleSheet.create({
   },
   imagesContainer: {
     marginHorizontal: 20,
-    marginVertical: 13,
+    marginVertical: 6,
     shadowColor: "# 8C9284",
     shadowOffset: { width: -2, height: -4 },
     shadowOpacity: 0.1,
@@ -481,7 +296,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     padding: 10,
     borderRadius: 10,
-    marginBottom: 50
+    // marginBottom: 50
 
   },
   gaugeImageData: {
