@@ -17,6 +17,7 @@ import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { particularitiesLabels } from "./DetailsPicker";
 import Gauge from "../components/Gauge";
+import { Dimensions } from "react-native";
 
 
 const ConePage = ({ route }) => {
@@ -34,7 +35,7 @@ const ConePage = ({ route }) => {
   const saveData = async () => {
     await AsyncStorage.setItem("yarns", JSON.stringify(yarns));
   };
-
+  const windowWidth = Dimensions.get('window').width
   useEffect(() => {
     if (yarn.gauge) setIsGauge(true);
     else setIsGauge(false);
@@ -180,7 +181,7 @@ const ConePage = ({ route }) => {
                 <View style={{ marginRight: 20 }}>
                   <Image
                     source={{ uri: item }}
-                    style={styles.image}
+                    style={[styles.image, {width : windowWidth > 830 ? 400 : 220, height:  windowWidth > 830 ? 400 : 220}]}
                   />
                 </View>
               )}
@@ -203,9 +204,7 @@ const ConePage = ({ route }) => {
 const styles = StyleSheet.create({
   linearGradientContainer: {
     flex: 1,
-
     backgroundColor: '#C7CAB6',
-
   },
   mainDataContainer: {
     marginHorizontal: 15,
@@ -234,7 +233,6 @@ const styles = StyleSheet.create({
   },
   yarnMixData: {
     flexDirection: "row",
-    //alignItems: "flex-end",
   },
   yarnMixDataItem: {
     fontSize: 14, fontWeight: "600",
@@ -285,8 +283,6 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
   },
   image: {
-    height: 220,
-    width: 220,
     borderRadius: 10,
     resizeMode: "cover",
   },
@@ -392,8 +388,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
     alignSelf: "flex-end",
-    alignItems: "center",
-
+    alignItems: "center"
   }
 
 })

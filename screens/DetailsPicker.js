@@ -19,7 +19,7 @@ const DetailsPicker = ({ route, navigation }) => {
   const [selectedYarnWeight, setSelectedYarnWeight] = useState("1/15")
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState("Loro Piana")
   const [selectedYarnColor, setSelectedYarnColor] = useState("White")
-  const [id, setId] = useState()
+  const [id, setId] = useState( Date.now())
   const [cone, setCone] = useState()
   //const [pickerSelection, setPickerSelection] = useState()
   const [particularities, setParticularities] = useState(
@@ -40,7 +40,7 @@ const DetailsPicker = ({ route, navigation }) => {
     })
   }, [particularities])
 
-
+//console.log(id)
   return (
 
     <KeyboardAvoidingView
@@ -60,7 +60,7 @@ const DetailsPicker = ({ route, navigation }) => {
                     selectedValue={selectedYarnType}
                     onValueChange={(itemValue, itemIndex) => {
                       setSelectedYarnType(itemValue)
-                      setId(Date.now())
+                      
                       if (selectedYarnType && itemValue === "Mix") { setIsMix(true) }
                     }} />
                   {isMix && (
@@ -120,13 +120,13 @@ const DetailsPicker = ({ route, navigation }) => {
               <View style={styles.buttonContainer}>
                 <TouchableOpacity
                   style={styles.confirmContainer}
-                  onPress={() => {
-                    if (selectedYarnType, selectedYarnWeight, selectedYarnColor, selectedYarnManufacturer) {
-
-
-                      setCone({ id, image, selectedYarnType, isMix, mix, selectedYarnWeight, selectedYarnManufacturer, selectedYarnColor, particularities, weight })
-                      console.log(selectedYarnType)
+                  onPress={() => { 
+                    if (selectedYarnType, selectedYarnWeight, selectedYarnColor, selectedYarnManufacturer)
+                   {  
+                         setCone({ id, image, selectedYarnType, isMix, mix, selectedYarnWeight, selectedYarnManufacturer, selectedYarnColor, particularities, weight }
+                          ) 
                     }
+                    
                     else {
                       Alert.alert(
                         "No full yarn data",

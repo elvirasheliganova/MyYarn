@@ -3,11 +3,13 @@ import { View, Text, FlatList, Image, Pressable, ActivityIndicator, StyleSheet }
 import { YarnContext } from '../components/YarnContext'
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Dimensions } from 'react-native';
 
 const BoxRoom = ({ navigation }) => {
 
   const [yarns, setYarns] = useContext(YarnContext)
   const [loading, setLoading] = useState(true);
+  const windowWidth = Dimensions.get('window').width
 
   useEffect(() => {
     yarns && setLoading(false), []
@@ -15,8 +17,8 @@ const BoxRoom = ({ navigation }) => {
 
   const goToYarnPage = (cone) => {
     navigation.navigate('ConePage', { coneId: cone.id, cone: cone })
-
   }
+  
   const removeYarn = (cone) => {
     const coneIndex = yarns.findIndex((yarn) => yarn.id === cone.id)
     {
@@ -36,20 +38,21 @@ const BoxRoom = ({ navigation }) => {
           <FlatList
             data={yarns}
             renderItem={({ item, index }) => (
-              <View style={{ backgroundColor: '#D7DCCA80', marginVertical: 10, borderRadius: 10, }} key={item.id}>
+              <View style={{ backgroundColor: '#D7DCCA80', marginVertical: 10, borderRadius: 10, alignItems: 'center' }} key={item.id}>
                 <Pressable
 
-                  onPress={() => { goToYarnPage(item) }}
-
+                  onPress={() => 
+                    { goToYarnPage(item) }
+              }
                 >
-                  <Pressable style={styles.delete}
+                  <Pressable style={[styles.delete, {left: windowWidth > 830 ? 410 : 300}]}
                     onPress={() => {
                       removeYarn(item)
                     }}
                   >
                     <MaterialCommunityIcons name="close-box-outline" size={24} color='#6D645A' />
                   </Pressable>
-                  <Pressable style={{ margin: 10, padding: 5, height: 280, width: 280, }}>
+                  <Pressable style={{ margin: 10, padding: 5, height: windowWidth > 830 ? 400 : 280, width: windowWidth > 830 ? 400 : 280}}>
                     <Image source={{ uri: item.image[0] }} style={styles.image} />
                   </Pressable>
                   <View style={styles.detailsData}>
@@ -77,7 +80,6 @@ const BoxRoom = ({ navigation }) => {
         }
       </LinearGradient>
     </View>
-
   )
 }
 const styles = StyleSheet.create({
@@ -93,7 +95,6 @@ const styles = StyleSheet.create({
     height: 30,
     borderRadius: 5,
     position: 'absolute',
-    left: 300,
     top: 15,
     justifyContent: 'center',
     alignItems: 'center'

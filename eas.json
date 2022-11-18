@@ -1,0 +1,24 @@
+{
+  "cli": {
+    "version": ">= 2.6.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "elvirashelyganova@gmail.com",
+        "ascAppId": "6444366033",
+        "appleTeamId": "BGD97U65L6"
+      }
+    }
+  }
+}

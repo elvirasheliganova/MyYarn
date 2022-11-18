@@ -4,13 +4,18 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker'
 import { LinearGradient } from 'expo-linear-gradient';
 import { ImageBackground } from 'react-native';
+import { Dimensions } from 'react-native';
+
 
 export default function ImagePickerScreen({ navigation }) {
 
+  
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null)
   const [image, setImage] = useState([])
   const [mainImage, setMainImage] = useState()
   const [coneImages, setConeImages] = useState([])
+  const windowWidth = Dimensions.get('window').width
+  const windowHeight = Dimensions.get('window').height
 
   useEffect(() => {
     (async () => {
@@ -54,21 +59,23 @@ export default function ImagePickerScreen({ navigation }) {
     const newImage = image.filter((i => i !== item))
     setImage(newImage)
   }
-
+  
+  
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
-
       <LinearGradient
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer} >
-        <View style={{ flex: 1, flexDirection: 'row' }}>
-          <View style={styles.mainImageContainer}>
-            <Pressable onPress={() => pickImage1()} style={[styles.pickImage1Container, { borderWidth: mainImage ? 0 : 1 }]}>
+        <View style={{ flex: 1, flexDirection: 'row'}}>
+          <View style={[styles.mainImageContainer, windowWidth > 830 ? styles.mICSizeLarge : styles.mICSizeNorm]}>
+            <Pressable onPress={() => pickImage1()} 
+            style={[styles.pickImage1Container, { borderWidth: mainImage ? 0 : 1 }, windowWidth > 830 ? styles.mICSizeLarge : styles.mICSizeNorm
+               ]}>
               {mainImage ?
                 <ImageBackground
                   source={{ uri: mainImage }}
                   style={{ flex: 1, alignSelf: ' center  ', }}
-                  imageStyle={{ width: 280, height: 280, borderRadius: 15, resizeMode: 'cover' }} >
+                  imageStyle={[ styles.image, windowWidth > 830 ? styles.mICSizeLarge : styles.mICSizeNorm]} >
                   <Pressable style={styles.mainImagePressable}
                     onPress={() => setMainImage()}>
                     <MaterialCommunityIcons name="close-box-outline" size={24} color='#fdccA0' />
@@ -97,11 +104,11 @@ export default function ImagePickerScreen({ navigation }) {
                   );
                 }
               }}
-                style={styles.moreImage}>
+                style={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm]}>
                 <MaterialCommunityIcons name="file-image-plus-outline" size={30} color="grey" />
               </Pressable>
-              <View style={styles.moreImage}></View>
-              <View style={styles.moreImage}></View>
+              <View style={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm]}></View>
+              <View style={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm]}></View>
             </View>
 
             : image.length === 1 ?
@@ -114,8 +121,8 @@ export default function ImagePickerScreen({ navigation }) {
 
                       <ImageBackground
                         source={{ uri: item }}
-                        style={{ height: 100, width: 100, marginRight: 20 }}
-                        imageStyle={{ flex: 1, height: 100, width: 100, borderRadius: 10, resizeMode: 'cover' }}>
+                        style={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm, { marginRight: 20} ]}
+                        imageStyle={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm]}>
                         <Pressable style={styles.smallDelete}
                           onPress={() => {
                             setImage('')
@@ -129,24 +136,24 @@ export default function ImagePickerScreen({ navigation }) {
                   />
                 </View>
                 <Pressable onPress={() => pickImage2()}
-                  style={styles.moreImage}>
+                  style={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm]}>
                   <MaterialCommunityIcons name="file-image-plus-outline" size={30} color="grey" />
                 </Pressable>
-                <View style={styles.moreImage}></View>
+                <View style={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm]}></View>
 
               </View>
 
               : image.length === 2 ?
                 <View style={styles.moreImagesContainer}>
-                  <View style={{}}>
+                  <View style={{alignItems: 'center'}}>
                     <FlatList
                       data={image}
                       renderItem={({ item }) =>
                       (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
                         <ImageBackground
                           source={{ uri: item }}
-                          style={{ height: 100, width: 100, marginRight: 20 }}
-                          imageStyle={{ flex: 1, height: 100, width: 100, borderRadius: 10, resizeMode: 'cover', }}>
+                          style={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm, { marginRight: 20} ]}
+                          imageStyle={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm]}>
                           <Pressable style={styles.smallDelete}
                             onPress={() => deleteImage(item)}>
                             <MaterialCommunityIcons name="close-box-outline" size={18} color='#fdccA0' />
@@ -158,21 +165,21 @@ export default function ImagePickerScreen({ navigation }) {
                     />
                   </View>
                   <Pressable onPress={() => pickImage2()}
-                    style={styles.moreImage}>
+                    style={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm]}>
                     <MaterialCommunityIcons name="file-image-plus-outline" size={30} color="grey" />
                   </Pressable>
                 </View>
 
                 : <View style={[styles.moreImagesContainer, { width: '110%' }]}>
-                  <View style={{ width: '100%' }}>
+                  <View style={{ width: '100%',  alignItems: 'center' }}>
                     <FlatList
                       data={image}
                       renderItem={({ item }) =>
                       (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }} >
                         <ImageBackground
                           source={{ uri: item }}
-                          style={{ height: 100, width: 100, marginRight: 20 }}
-                          imageStyle={{ flex: 1, height: 100, width: 100, borderRadius: 10, resizeMode: 'cover', }}>
+                          style={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm, { marginRight: 20}]}
+                          imageStyle={[styles.moreImage, windowWidth > 830 ? styles.mISizeLarge : styles.mISizeNorm]}>
                           <Pressable style={styles.smallDelete}
                             onPress={() => deleteImage(item)}>
                             <MaterialCommunityIcons name="close-box-outline" size={18} color='#fdccA0' />
@@ -186,7 +193,11 @@ export default function ImagePickerScreen({ navigation }) {
                 </View>}
         </View>
 
-        <View style={{ width: '100%', marginBottom: 50, marginTop: 20, borderRadius: 5, alignItems: 'flex-end' }}>
+        <View style={{ width: '100%', 
+        marginBottom: 50, marginTop: 20, 
+        borderRadius: 5, 
+        alignItems: 'flex-end' 
+        }}>
           <Pressable
             style={styles.nextButton}
             onPress={() => {
@@ -226,19 +237,28 @@ const styles = StyleSheet.create({
   mainImageContainer: {
     flex: 1,
     marginTop: 30,
-    height: 280,
+  },
+  mICSizeLarge: {
+    height:  400,
+    width: 400
+  },
+  mICSizeNorm: {
+    height: 200,
+    width: 200
+  },
+  image:  {
+    borderRadius: 15, 
+    resizeMode: 'cover' 
   },
   pickImage1Container: {
     flex: 1,
-    height: 280,
-    width: 280,
     backgroundColor: '#ccd4c3',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     borderRadius: 15,
     borderColor: 'silver',
-  },
+  }, 
 
   mainImagePressable: {
     width: 30,
@@ -250,7 +270,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-
   moreImagesContainer: {
     marginTop: 50,
     marginLeft: 20,
@@ -260,8 +279,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   moreImage: {
-    height: 100,
-    width: 100,
     backgroundColor: '#cadcd7',
     borderRadius: 10,
     borderWidth: 1,
@@ -269,7 +286,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 20,
-
+  },
+  mISizeNorm: {
+    height: 100,
+    width: 100
+  },
+  mISizeLarge: {
+    width: 200,
+    height: 200
   },
   smallDelete: {
     width: 20,
@@ -283,7 +307,9 @@ const styles = StyleSheet.create({
   },
   nextButton: {
     flexDirection: 'row',
-    width: '50%',
+    width: '40%',
+    
+    alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fdccA0',
     paddingVertical: 10,
@@ -291,6 +317,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     borderRadius: 5
   },
+  
   nextButtonText: {
     fontSize: 20,
     fontWeight: '600',

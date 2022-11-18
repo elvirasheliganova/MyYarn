@@ -42,7 +42,6 @@ const Search = ({ navigation }) => {
       [checkedBox]: newValue
     })
   }, [])
-  console.log(yarns)
   return (
 
     <View style={{ flex: 1, justifyContent: 'center' }} >

@@ -51,7 +51,7 @@ function BottomTabNavigator() {
    }
  
    clearAll() */
-  console.log(windowHeight)
+
 
   return (
     <Tab.Navigator
