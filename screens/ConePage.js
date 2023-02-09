@@ -51,14 +51,14 @@ const ConePage = ({ route }) => {
       setGaugeImage(result.uri);
     }
   };
-  const particularitiesList = useMemo(() => {
-    return Object.keys(yarn.particularities).map((particularity) => {
-      return (
-        yarn.particularities[particularity] &&
-        particularitiesLabels[particularity]
-      );
-    });
-  }, [yarn.particularities]);
+  /*   const particularitiesList = useMemo(() => {
+      return Object.keys(yarn.particularities).map((particularity) => {
+        return (
+          yarn.particularities[particularity] &&
+          particularitiesLabels[particularity]
+        );
+      });
+    }, [yarn.particularities]); */
 
   return (
 
@@ -75,22 +75,22 @@ const ConePage = ({ route }) => {
               </View>
               <View style={{ alignContent: 'flex-end', width: '65%' }}>
                 <ScrollView style={styles.yarnMixData} horizontal={true} showsHorizontalScrollIndicator={false}>
-                  {yarn.mix && yarn.mix.selectedCashMix ? (
+                  {yarn.mix && yarn.mix.selectedCash ? (
                     <View style={{}}>
-                      <Text style={styles.yarnMixDataItem}> Cash {yarn.mix.selectedCashMix}</Text>
+                      <Text style={styles.yarnMixDataItem}> Cash {yarn.mix.selectedCas}</Text>
                     </View>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedMerinosMix ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  Merinos {yarn.mix.selectedMerinosMix}</Text>
+                  {yarn.mix && yarn.mix.selectedMerino ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  Merinos {yarn.mix.selectedMerino}</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedSilkMix ? (
-                    <Text style={styles.yarnMixDataItem}> {" "} Silk {yarn.mix.selectedSilkMix}</Text>
+                  {yarn.mix && yarn.mix.selectedSilk ? (
+                    <Text style={styles.yarnMixDataItem}> {" "} Silk {yarn.mix.selectedSilk}</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedCottonMix ? (
-                    <Text style={styles.yarnMixDataItem}> {" "} Cotton {yarn.mix.selectedCottonMix}</Text>
+                  {yarn.mix && yarn.mix.selectedCotton ? (
+                    <Text style={styles.yarnMixDataItem}> {" "} Cotton {yarn.mix.selectedCotton}</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedViscoseMix ? (
-                    <Text style={styles.yarnMixDataItem}> {" "} Viscose {yarn.mix.selectedViscoseMix}</Text>
+                  {yarn.mix && yarn.mix.selectedViscose ? (
+                    <Text style={styles.yarnMixDataItem}> {" "} Viscose {yarn.mix.selectedViscose}</Text>
                   ) : null}
                 </ScrollView>
               </View>
@@ -99,7 +99,7 @@ const ConePage = ({ route }) => {
               style={styles.yarnDetails}
             >
               <Text style={styles.yarnDetailsTitle}>
-                {yarn.selectedYarnWeight} mts/100 grams
+                {yarn.length} mts/100 grams
               </Text>
               <Text style={{ fontSize: 14, color: "grey" }}>Weight </Text>
             </View>
@@ -161,7 +161,7 @@ const ConePage = ({ route }) => {
             ) : null}
 
             <View style={styles.yarnDetails} >
-              {particularitiesList.map((particularity, index) => (
+              {/*     {particularitiesList.map((particularity, index) => (
                 <Text style={{ fontSize: 14, fontWeight: "600" }} key={index}>
                   {particularity}
                 </Text>
@@ -170,7 +170,7 @@ const ConePage = ({ route }) => {
                 <Text style={{ fontSize: 14, color: "grey", marginLeft: 100 }}>
                   Particularity
                 </Text>
-              )}
+              )} */}
             </View>
           </View>
           <View style={styles.imagesContainer}>

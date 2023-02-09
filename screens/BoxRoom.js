@@ -4,12 +4,19 @@ import { YarnContext } from '../components/YarnContext'
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+
+
 const BoxRoom = ({ navigation }) => {
+
+
 
   const [yarns, setYarns] = useContext(YarnContext)
   const [loading, setLoading] = useState(true);
 
+
+
   useEffect(() => {
+
     yarns && setLoading(false), []
   })
 
@@ -25,6 +32,8 @@ const BoxRoom = ({ navigation }) => {
     }
   }
 
+
+
   return (
     <View style={{ flex: 1, alignItems: 'center', }}>
       <LinearGradient
@@ -36,7 +45,7 @@ const BoxRoom = ({ navigation }) => {
           <FlatList
             data={yarns}
             renderItem={({ item, index }) => (
-              <View style={{ backgroundColor: '#D7DCCA80', marginVertical: 10, borderRadius: 10, }} key={item.id}>
+              <View style={{ backgroundColor: '#D7DCCA80', marginVertical: 10, borderRadius: 10, }} key={item.id} >
                 <Pressable
 
                   onPress={() => { goToYarnPage(item) }}
@@ -57,15 +66,15 @@ const BoxRoom = ({ navigation }) => {
                       <Text style={styles.yarnTypeDataText}>{item.selectedYarnType}</Text>
                       {item.selectedYarnType === 'Mix' &&
                         <View style={styles.mixData}>
-                          {item.mix.selectedMerinosMix && <Text style={styles.yarnDataText}>Merino {item.mix.selectedMerinosMix} </Text>}
-                          {item.mix.selectedCashMix && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Cash {item.mix.selectedCashMix} </Text>}
-                          {item.mix.selectedCottonMix && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Silk {item.mix.selectedSilkMix} </Text>}
-                          {item.mix.selectedSilkMix && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Cotton {item.mix.selectedCottonMix} </Text>}
-                          {item.mix.selectedViscoseMix && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Viscose {item.mix.selectedViscoseMix} </Text>}
+                          {item.mix.selectedMerino && <Text style={styles.yarnDataText}>Merino {item.mix.selectedMerino} </Text>}
+                          {item.mix.selectedCash && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Cash {item.mix.selectedCash} </Text>}
+                          {item.mix.selectedCotton && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Silk {item.mix.selectedSilk} </Text>}
+                          {item.mix.selectedSilk && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Cotton {item.mix.selectedCotton} </Text>}
+                          {item.mix.selectedViscose && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Viscose {item.mix.selectedViscose} </Text>}
                         </View>
                       }
                     </View>
-                    <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', color: '#372310' }}>{item.selectedYarnWeight} m</Text>
+                    <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', color: '#372310' }}>{item.length} m</Text>
                     <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', color: '#372310' }}>{item.selectedYarnManufacturer}</Text>
                   </View>
                 </Pressable>

@@ -10,17 +10,24 @@ import Search from '../../screens/Search';
 import BoxRoomStackNavigator from '../navigators/BoxRoomStackNavigator';
 import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 
+import 'react-native-gesture-handler';
+
+import i18n from "../../i18n";
+
+const initI18n = i18n;
 
 const Tab = createBottomTabNavigator();
 
-function BottomTabNavigator() {
-
+function BottomTabNavigator(props) {
+  const { t, i18n } = useTranslation();
   const [yarns, setYarns] = useContext(YarnContext)
   const [cone, setCone] = useContext(YarnContext)
   const windowHeight = Dimensions.get('window').height
 
 
+  //console.warn((i18n.t('Hey Yo Im at home')))
   useEffect(() => {
     loadData()
   }, [])
@@ -40,18 +47,18 @@ function BottomTabNavigator() {
       setYarns(loadedYarns)
     }
   }
-  /*  const clearAll = async () => {
-     try {
-       await AsyncStorage.clear()
-     } catch (e) {
-       // clear error
-     }
- 
-     console.log('Done.')
-   }
- 
-   clearAll() */
-  console.log(windowHeight)
+  /*   const clearAll = async () => {
+      try {
+        await AsyncStorage.clear()
+      } catch (e) {
+        // clear error
+      }
+  
+      // console.log('Done.')
+    }
+  
+    clearAll() */
+  //sconsole.log(windowHeight)
 
   return (
     <Tab.Navigator
@@ -68,8 +75,10 @@ function BottomTabNavigator() {
 
         tabBarInactiveTintColor: 'grey',
       })}
+      screenProps={{ t, i18n }}
     >
       <Tab.Screen
+
         name="New Yarn"
         component={NewConeStackNavigator}
         options={{

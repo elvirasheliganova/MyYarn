@@ -42,7 +42,7 @@ const Search = ({ navigation }) => {
       [checkedBox]: newValue
     })
   }, [])
-  console.log(yarns)
+  //console.log(yarns)
   return (
 
     <View style={{ flex: 1, justifyContent: 'center' }} >
@@ -114,7 +114,7 @@ const Search = ({ navigation }) => {
                       />
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                      <SearchDataBox data={`${item.selectedYarnWeight} m`} />
+                      <SearchDataBox data={`${item.length} m`} />
                       <SearchDataBox data={item.selectedYarnManufacturer} />
                       {item.particularities.isWorsted === true ?
                         <SearchDataBox data={'Worsted'} />

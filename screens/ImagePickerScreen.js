@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, Text, View, FlatList, Pressable, Alert, StyleSheet } from 'react-native';
+import { SafeAreaView, Text, View, FlatList, Pressable, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker'
 import { LinearGradient } from 'expo-linear-gradient';
 import { ImageBackground } from 'react-native';
+import TranslateText from '../components/TranslateText';
+import { useTranslation } from 'react-i18next';
 
-export default function ImagePickerScreen({ navigation }) {
+
+
+const ImagePickerScreen = ({ navigation }) => {
+  const { t } = useTranslation();
 
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null)
   const [image, setImage] = useState([])
   const [mainImage, setMainImage] = useState()
   const [coneImages, setConeImages] = useState([])
+
 
   useEffect(() => {
     (async () => {
@@ -26,7 +32,7 @@ export default function ImagePickerScreen({ navigation }) {
       aspect: [4, 3],
       quality: 1,
     })
-    if (!result.cancelled) {
+    if (!result.canceled) {
       setMainImage(result.uri)
     }
   }
@@ -42,7 +48,7 @@ export default function ImagePickerScreen({ navigation }) {
       aspect: [4, 3],
       quality: 1,
     })
-    if (!result.cancelled) {
+    if (!result.canceled) {
       setImage(prevImage => [...prevImage, result.uri])
     }
   }
@@ -195,6 +201,7 @@ export default function ImagePickerScreen({ navigation }) {
                 navigation.navigate('Cone Details', { image: image });
                 setImage([])
                 setMainImage('')
+
               } else {
                 Alert.alert(
                   "No photo chosen",
@@ -206,9 +213,18 @@ export default function ImagePickerScreen({ navigation }) {
               }
             }}
           >
-            <Text style={styles.nextButtonText}>Next</Text>
+            <View >
+              <Text style={{ color: 'red' }}>{t('next')}</Text>
+            </View>
             <MaterialCommunityIcons name="arrow-right" size={24} color="#07544b" />
           </Pressable>
+          <View
+            style={{
+              flexDirection: 'row',
+              margin: 10,
+            }}>
+
+          </View>
         </View>
       </LinearGradient>
     </SafeAreaView>
@@ -289,13 +305,24 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginRight: 10,
-    borderRadius: 5
-  },
-  nextButtonText: {
-    fontSize: 20,
+    borderRadius: 5,
+    fontSize: 30,
     fontWeight: '600',
     color: '#07544b',
     marginRight: 10
   },
+  nextButtonText: {
+    fontSize: 30,
+    fontWeight: '600',
+    color: '#07544b',
+    marginRight: 10
+  },
+  button: {
+    backgroundColor: '#61e3a5',
+    padding: 10,
+    borderRadius: 10,
+    margin: 10,
+  },
 })
 
+export default ImagePickerScreen

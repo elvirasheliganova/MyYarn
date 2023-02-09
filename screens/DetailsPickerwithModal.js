@@ -1,4 +1,5 @@
-import { View, Text, TouchableOpacity, TextInput, Alert, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, StyleSheet, ScrollView } from 'react-native'
+
+import { View, Text, TouchableOpacity, TextInput, Alert, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, StyleSheet, ScrollView, Pressable } from 'react-native'
 import React, { useState, useContext, useCallback, useEffect } from 'react';
 import Pick from '../components/Pick';
 import pickerData from '../assets/pickerData';
@@ -7,6 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Checkbox from 'expo-checkbox';
 import ModalMix from '../components/ModalMix';
 import { useTranslation } from 'react-i18next';
+import { Modal } from 'react-native-web';
 
 
 export const particularitiesLabels = {
@@ -15,7 +17,7 @@ export const particularitiesLabels = {
   isAngled: "Angled"
 
 }
-const DetailsPicker = ({ route, navigation }) => {
+const DetailsPickerwithModal = ({ route, navigation }) => {
   const { t } = useTranslation();
   const { image } = route.params
   const [yarns, setYarns] = useContext(YarnContext)
@@ -25,6 +27,7 @@ const DetailsPicker = ({ route, navigation }) => {
   const [selectedYarnColor, setSelectedYarnColor] = useState("White")
   const [id, setId] = useState()
   const [cone, setCone] = useState()
+  const [modalVisible, setModalVisible] = useState(false);
   //console.log(image)
   //const [pickerSelection, setPickerSelection] = useState()
   const [particularities, setParticularities] = useState(
@@ -51,7 +54,7 @@ const DetailsPicker = ({ route, navigation }) => {
         [...prevYarns, cone])
 
 
-    // console.log("Final data updated , invoke your function", yarns)
+    //console.log("Final data updated , invoke your function", yarns)
   }, [cone]);
 
 
@@ -67,10 +70,42 @@ const DetailsPicker = ({ route, navigation }) => {
           <LinearGradient
             colors={['#D2F0EE', 'transparent']}
             style={styles.gradientContainer} >
+
+            <View style={styles.centeredView}>
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                  Alert.alert('Modal has been closed.');
+                  setModalVisible(!modalVisible);
+                }}>
+                <View style={styles.centeredView}>
+                  <View style={styles.modalView}>
+                    {pickerData.yarnType.map((item, index) => (
+                      <Text>{t(item.label)}</Text>
+                    ))}
+                    <Pressable
+                      style={[styles.button, styles.buttonClose]}
+                      onPress={() => setModalVisible(!modalVisible)}>
+                      <Text style={styles.textStyle}>Hide Modal</Text>
+                    </Pressable>
+                  </View>
+                </View>
+              </Modal>
+              <Pressable
+                style={[styles.button, styles.buttonOpen]}
+                onPress={() => setModalVisible(true)}>
+                <Text style={styles.textStyle}>Show Modal</Text>
+              </Pressable>
+            </View>
+
             <View style={{ paddingBottom: 20, paddingTop: 20 }}>
               <View>
+
                 <View style={{ marginTop: 20, }}>
-                  <Pick
+
+                  {/*  <Pick
                     title={t('composition')}
                     data={pickerData.yarnType}
                     selectedValue={selectedYarnType}
@@ -83,8 +118,9 @@ const DetailsPicker = ({ route, navigation }) => {
                     <View style={styles.modalContainer} >
                       <ModalMix changeMix={(mix) => setMix(mix)} />
                     </View>
-                  )}
-                  <Pick
+                  )} */}
+
+                  {/* <Pick
                     title={t('manufacturer')}
                     data={pickerData.manufacturer}
                     selectedValue={selectedYarnManufacturer}
@@ -98,7 +134,7 @@ const DetailsPicker = ({ route, navigation }) => {
                     onValueChange={(itemValue, itemIndex) =>
                       setSelectedYarnColor(itemValue)}
                   />
-                  {/*     <Pick
+                      <Pick
                     title={'Weight'}
                     data={pickerData.weight}
                     selectedValue={length}
@@ -253,11 +289,56 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#42370B',
     fontWeight: 'bold'
-  }
+  },
+
+
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+
+
 
 
 
 
 
 })
-export default DetailsPicker
+export default DetailsPickerwithModal

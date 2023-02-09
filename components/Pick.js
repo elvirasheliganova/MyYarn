@@ -1,9 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
+import { useTranslation } from 'react-i18next';
 
 
 const Pick = ({ title, data, onValueChange, selectedValue }) => {
+  const { t } = useTranslation();
   return (
     <View style={styles.container}>
       <View style={{ alignSelf: 'flex-start' }}>
@@ -16,7 +18,7 @@ const Pick = ({ title, data, onValueChange, selectedValue }) => {
         itemStyle={styles.pickerItem}>
 
         {data.map((item, index) => (
-          <Picker.Item label={item.label} value={item.value} key={index} />
+          <Picker.Item label={t(item.label)} value={item.value} key={index} />
         ))}
       </Picker>
     </View>
