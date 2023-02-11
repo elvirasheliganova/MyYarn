@@ -19,6 +19,7 @@ const Home = ({ route, navigation }) => {
   const [yarns, setYarns] = useContext(YarnContext)
   const [selectedYarnType, setSelectedYarnType] = useState()
   const [length, onChangeLength] = useState()
+  const [weight, onChangeWeight] = useState();
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState()
   const [selectedYarnColor, setSelectedYarnColor] = useState()
   const [selectedMerino, setSelectedMerino] = useState('')
@@ -34,12 +35,14 @@ const Home = ({ route, navigation }) => {
 
   useEffect(() => {
     if (mix)
+      //console.log(mix)
       setCone({
         id, image, selectedYarnType, isMix,
         mix,
-        //length,
-        //selectedYarnManufacturer, selectedYarnColor,
-        // particularities, weight 
+        length,
+        selectedYarnManufacturer, selectedYarnColor,
+        // particularities, 
+        weight
       })
 
 
@@ -121,6 +124,8 @@ const Home = ({ route, navigation }) => {
 
             <Details
               image={image}
+              chooseLength={onChangeLength}
+              chooseWeight={onChangeWeight}
               /* selectedYarnType={selectedYarnType}
               selectedYarnManufacturer={selectedYarnManufacturer}
               selectedYarnColor={selectedYarnColor} */ />
@@ -140,7 +145,7 @@ const Home = ({ route, navigation }) => {
                 onPress={() => {
                   {
 
-                    setId(Date.now())
+                    !mix ? setId(Date.now()) : null
                     setMix({ selectedMerino, selectedCash })
                     //setMix('')
 
@@ -149,15 +154,9 @@ const Home = ({ route, navigation }) => {
                     //selectedYarnColor,
                     //selectedYarnManufacturer
 
-                    console.log(mix)
+                    //console.log(mix)
                     //console.log(selectedMerino)
-                    setCone({
-                      id, image, selectedYarnType, isMix,
-                      mix,
-                      //length,
-                      //selectedYarnManufacturer, selectedYarnColor,
-                      // particularities, weight 
-                    })
+
                     //setCone(cone)
 
 

@@ -16,7 +16,7 @@ const Details = (props) => {
   const [cone, setCone] = useState()
   const [mix, setMix] = useState()
   const [isMix, setIsMix] = useState(false)
-  const [weight, onChangeWeight] = useState(null);
+  const [weight, onChangeWeight] = useState();
   return (
     <View style={{ flex: 1, }}>
       {/* <View>
@@ -69,7 +69,7 @@ const Details = (props) => {
 
           <TextInput
             style={styles.textInput}
-            onChangeText={onChangeLength}
+            onChangeText={(value) => props.chooseLength(value)}
             value={length}
             placeholder={t('weight')}
             placeholderTextColor={'#746B45'}
@@ -80,7 +80,7 @@ const Details = (props) => {
 
           <TextInput
             style={styles.textInput}
-            onChangeText={onChangeWeight}
+            onChangeText={(value) => props.chooseWeight(value)}
             value={weight}
             placeholder={t('quantity')}
             placeholderTextColor={'#746B45'}
