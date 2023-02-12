@@ -146,11 +146,24 @@ const ModalView = (props) => {
                        //</View>item === 'merinos' ? console.log(item, 'hi') */
                       items={modalData.percentage}
                       onValueChange={(value) =>
-                        item === "merinos" ? props.chooseMerino(value) :
-                          item === "cashmere" ? props.chooseCash(value) :
-                            item === "silk" ? props.chooseSilk(value) :
-                              item === "cotton" ? props.chooseCotton(value) :
-                                item === 'viscose' ? props.chooseViscose(value) : null
+                        item === "alpaca" ? props.chooseAlpaca(value) :
+                          item === "angora" ? props.chooseAngora(value) :
+                            item === "camel" ? props.chooseCamel(value) :
+                              item === "cashmere" ? props.chooseCash(value) :
+                                item === "wool" ? props.chooseWool(value) :
+                                  item === "merinos" ? props.chooseMerino(value) :
+                                    item === "lamb" ? props.chooseLamb(value) :
+                                      item === "superkid mohair/pa" ? props.chooseSKidPa(value) :
+                                        item === "superkid mohair/silk" ? props.chooseSKidSilk(value) :
+                                          item === "yak" ? props.chooseYak(value) :
+                                            item === "linen" ? props.chooseLinen(value) :
+                                              item === "silk" ? props.chooseSilk(value) :
+                                                item === "cotton" ? props.chooseCotton(value) :
+                                                  item === 'viscose' ? props.chooseViscose(value) :
+                                                    item === "pa" ? props.choosePa(value) :
+                                                      item === "elastan" ? props.chooseElastan(value) :
+                                                        item === "sintetyc" ? props.chooseSintetic(value) :
+                                                          null
                       }
 
 

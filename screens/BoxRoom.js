@@ -66,11 +66,23 @@ const BoxRoom = ({ navigation }) => {
                       <Text style={styles.yarnTypeDataText}>{item.selectedYarnType}</Text>
                       {item.selectedYarnType === 'Mix' &&
                         <View style={styles.mixData}>
+                          {item.mix.selectedAlpaca && <Text style={styles.yarnDataText}>Alpaca {item.mix.selectedAlpaca} </Text>}
+                          {item.mix.selectedAngora && <Text style={styles.yarnDataText}>Angora {item.mix.selectedAngora} </Text>}
+                          {item.mix.selectedCamel && <Text style={styles.yarnDataText}>Camel {item.mix.selectedCamel} </Text>}
                           {item.mix.selectedMerino && <Text style={styles.yarnDataText}>Merino {item.mix.selectedMerino} </Text>}
                           {item.mix.selectedCash && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Cash {item.mix.selectedCash} </Text>}
+                          {item.mix.selectedWool && <Text style={styles.yarnDataText}>Wool {item.mix.selectedWool} </Text>}
+                          {item.mix.selectedLamb && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Lamb{item.mix.selectedLamb} </Text>}
+                          {item.mix.selectedSKidPa && <Text style={styles.yarnDataText}>SuperKid Mohair/Pa {item.mix.selectedSKidPa} </Text>}
+                          {item.mix.selectedSKidSilk && <Text style={styles.yarnDataText}>SuperKid Mohair/Silk {item.mix.selectedSKidSilk} </Text>}
+                          {item.mix.selectedYak && <Text style={styles.yarnDataText}>Yak {item.mix.selectedYak} </Text>}
                           {item.mix.selectedCotton && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Silk {item.mix.selectedSilk} </Text>}
                           {item.mix.selectedSilk && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Cotton {item.mix.selectedCotton} </Text>}
                           {item.mix.selectedViscose && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Viscose {item.mix.selectedViscose} </Text>}
+                          {item.mix.selectedElastan && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Elastan{item.mix.selectedElastan} </Text>}
+                          {item.mix.selectedPa && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Pa {item.mix.selectedPa} </Text>}
+                          {item.mix.selectedSintetyc && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Sintetic {item.mix.selectedSintetyc} </Text>}
+
                         </View>
                       }
                     </View>

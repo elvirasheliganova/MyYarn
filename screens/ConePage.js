@@ -74,14 +74,43 @@ const ConePage = ({ route }) => {
                 <Text style={styles.yarnTitleText}> {yarn.selectedYarnType}{" "}</Text>
               </View>
               <View style={{ alignContent: 'flex-end', width: '65%' }}>
-                <ScrollView style={styles.yarnMixData} horizontal={true} showsHorizontalScrollIndicator={false}>
+                <View style={styles.yarnMixData}
+                // horizontal={true} showsHorizontalScrollIndicator={false}
+                >
                   {yarn.mix && yarn.mix.selectedCash ? (
                     <View style={{}}>
-                      <Text style={styles.yarnMixDataItem}> Cash {yarn.mix.selectedCas}</Text>
+                      <Text style={styles.yarnMixDataItem}> Cash {yarn.mix.selectedCash}</Text>
                     </View>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedAlpaca ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}Alpaca {yarn.mix.selectedAlpaca}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedAngora ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}Angora {yarn.mix.selectedAngora}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedCamel ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}Camel {yarn.mix.selectedCamel}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedWool ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  Wool {yarn.mix.selectedWool}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedMerino ? (
                     <Text style={styles.yarnMixDataItem}>{" "}  Merinos {yarn.mix.selectedMerino}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedYak ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  Yak {yarn.mix.selectedYak}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedLamb ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  Lamb {yarn.mix.selectedLamb}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedSKidPa ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  SuperKid Mohair/Pa {yarn.mix.selectedSKidPa}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedSKidSilk ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  SuperKid Mohair/Silk {yarn.mix.selectedSKidSilk}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedLinen ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  Linen {yarn.mix.selectedLinen}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedSilk ? (
                     <Text style={styles.yarnMixDataItem}> {" "} Silk {yarn.mix.selectedSilk}</Text>
@@ -92,7 +121,16 @@ const ConePage = ({ route }) => {
                   {yarn.mix && yarn.mix.selectedViscose ? (
                     <Text style={styles.yarnMixDataItem}> {" "} Viscose {yarn.mix.selectedViscose}</Text>
                   ) : null}
-                </ScrollView>
+                  {yarn.mix && yarn.mix.selectedElastan ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  Elastan {yarn.mix.selectedElastan}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedPa ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  Pa {yarn.mix.selectedPa}</Text>
+                  ) : null}
+                  {yarn.mix && yarn.mix.selectedSintetyc ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}  Sintetyc {yarn.mix.selectedSintetyc}</Text>
+                  ) : null}
+                </View>
               </View>
             </View>
             <View
@@ -233,7 +271,9 @@ const styles = StyleSheet.create({
     marginRight: 40
   },
   yarnMixData: {
-    flexDirection: "row",
+    backgroundColor: 'pink',
+    marginLeft: 'auto'
+    //flexDirection: "row",
     //alignItems: "flex-end",
   },
   yarnMixDataItem: {

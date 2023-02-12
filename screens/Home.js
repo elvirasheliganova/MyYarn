@@ -22,11 +22,23 @@ const Home = ({ route, navigation }) => {
   const [weight, onChangeWeight] = useState();
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState()
   const [selectedYarnColor, setSelectedYarnColor] = useState()
-  const [selectedMerino, setSelectedMerino] = useState('')
+  const [selectedAlpaca, setSelectedAlpaca] = useState('')
+  const [selectedAngora, setSelectedAngora] = useState('')
+  const [selectedCamel, setSelectedCamel] = useState('')
+  const [selectedWool, setSelectedWool] = useState('')
   const [selectedCash, setSelectedCash] = useState('')
+  const [selectedMerino, setSelectedMerino] = useState('')
+  const [selectedLamb, setSelectedLamb] = useState('')
+  const [selectedSKidPa, setSelectedSKidPa] = useState('')
+  const [selectedSKidSilk, setSelectedSKidSilk] = useState('')
+  const [selectedYak, setSelectedYak] = useState('')
+  const [selectedLinen, setSelectedLinen] = useState('')
   const [selectedCotton, setSelectedCotton] = useState('')
   const [selectedSilk, setSelectedSilk] = useState('')
   const [selectedViscose, setSelectedViscose] = useState('')
+  const [selectedElastan, setSelectedElastan] = useState('')
+  const [selectedPa, setSelectedPa] = useState('')
+  const [selectedSintetyc, setSelectedSintetyc] = useState('')
   const [id, setId] = useState()
   const [cone, setCone] = useState()
   const [isMix, setIsMix] = useState(false)
@@ -35,7 +47,7 @@ const Home = ({ route, navigation }) => {
 
   useEffect(() => {
     if (mix)
-      //console.log(mix)
+      // console.log(mix)
       setCone({
         id, image, selectedYarnType, isMix,
         mix,
@@ -45,6 +57,9 @@ const Home = ({ route, navigation }) => {
         weight
       })
 
+    /*  if (mix)
+       setYarns(prevCone =>
+         [...prevCone,  mix]) */
 
     // console.log("Final data updated , invoke your function", yarns)
   }, [mix]);
@@ -90,11 +105,23 @@ const Home = ({ route, navigation }) => {
                 //chooseId={setId}
                 chooseMix={setIsMix}
                 changeMix={(mix) => setMix(mix)}
-                chooseMerino={setSelectedMerino}
+                chooseAlpaca={setSelectedAlpaca}
+                chooseAngora={setSelectedAngora}
+                chooseCamel={setSelectedCamel}
                 chooseCash={setSelectedCash}
+                chooseWool={setSelectedWool}
+                chooseMerino={setSelectedMerino}
+                chooseLamb={setSelectedLamb}
+                chooseSKidPa={setSelectedSKidPa}
+                chooseSKidSilk={setSelectedSKidSilk}
+                chooseYak={setSelectedYak}
+                chooseLinen={setSelectedLinen}
                 chooseSilk={setSelectedSilk}
                 chooseCotton={setSelectedCotton}
                 chooseViscose={setSelectedViscose}
+                chooseElastan={setSelectedElastan}
+                choosePa={setSelectedPa}
+                chooseSintetyc={setSelectedSintetyc}
               //selectedMerino={selectedMerino}
 
 
@@ -146,7 +173,7 @@ const Home = ({ route, navigation }) => {
                   {
 
                     !mix ? setId(Date.now()) : null
-                    setMix({ selectedMerino, selectedCash })
+                    setMix({ selectedAlpaca, selectedAngora, selectedCamel, selectedCash, selectedMerino, selectedLamb, selectedSKidPa, selectedSKidSilk, selectedWool, selectedYak, selectedLinen, selectedSilk, selectedCotton, selectedViscose, selectedElastan, selectedPa, selectedSintetyc })
                     //setMix('')
 
                     //if (selectedYarnType)
