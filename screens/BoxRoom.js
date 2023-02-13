@@ -3,13 +3,14 @@ import { View, Text, FlatList, Image, Pressable, ActivityIndicator, StyleSheet }
 import { YarnContext } from '../components/YarnContext'
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 
 
 
 const BoxRoom = ({ navigation }) => {
 
 
-
+  const { t } = useTranslation()
   const [yarns, setYarns] = useContext(YarnContext)
   const [loading, setLoading] = useState(true);
 
@@ -45,7 +46,7 @@ const BoxRoom = ({ navigation }) => {
           <FlatList
             data={yarns}
             renderItem={({ item, index }) => (
-              <View style={{ backgroundColor: '#D7DCCA80', marginVertical: 10, borderRadius: 10, }} key={item.id} >
+              <View style={{ backgroundColor: '#EBFFFF', marginVertical: 10, borderRadius: 10, }} key={item.id} >
                 <Pressable
 
                   onPress={() => { goToYarnPage(item) }}
@@ -63,7 +64,7 @@ const BoxRoom = ({ navigation }) => {
                   </Pressable>
                   <View style={styles.detailsData}>
                     <View style={styles.yarnTypeData}>
-                      <Text style={styles.yarnTypeDataText}>{item.selectedYarnType}</Text>
+                      <Text style={styles.yarnTypeDataText}>{t(`${item.selectedYarnType}`)}</Text>
                       {item.selectedYarnType === 'Mix' &&
                         <View style={styles.mixData}>
                           {item.mix.selectedAlpaca && <Text style={styles.yarnDataText}>Alpaca {item.mix.selectedAlpaca} </Text>}

@@ -73,7 +73,9 @@ const ModalView = (props) => {
   return (
 
 
-    <View style={styles.centeredView}>
+    <View style={[styles.centeredView, {
+      //backgroundColor: 'green' 
+    }]}>
       <Modal
         animationType="slide"
         transparent={true}
@@ -89,9 +91,8 @@ const ModalView = (props) => {
             (<Pressable
               onPress={() => {
                 chooseYarn(item.value)
-                // chooseMerinosMix('10')
-
-                if (item.value === "Mix") {
+                console.log(item.value)
+                if (item.value === "mix") {
                   chooseMix(true)
 
                   onOpen2ndModal()
@@ -153,8 +154,8 @@ const ModalView = (props) => {
                                 item === "wool" ? props.chooseWool(value) :
                                   item === "merinos" ? props.chooseMerino(value) :
                                     item === "lamb" ? props.chooseLamb(value) :
-                                      item === "superkid mohair/pa" ? props.chooseSKidPa(value) :
-                                        item === "superkid mohair/silk" ? props.chooseSKidSilk(value) :
+                                      item === "superkid mohair" ? props.chooseSKid(value) :
+                                        item === "kid mohair" ? props.chooseKid(value) :
                                           item === "yak" ? props.chooseYak(value) :
                                             item === "linen" ? props.chooseLinen(value) :
                                               item === "silk" ? props.chooseSilk(value) :
@@ -240,6 +241,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+
+
   },
   textInput: {
     height: 40,
@@ -299,9 +302,9 @@ const styles = StyleSheet.create({
 
   centeredView: {
     flex: 1,
-    //justifyContent: 'center',
-    // alignItems: 'center',
-    marginTop: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
     //backgroundColor: 'pink'
   },
   modalView: {

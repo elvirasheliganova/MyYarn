@@ -5,8 +5,12 @@ const translations =
       'new yarn': 'Новая пряжа',
       'next': 'Дальше',
       'choose': 'Выберите ...',
+      'choose pictures': 'Выбери фото',
+      'more details': 'Еще немного информации',
       'done': 'Готово',
-      'yarn box': 'Кладовка',
+      'save': 'Сохранить',
+      'yarn box': 'Коробка с пряжей',
+
       'search': 'Поиск',
 
       'composition': 'Состав',
@@ -19,9 +23,10 @@ const translations =
       'merinos': 'Меринос (WV)',
       'lamb': 'Ягненок (WV)',
       'linen': 'Лен (Li)',
-      'superkid mohair/pa': 'Суперкид Mохер/ПА (WM)',
-      'superkid mohair/silk': 'Суперкид Mохер/Шелк (WM)',
+      'superkid mohair/pa': 'Суперкид мохер/ПА (WM)',
+      'superkid mohair/silk': 'Суперкид мохер/Шелк (WM)',
       'kid mohair': 'Kидмохер (VM)',
+      'superkid mohair': 'Супер Кидмохер (WM)',
       'silk': 'Шелк (SE)',
       'cotton': 'Хлопок (CO)',
       'viscose': 'Вискоза (VI)',
@@ -97,8 +102,23 @@ const translations =
       'darkgrey': 'Графит',
       'black': 'Черный',
 
-      'weight': 'длина пряжи в 100 гр',
-      'quantity': 'вес пряжи в бобине/мотках',
+      'weight': 'Длина пряжи в 100 гр',
+      'quantity': 'Вес пряжи вceго',
+      'manufactured by': 'Производитель',
+      'gauge': 'Образец',
+      'save gauge': 'Сохранить образец',
+      'grams': 'грамм',
+      'mts': 'метров',
+      'yarn gauge is': 'Плотность после ВТО:',
+      'on needles': 'Спицы :',
+      'is good for': 'Хороша в',
+
+      'search by': 'Поиск по',
+      '': '',
+      '': '',
+      '': '',
+
+
 
 
 

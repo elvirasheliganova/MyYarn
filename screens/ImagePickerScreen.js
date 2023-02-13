@@ -67,14 +67,14 @@ const ImagePickerScreen = ({ navigation }) => {
       <LinearGradient
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer} >
-        <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center' }}>
           <View style={styles.mainImageContainer}>
             <Pressable onPress={() => pickImage1()} style={[styles.pickImage1Container, { borderWidth: mainImage ? 0 : 1 }]}>
               {mainImage ?
                 <ImageBackground
                   source={{ uri: mainImage }}
                   style={{ flex: 1, alignSelf: ' center  ', }}
-                  imageStyle={{ width: 280, height: 280, borderRadius: 15, resizeMode: 'cover' }} >
+                  imageStyle={{ width: '100%', height: '100%', borderRadius: 15, resizeMode: 'cover' }} >
                   <Pressable style={styles.mainImagePressable}
                     onPress={() => setMainImage()}>
                     <MaterialCommunityIcons name="close-box-outline" size={24} color='#fdccA0' />
@@ -192,7 +192,11 @@ const ImagePickerScreen = ({ navigation }) => {
                 </View>}
         </View>
 
-        <View style={{ width: '100%', marginBottom: 50, marginTop: 20, borderRadius: 5, alignItems: 'flex-end' }}>
+        <View style={{
+          width: '100%',
+          // marginBottom: 50, marginTop: 20, 
+          borderRadius: 5, alignItems: 'flex-end', backgroundColor: 'lightgreen'
+        }}>
           <Pressable
             style={styles.nextButton}
             onPress={() => {
@@ -238,16 +242,26 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     backgroundColor: '#C7CAB6',
+
+
+
   },
   mainImageContainer: {
-    flex: 1,
+    //flex: 1,
     marginTop: 30,
-    height: 280,
+    //backgroundColor: 'pink',
+    width: '75%',
+    aspectRatio: 1 / 1
+    // alignSelf: 'center'
+    /* height: '100%',
+    aspectRatio: 1 / 1 */
+
+
   },
   pickImage1Container: {
     flex: 1,
-    height: 280,
-    width: 280,
+    height: '100%',
+    width: '100%',
     backgroundColor: '#ccd4c3',
     justifyContent: 'center',
     alignItems: 'center',
@@ -273,7 +287,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    backgroundColor: 'pink'
   },
   moreImage: {
     height: 100,
@@ -301,15 +316,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '50%',
     justifyContent: 'center',
-    backgroundColor: '#fdccA0',
+    backgroundColor: '#FDCCA0',
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginRight: 10,
+    // marginRight: 10,
     borderRadius: 5,
     fontSize: 30,
     fontWeight: '600',
     color: '#07544b',
-    marginRight: 10
+
   },
   nextButtonText: {
     fontSize: 30,

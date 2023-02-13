@@ -296,81 +296,81 @@ const pickerData =
 
       {
         label: "alpaca",
-        value: "Alpaca"
+        value: "alpaca"
       },
       {
         label: "angora",
-        value: "Angora"
+        value: "angora"
       },
       {
         label: "camel",
-        value: "Camel"
+        value: "camel"
       },
       {
         label: 'cashmere',
-        value: "Cashmere"
+        value: "cashmere"
       },
       {
         label: "lamb",
-        value: "Lamb"
+        value: "lamb"
       },
       {
         label: "merinos",
-        value: "Merinos"
+        value: "merinos"
       },
       {
         label: "mix",
-        value: "Mix"
+        value: "mix"
       },
       {
         label: "superkid mohair/silk",
-        value: "Superkid Mohair/Silk"
+        value: "superkid Mohair/silk"
       },
       {
         label: "superkid mohair/pa",
-        value: "Superkid Mohair/Pa"
+        value: "superkid mohair/pa"
       },
 
       {
         label: "kid mohair",
-        value: "Kid Mohair"
+        value: "kid Mohair"
       },
       {
         label: "yak",
-        value: "Yak"
+        value: "yak"
       },
       {
         label: "cotton",
-        value: "Cotton"
+        value: "cotton"
       },
       {
         label: "silk",
-        value: "Silk"
+        value: "silk"
       },
       {
         label: "linen",
-        value: "Linen"
+        value: "linen"
       },
       {
         label: "viscose",
-        value: "Viscose"
+        value: "viscose"
       },
 
       {
         label: "elastan",
-        value: "Elastan"
+        value: "elastan"
       },
       {
         label: "syntetic",
-        value: "Syntetic"
+        value: "syntetic"
       },
       {
         label: "pa",
-        value: "Pa"
+        value: "pa"
       },
       {
         label: "other",
-        value: "Other"
+        value: "other"
       },
 
     ]

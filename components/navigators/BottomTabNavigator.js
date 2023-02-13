@@ -22,6 +22,7 @@ const Tab = createBottomTabNavigator();
 
 function BottomTabNavigator(props) {
   const { t, i18n } = useTranslation();
+
   const [yarns, setYarns] = useContext(YarnContext)
   const [cone, setCone] = useContext(YarnContext)
   const windowHeight = Dimensions.get('window').height
@@ -79,7 +80,7 @@ function BottomTabNavigator(props) {
     >
       <Tab.Screen
 
-        name="New Yarn"
+        name={t('new yarn')}
         component={NewConeStackNavigator}
         options={{
           headerTitleStyle: { fontSize: 22, color: '#3F6B66', fontWeight: 'bold', bottom: 0, },

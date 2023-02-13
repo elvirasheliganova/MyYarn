@@ -2,10 +2,13 @@ import { View, Text, TextInput, FlatList, Image, Pressable, StyleSheet } from 'r
 import Checkbox from 'expo-checkbox'
 import React, { useContext, useState, useCallback } from 'react'
 import { YarnContext } from '../components/YarnContext';
+import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import SearchDataBox from '../components/SearchDataBox';
 
+
 const Search = ({ navigation }) => {
+  const { t } = useTranslation()
   const [yarns, setYarns] = useContext(YarnContext)
   const [value, onChangeText] = useState()
   const [checkedBoxes, setCheckedBoxes] = useState({
@@ -30,10 +33,10 @@ const Search = ({ navigation }) => {
   }
 
   const checkedBoxesLabels = {
-    isComposition: "Composition",
-    isWeight: "Quantity",
-    isColor: "Color",
-    isManufactirer: "Manufacturer"
+    isComposition: "composition",
+    isWeight: "quantity",
+    isColor: "color",
+    isManufactirer: "manufacturer"
   }
 
   const onChangeChekedBoxes = useCallback((checkedBox) => (newValue) => {
@@ -50,12 +53,12 @@ const Search = ({ navigation }) => {
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer}
       >
-        <View style={{ paddingTop: value ? 50 : 100, height: value ? 150 : 250, }}>
-          <Text style={{ fontSize: 24, color: '#07544b', fontWeight: 'bold' }}>Search by </Text>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15, marginTop: 15 }} >
+        <View style={{ paddingTop: value ? 50 : 100, height: value ? 180 : 280, }}>
+          <Text style={{ fontSize: 24, color: '#07544b', fontWeight: 'bold' }}>{t('search by')}</Text>
+          <View style={{ justifyContent: 'space-between', marginTop: 10, }} >
             {Object.keys(checkedBoxes).map((checkedBox) => {
               return (
-                <View style={{ flexDirection: 'row', }} key={checkedBox}>
+                <View style={{ flexDirection: 'row', marginVertical: 5 }} key={checkedBox}>
                   <Checkbox
                     style={{ marginRight: 3 }}
                     value={checkedBoxes[checkedBox]}
@@ -63,7 +66,7 @@ const Search = ({ navigation }) => {
                     color={checkedBoxes[checkedBox] ? '#4630EB' : undefined}
 
                   />
-                  <Text style={{ fontSize: 12, color: '#42370B', fontWeight: 'bold' }}>{checkedBoxesLabels[checkedBox]}</Text>
+                  <Text style={{ fontSize: 12, color: '#42370B', fontWeight: 'bold' }}>{t(`${checkedBoxesLabels[checkedBox]}`)}</Text>
                 </View>
               )
             })}

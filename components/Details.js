@@ -18,7 +18,7 @@ const Details = (props) => {
   const [isMix, setIsMix] = useState(false)
   const [weight, onChangeWeight] = useState();
   return (
-    <View style={{ flex: 1, }}>
+    <View style={{ flex: 1, justifyContent: 'center' }}>
       {/* <View>
 
          <View style={{ marginTop: 20, }}>
@@ -62,7 +62,8 @@ const Details = (props) => {
         </View>
       </View>*/}
       <View style={{
-        flex: 1, justifyContent: 'space-around',
+        flex: 1,
+        justifyContent: 'center',
         //backgroundColor: 'yellow'
       }}>
         <View style={{ paddingTop: 10, }}>
@@ -127,7 +128,8 @@ const styles = StyleSheet.create({
       //'#BFC3AE'
       //'#F3B3FD',
       'pink',
-    margin: 10,
+    marginVertical: 15,
+    marginHorizontal: 10,
     borderRadius: 10,
     padding: 10,
     fontSize: 18,

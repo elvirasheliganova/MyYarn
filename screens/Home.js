@@ -29,8 +29,8 @@ const Home = ({ route, navigation }) => {
   const [selectedCash, setSelectedCash] = useState('')
   const [selectedMerino, setSelectedMerino] = useState('')
   const [selectedLamb, setSelectedLamb] = useState('')
-  const [selectedSKidPa, setSelectedSKidPa] = useState('')
-  const [selectedSKidSilk, setSelectedSKidSilk] = useState('')
+  const [selectedSKid, setSelectedSKid] = useState('')
+  const [selectedKid, setSelectedKid] = useState('')
   const [selectedYak, setSelectedYak] = useState('')
   const [selectedLinen, setSelectedLinen] = useState('')
   const [selectedCotton, setSelectedCotton] = useState('')
@@ -92,11 +92,15 @@ const Home = ({ route, navigation }) => {
           colors={['#D2F0EE', 'transparent']}
           style={styles.gradientContainer} >
           <View style={{
-            justifyContent: 'space-between',
+            // justifyContent: 'center',
             flex: 1,
-            //backgroundColor: 'pink'
+            // backgroundColor: 'lightpink',
+
           }}>
-            <View style={{ flex: 1 }}>
+            <View style={{
+              flex: 1,
+              // backgroundColor: 'blue'
+            }}>
 
               <ModalView
                 data={pickerData.yarnType}
@@ -112,8 +116,8 @@ const Home = ({ route, navigation }) => {
                 chooseWool={setSelectedWool}
                 chooseMerino={setSelectedMerino}
                 chooseLamb={setSelectedLamb}
-                chooseSKidPa={setSelectedSKidPa}
-                chooseSKidSilk={setSelectedSKidSilk}
+                chooseSKid={setSelectedSKid}
+                chooseKid={setSelectedKid}
                 chooseYak={setSelectedYak}
                 chooseLinen={setSelectedLinen}
                 chooseSilk={setSelectedSilk}
@@ -122,17 +126,7 @@ const Home = ({ route, navigation }) => {
                 chooseElastan={setSelectedElastan}
                 choosePa={setSelectedPa}
                 chooseSintetyc={setSelectedSintetyc}
-              //selectedMerino={selectedMerino}
-
-
-
-
-
-              // 
-
-
               />
-
 
               <ModalView
                 data={pickerData.manufacturer}
@@ -148,14 +142,19 @@ const Home = ({ route, navigation }) => {
               //chooseId={setId} 
               />
             </View>
-
-            <Details
-              image={image}
-              chooseLength={onChangeLength}
-              chooseWeight={onChangeWeight}
+            <View style={{
+              flex: 1,
+              //backgroundColor: 'grey',
+              //justifyContent: 'center'
+            }}>
+              <Details
+                image={image}
+                chooseLength={onChangeLength}
+                chooseWeight={onChangeWeight}
               /* selectedYarnType={selectedYarnType}
               selectedYarnManufacturer={selectedYarnManufacturer}
               selectedYarnColor={selectedYarnColor} */ />
+            </View>
             {/*  <Button 
             id={id}
             image={image}
@@ -173,42 +172,13 @@ const Home = ({ route, navigation }) => {
                   {
 
                     !mix ? setId(Date.now()) : null
-                    setMix({ selectedAlpaca, selectedAngora, selectedCamel, selectedCash, selectedMerino, selectedLamb, selectedSKidPa, selectedSKidSilk, selectedWool, selectedYak, selectedLinen, selectedSilk, selectedCotton, selectedViscose, selectedElastan, selectedPa, selectedSintetyc })
-                    //setMix('')
-
-                    //if (selectedYarnType)
-                    //length, 
-                    //selectedYarnColor,
-                    //selectedYarnManufacturer
-
-                    //console.log(mix)
-                    //console.log(selectedMerino)
-
-                    //setCone(cone)
-
-
-
-
-                    //console.log(cone.selectedYarnColor)
-
-
-                    /*      else {
-                           Alert.alert(
-                             "No full yarn data",
-                             "Please choose  Yarn Type, Manufacturer, Color and Weight",
-                             [{
-                               text: "OK",
-                             }]
-                           );
-                         } */
-
+                    setMix({ selectedAlpaca, selectedAngora, selectedCamel, selectedCash, selectedMerino, selectedLamb, selectedSKid, selectedKid, selectedWool, selectedYak, selectedLinen, selectedSilk, selectedCotton, selectedViscose, selectedElastan, selectedPa, selectedSintetyc })
 
                   }
 
-
                 }}
               >
-                <Text style={styles.confirmText}>Confirm</Text>
+                <Text style={styles.confirmText}>{t('save')}</Text>
               </TouchableOpacity>
 
             </View>
@@ -224,12 +194,12 @@ const styles = StyleSheet.create({
   gradientContainer: {
     flex: 1,
 
-    justifyContent: 'center',
+    //justifyContent: 'center',
     backgroundColor: '#C7CAB6'
   },
   buttonContainer: {
     width: 300,
-    marginBottom: 20,
+    marginVertical: 20,
     alignSelf: 'center', justifyContent: 'center',
     //justifyContent: 'space-between',
     flexDirection: 'row',
@@ -237,7 +207,7 @@ const styles = StyleSheet.create({
   confirmContainer: {
     height: 45,
     backgroundColor: '#DCFC98',
-    borderRadius: 5,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 40,

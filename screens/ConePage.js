@@ -16,10 +16,12 @@ import { Feather } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { particularitiesLabels } from "./DetailsPicker";
+import { useTranslation } from "react-i18next";
 import Gauge from "../components/Gauge";
 
 
 const ConePage = ({ route }) => {
+  const { t } = useTranslation()
   const [yarns, setYarns] = useContext(YarnContext);
   const { coneId, cone } = route.params;
   const yarn = yarns.find((yarn) => yarn.id === coneId);
@@ -59,10 +61,10 @@ const ConePage = ({ route }) => {
         );
       });
     }, [yarn.particularities]); */
-
+  console.log(yarn.selectedYarnType)
   return (
 
-    <View style={{ flex: 1, }}>
+    <ScrollView style={{ flex: 1, }}>
       <LinearGradient
         colors={["#D2F0EE", "transparent"]}
         style={styles.linearGradientContainer}
@@ -71,7 +73,7 @@ const ConePage = ({ route }) => {
           <View style={styles.mainDataContainer}>
             <View style={styles.yarnTitle} >
               <View style={{}}>
-                <Text style={styles.yarnTitleText}> {yarn.selectedYarnType}{" "}</Text>
+                <Text style={styles.yarnTitleText}>{t(`${yarn.selectedYarnType}`)}{" "}</Text>
               </View>
               <View style={{ alignContent: 'flex-end', width: '65%' }}>
                 <View style={styles.yarnMixData}
@@ -79,35 +81,35 @@ const ConePage = ({ route }) => {
                 >
                   {yarn.mix && yarn.mix.selectedCash ? (
                     <View style={{}}>
-                      <Text style={styles.yarnMixDataItem}> Cash {yarn.mix.selectedCash}</Text>
+                      <Text style={styles.yarnMixDataItem}> {t('cashmere')} {t(`${yarn.mix.selectedCash}`)}</Text>
                     </View>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedAlpaca ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}Alpaca {yarn.mix.selectedAlpaca}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('alpaca')} {t(`${yarn.mix.selectedAlpaca}`)}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedAngora ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}Angora {yarn.mix.selectedAngora}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('angora')} {t(`${yarn.mix.selectedAngora}`)}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedCamel ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}Camel {yarn.mix.selectedCamel}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('camel')} {t(`${yarn.mix.selectedCamel}`)}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedWool ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  Wool {yarn.mix.selectedWool}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('wool')} {t(`${yarn.mix.selectedWool}`)}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedMerino ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  Merinos {yarn.mix.selectedMerino}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('merinos')} {t(`${yarn.mix.selectedMerino}`)}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedYak ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  Yak {yarn.mix.selectedYak}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('yak')} {t(`${yarn.mix.selectedYak}`)}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedLamb ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  Lamb {yarn.mix.selectedLamb}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('lamb')} {t(`${yarn.mix.selectedLamb}`)}</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedSKidPa ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  SuperKid Mohair/Pa {yarn.mix.selectedSKidPa}</Text>
+                  {yarn.mix && yarn.mix.selectedSKid ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('superkid mohair')} {t(`${yarn.mix.selectedSKid}`)}</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedSKidSilk ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  SuperKid Mohair/Silk {yarn.mix.selectedSKidSilk}</Text>
+                  {yarn.mix && yarn.mix.selectedKid ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('kid mohair')} {t(`${yarn.mix.selectedKid}`)}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedLinen ? (
                     <Text style={styles.yarnMixDataItem}>{" "}  Linen {yarn.mix.selectedLinen}</Text>
@@ -137,9 +139,9 @@ const ConePage = ({ route }) => {
               style={styles.yarnDetails}
             >
               <Text style={styles.yarnDetailsTitle}>
-                {yarn.length} mts/100 grams
+                {yarn.length} {t('mts')} {/* / 100 {t('grams')} */}
               </Text>
-              <Text style={{ fontSize: 14, color: "grey" }}>Weight </Text>
+              <Text style={{ fontSize: 14, color: "grey" }}>{t('weight')} </Text>
             </View>
             <View
               style={styles.yarnDetails}
@@ -148,7 +150,7 @@ const ConePage = ({ route }) => {
                 {yarn.selectedYarnManufacturer}{" "}
               </Text>
               <Text style={{ fontSize: 14, color: "grey" }}>
-                Manufactured by{" "}
+                {t('manufactured by')} {" "}
               </Text>
             </View>
             {yarn.weight ? (
@@ -180,7 +182,7 @@ const ConePage = ({ route }) => {
                     </>
                   ) : (
                     <Text style={{ fontSize: 14, fontWeight: "600" }}>
-                      {yarn.weight} grams{" "}
+                      {yarn.weight} {t('grams')}{" "}
                     </Text>
                   )}
                   {!edit ? (
@@ -193,7 +195,7 @@ const ConePage = ({ route }) => {
                   ) : null}
                 </View>
                 <Text style={{ fontSize: 14, color: "grey" }}>
-                  Cone weight{" "}
+                  {t('quantity')}{" "}
                 </Text>
               </View>
             ) : null}
@@ -233,7 +235,7 @@ const ConePage = ({ route }) => {
 
         </View>
       </LinearGradient>
-    </View>
+    </ScrollView>
 
   );
 };
@@ -246,10 +248,11 @@ const styles = StyleSheet.create({
 
   },
   mainDataContainer: {
-    marginHorizontal: 15,
-    paddingHorizontal: 15,
+    flex: 1,
+
+    paddingHorizontal: 20,
     paddingBottom: 15,
-    backgroundColor: "#D7DCCA80",
+    //backgroundColor: "#D7DCCA80",
     //'#EFECE7'
     borderRadius: 10,
     shadowColor: "# 8C9284",
@@ -263,16 +266,18 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 5,
     alignItems: 'center',
-    marginVertical: 10
+    marginVertical: 10,
+
   },
   yarnTitleText: {
     fontSize: 18,
     fontWeight: "600",
-    marginRight: 40
+    // marginRight: 40
   },
   yarnMixData: {
     backgroundColor: 'pink',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    marginHorizontal: 15,
     //flexDirection: "row",
     //alignItems: "flex-end",
   },
@@ -318,7 +323,8 @@ const styles = StyleSheet.create({
   },
   imagesContainer: {
     marginHorizontal: 20,
-    marginVertical: 6,
+    //marginVertical: 6,
+    marginBottom: 25,
     shadowColor: "# 8C9284",
     shadowOffset: { width: -2, height: -4 },
     shadowOpacity: 0.1,
@@ -332,16 +338,16 @@ const styles = StyleSheet.create({
   },
   gaugeContainer: {
 
-    backgroundColor: "#c4d2c9",
-    marginHorizontal: 15,
-    padding: 10,
-    borderRadius: 10,
+    // backgroundColor: "#c4d2c9",
+    //marginHorizontal: 20,
+    //padding: 10,
+    // borderRadius: 10,
     // marginBottom: 50
 
   },
   gaugeImageData: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    //justifyContent: "space-between",
     alignItems: "flex-start",
 
   },

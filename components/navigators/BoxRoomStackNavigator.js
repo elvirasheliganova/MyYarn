@@ -1,6 +1,7 @@
 import { View, Text, Button } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { useTranslation } from 'react-i18next'
 
 import BoxRoom from '../../screens/BoxRoom'
 import ConePage from '../../screens/ConePage'
@@ -8,6 +9,7 @@ import ConePage from '../../screens/ConePage'
 const Stack = createNativeStackNavigator()
 
 const BoxRoomStackNavigator = () => {
+  const { t } = useTranslation()
   return (
     <Stack.Navigator screenOptions={{
       headerTintColor: '#3F6B66',
@@ -18,11 +20,12 @@ const BoxRoomStackNavigator = () => {
 
       headerShadowVisible: false,
     }}>
-      <Stack.Screen name='Yarns' component={BoxRoom} options={{ headerStyle: { backgroundColor: '#D2F0EE', }, }} />
+      <Stack.Screen name={t('yarn box')} component={BoxRoom} options={{ headerStyle: { backgroundColor: '#D2F0EE', }, }} />
       <Stack.Screen name='ConePage' component={ConePage}
         options={{
           headerStyle: { backgroundColor: '#CBE9E7BF' },
           headerTitle: '',
+          headerBackTitle: '',
         }} />
     </Stack.Navigator>
   )
