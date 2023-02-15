@@ -20,8 +20,8 @@ const Home = ({ route, navigation }) => {
   const [selectedYarnType, setSelectedYarnType] = useState()
   const [length, onChangeLength] = useState()
   const [weight, onChangeWeight] = useState();
-  const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState()
-  const [selectedYarnColor, setSelectedYarnColor] = useState()
+  const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState('')
+  const [selectedYarnColor, setSelectedYarnColor] = useState('')
   const [selectedAlpaca, setSelectedAlpaca] = useState('')
   const [selectedAngora, setSelectedAngora] = useState('')
   const [selectedCamel, setSelectedCamel] = useState('')

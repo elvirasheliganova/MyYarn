@@ -9,7 +9,7 @@ const pickerData =
 
       {
         label: "botto giuseppe",
-        value: "Botto Giuseppe"
+        value: "Botto Giuseppe / Ботто Джузеппе"
       },
       {
         label: "botto poala",
@@ -122,7 +122,7 @@ const pickerData =
       },
       {
         label: "loro piana",
-        value: "Loro Piana"
+        value: "Loro Piana / Лоро Пиана"
       },
       {
         label: "loro festa",
@@ -215,7 +215,7 @@ const pickerData =
       },
       {
         label: "orange",
-        value: "Pink"
+        value: "orange"
       },
       {
         label: "red",

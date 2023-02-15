@@ -2,13 +2,12 @@ import { View, Text, TextInput, FlatList, Image, Pressable, StyleSheet } from 'r
 import Checkbox from 'expo-checkbox'
 import React, { useContext, useState, useCallback } from 'react'
 import { YarnContext } from '../components/YarnContext';
-import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import SearchDataBox from '../components/SearchDataBox';
-
+import { useTranslation } from 'react-i18next';
 
 const Search = ({ navigation }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [yarns, setYarns] = useContext(YarnContext)
   const [value, onChangeText] = useState()
   const [checkedBoxes, setCheckedBoxes] = useState({
@@ -17,11 +16,19 @@ const Search = ({ navigation }) => {
     isColor: false,
     isManufactirer: false
   })
-  const searchComposition = yarns.filter(yarn => yarn.selectedYarnType.includes(value))
 
+  //const searchComposition = yarns.filter(yarn => yarn.selectedYarnType.includes(value))
+  //console.log(i18n.language)
+
+  //const searchWeight = yarns.filter(yarn => parseInt(yarn.weight) >= value)
+  //const searchColor = yarns.filter(yarn => yarn.selectedYarnColor.includes(value))
+  //const searchManufacturer = yarns.filter(yarn => yarn.selectedYarnManufacturer.includes(value))
   const searchWeight = yarns.filter(yarn => parseInt(yarn.weight) >= value)
-  const searchColor = yarns.filter(yarn => yarn.selectedYarnColor.includes(value))
-  const searchManufacturer = yarns.filter(yarn => yarn.selectedYarnManufacturer.includes(value))
+  const searchComposition = value ? yarns.filter((yarn) => t(`${yarn.selectedYarnType}`).toLowerCase().includes(value.toLowerCase())) : null
+  // const searchColor = yarns.filter((yarn) => { yarn.selectedYarnColor.includes(value.toLowerCase()), console.log(value) })
+  const searchColor = value ? yarns.filter((yarn) => t(`${yarn.selectedYarnColor}`).toLowerCase().includes(value.toLowerCase())) : null
+  const searchManufacturer = yarns.filter(yarn => value && i18n.language === 'ru' ? t(`${yarn.selectedYarnManufacturer}`).includes(value.toLowerCase()) : yarn.selectedYarnManufacturer.includes(value))
+  console.log(yarns)
 
   const goToYarnPage = (cone) => {
     {
@@ -46,7 +53,6 @@ const Search = ({ navigation }) => {
       [checkedBox]: newValue
     })
   }, [])
-  //console.log(yarns)
   return (
 
     <View style={{ flex: 1, justifyContent: 'center' }} >
@@ -54,12 +60,12 @@ const Search = ({ navigation }) => {
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer}
       >
-        <View style={{ paddingTop: value ? 50 : 100, height: value ? 180 : 280, }}>
-          <Text style={{ fontSize: 24, color: '#07544b', fontWeight: 'bold' }}>{t('search by')}</Text>
-          <View style={{ justifyContent: 'space-between', marginTop: 10, }} >
+        <View style={{ paddingTop: value ? 50 : 100, height: value ? 150 : 250, }}>
+          <Text style={{ fontSize: 24, color: '#07544b', fontWeight: 'bold' }}>Search by </Text>
+          <View style={{ /* flexDirection: 'row', */ justifyContent: 'space-between', paddingVertical: 15, marginTop: 15 }} >
             {Object.keys(checkedBoxes).map((checkedBox) => {
               return (
-                <View style={{ flexDirection: 'row', marginVertical: 5 }} key={checkedBox}>
+                <View style={{ flexDirection: 'row', }} key={checkedBox}>
                   <Checkbox
                     style={{ marginRight: 3 }}
                     value={checkedBoxes[checkedBox]}
@@ -118,8 +124,8 @@ const Search = ({ navigation }) => {
                       />
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                      <SearchDataBox data={`${item.length} m`} />
-                      <SearchDataBox data={item.selectedYarnManufacturer} />
+                      <SearchDataBox data={`${item.selectedYarnWeight} m`} />
+                      {/*  <SearchDataBox data={item.selectedYarnManufacturer} />
                       {item.particularities.isWorsted === true ?
                         <SearchDataBox data={'Worsted'} />
                         : null
@@ -131,7 +137,7 @@ const Search = ({ navigation }) => {
                       {item.particularities.isAngled === true ?
                         <SearchDataBox data={'Angled'} />
                         : null
-                      }
+                      } */}
                     </View>
                   </View>
                 }

@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { YarnContext } from '../YarnContext';
 import NewConeStackNavigator from './NewConeStackNavigator';
 import { Ionicons } from '@expo/vector-icons';
-import Search from '../../screens/Search';
+import Search2 from '../../screens/Search2';
 import BoxRoomStackNavigator from '../navigators/BoxRoomStackNavigator';
 import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -94,7 +94,7 @@ function BottomTabNavigator(props) {
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="library-shelves" size={24} color={color} />
         }} />
 
-      <Tab.Screen name="Search" component={Search}
+      <Tab.Screen name="Search" component={Search2}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />
