@@ -18,6 +18,7 @@ const Search = ({ navigation }) => {
     isManufactirer: false
   })
   const searchComposition = yarns.filter(yarn => yarn.selectedYarnType.includes(value))
+  console.log(searchComposition)
   const searchWeight = yarns.filter(yarn => parseInt(yarn.weight) >= value)
   const searchColor = yarns.filter(yarn => yarn.selectedYarnColor.includes(value))
   const searchManufacturer = yarns.filter(yarn => yarn.selectedYarnManufacturer.includes(value))
@@ -66,7 +67,7 @@ const Search = ({ navigation }) => {
                     color={checkedBoxes[checkedBox] ? '#4630EB' : undefined}
 
                   />
-                  <Text style={{ fontSize: 12, color: '#42370B', fontWeight: 'bold' }}>{t(`${checkedBoxesLabels[checkedBox]}`)}</Text>
+                  <Text style={{ fontSize: 12, color: '#42370B', fontWeight: 'bold' }}>{checkedBoxesLabels[checkedBox]}</Text>
                 </View>
               )
             })}
@@ -82,6 +83,7 @@ const Search = ({ navigation }) => {
         </View>
 
         {value ?
+
           <View style={{ flex: 1, }}>
             <View style={{}}>
               <FlatList
@@ -117,7 +119,7 @@ const Search = ({ navigation }) => {
                       />
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                      <SearchDataBox data={`${item.length} m`} />
+                      {/*  <SearchDataBox data={`${item.length} m`} />
                       <SearchDataBox data={item.selectedYarnManufacturer} />
                       {item.particularities.isWorsted === true ?
                         <SearchDataBox data={'Worsted'} />
@@ -130,7 +132,7 @@ const Search = ({ navigation }) => {
                       {item.particularities.isAngled === true ?
                         <SearchDataBox data={'Angled'} />
                         : null
-                      }
+                      } */}
                     </View>
                   </View>
                 }
