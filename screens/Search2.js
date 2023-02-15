@@ -60,12 +60,12 @@ const Search = ({ navigation }) => {
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer}
       >
-        <View style={{ paddingTop: value ? 50 : 100, height: value ? 150 : 250, }}>
-          <Text style={{ fontSize: 24, color: '#07544b', fontWeight: 'bold' }}>Search by </Text>
-          <View style={{ /* flexDirection: 'row', */ justifyContent: 'space-between', paddingVertical: 15, marginTop: 15 }} >
+        <View style={{ paddingTop: 40 /* paddingTop: value ? 50 : 100, height: value ? 150 : 250, */ }}>
+          <Text style={{ fontSize: 24, color: '#07544b', fontWeight: 'bold' }}>{t('search by')}</Text>
+          <View style={{ /* flexDirection: 'row', */ justifyContent: 'space-between', paddingVertical: 15, }} >
             {Object.keys(checkedBoxes).map((checkedBox) => {
               return (
-                <View style={{ flexDirection: 'row', }} key={checkedBox}>
+                <View style={{ flexDirection: 'row', marginVertical: 5 }} key={checkedBox}>
                   <Checkbox
                     style={{ marginRight: 3 }}
                     value={checkedBoxes[checkedBox]}
@@ -101,15 +101,15 @@ const Search = ({ navigation }) => {
                       <View style={styles.titleData}>
                         <View style={{ width: '65%' }}>
                           <View style={{ flexDirection: 'row', alignContent: 'center', }}>
-                            <Text style={styles.yarnType}>{item.selectedYarnType} </Text>
-                            <Text style={styles.yarnWeight}> {item.weight}gr </Text>
+                            <Text style={styles.yarnType}>{t(`${item.selectedYarnType}`)} </Text>
+                            <Text style={styles.yarnWeight}> {t(`${item.weight}`)} {t('grams')}</Text>
                           </View>
                         </View>
                         <Pressable
                           onPress={() => goToYarnPage(item)}
                           style={styles.moreInfo}
                         >
-                          <Text style={{ fontSize: 16 }}>More Info</Text>
+                          <Text style={{ fontSize: 16 }}>{t('more info')}</Text>
                         </Pressable>
                       </View>
                       <FlatList
@@ -124,7 +124,7 @@ const Search = ({ navigation }) => {
                       />
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                      <SearchDataBox data={`${item.selectedYarnWeight} m`} />
+                      <Text>{t(`${item.length}`)} {t('mts')} / 100 {t('grams')}</Text>
                       {/*  <SearchDataBox data={item.selectedYarnManufacturer} />
                       {item.particularities.isWorsted === true ?
                         <SearchDataBox data={'Worsted'} />

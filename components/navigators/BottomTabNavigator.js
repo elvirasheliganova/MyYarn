@@ -88,13 +88,13 @@ function BottomTabNavigator(props) {
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="shopping-outline" size={24} color={color} />
         }} />
 
-      <Tab.Screen name="Yarn Box" component={BoxRoomStackNavigator}
+      <Tab.Screen name={t('yarn box')} component={BoxRoomStackNavigator}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="library-shelves" size={24} color={color} />
         }} />
 
-      <Tab.Screen name="Search" component={Search2}
+      <Tab.Screen name={t('search')} component={Search2}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />

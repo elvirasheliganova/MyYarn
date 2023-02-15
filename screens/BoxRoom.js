@@ -88,7 +88,7 @@ const BoxRoom = ({ navigation }) => {
                       }
                     </View>
                     <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', color: '#372310' }}>{item.length} m</Text>
-                    <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', color: '#372310' }}>{item.selectedYarnManufacturer}</Text>
+                    <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', color: '#372310' }}>{t(`${item.selectedYarnManufacturer}`)}</Text>
                   </View>
                 </Pressable>
               </View>
