@@ -32,7 +32,7 @@ const Search = ({ navigation }) => {
 
   const goToYarnPage = (cone) => {
     {
-      navigation.navigate('Yarn Box', {
+      navigation.navigate(t('yarn box'), {
         screen: 'ConePage',
         params: { coneId: cone.id }
       }),
@@ -65,15 +65,15 @@ const Search = ({ navigation }) => {
           <View style={{ /* flexDirection: 'row', */ justifyContent: 'space-between', paddingVertical: 15, }} >
             {Object.keys(checkedBoxes).map((checkedBox) => {
               return (
-                <View style={{ flexDirection: 'row', marginVertical: 5 }} key={checkedBox}>
+                <View style={{ flexDirection: 'row', marginVertical: 5, alignItems: 'flex-end' }} key={checkedBox}>
                   <Checkbox
-                    style={{ marginRight: 3 }}
+                    style={{ marginRight: 8, }}
                     value={checkedBoxes[checkedBox]}
                     onValueChange={onChangeChekedBoxes(checkedBox)}
                     color={checkedBoxes[checkedBox] ? '#4630EB' : undefined}
 
                   />
-                  <Text style={{ fontSize: 12, color: '#42370B', fontWeight: 'bold' }}>{t(`${checkedBoxesLabels[checkedBox]}`)}</Text>
+                  <Text style={{ fontSize: 14, color: '#504412', fontWeight: 'bold', }}>{t(`${checkedBoxesLabels[checkedBox]}`)}</Text>
                 </View>
               )
             })}
@@ -100,9 +100,9 @@ const Search = ({ navigation }) => {
                     <View>
                       <View style={styles.titleData}>
                         <View style={{ width: '65%' }}>
-                          <View style={{ flexDirection: 'row', alignContent: 'center', }}>
+                          <View style={{ alignContent: 'center' }}>
                             <Text style={styles.yarnType}>{t(`${item.selectedYarnType}`)} </Text>
-                            <Text style={styles.yarnWeight}> {t(`${item.weight}`)} {t('grams')}</Text>
+                            <Text style={styles.yarnWeight}>{t(`${item.weight}`)} {t('grams')}</Text>
                           </View>
                         </View>
                         <Pressable
@@ -177,8 +177,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   yarnType: {
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 20,
+    marginBottom: 5,
+    fontWeight: 'bold',
     color: '#3B3629'
   },
   yarnWeight: {

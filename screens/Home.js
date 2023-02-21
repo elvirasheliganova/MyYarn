@@ -17,7 +17,7 @@ const Home = ({ route, navigation }) => {
   const { image } = route.params
   const { t } = useTranslation()
   const [yarns, setYarns] = useContext(YarnContext)
-  const [selectedYarnType, setSelectedYarnType] = useState()
+  const [selectedYarnType, setSelectedYarnType] = useState('')
   const [length, onChangeLength] = useState()
   const [weight, onChangeWeight] = useState();
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState('')
@@ -80,7 +80,7 @@ const Home = ({ route, navigation }) => {
 
   }, [yarns]);
   //
-  console.warn(cone)
+  //console.warn(cone)
   // console.warn(mix)
   //console.log(selectedMerino, selectedCash, selectedCotton)
   return (
@@ -101,10 +101,11 @@ const Home = ({ route, navigation }) => {
               flex: 1,
               // backgroundColor: 'blue'
             }}>
-
+              {/* {selectedYarnType ? <View><Text>{selectedYarnType}</Text></View> : null} */}
               <ModalView
                 data={pickerData.yarnType}
                 text={t('composition')}
+                label={t(`${selectedYarnType}`)}
                 chooseYarn={setSelectedYarnType}
                 //chooseId={setId}
                 chooseMix={setIsMix}
@@ -130,6 +131,7 @@ const Home = ({ route, navigation }) => {
 
               <ModalView
                 data={pickerData.manufacturer}
+                label={t(`${selectedYarnManufacturer}`)}
                 text={t('manufacturer')}
                 chooseYarn={setSelectedYarnManufacturer}
               //chooseId={setId} 
@@ -137,6 +139,7 @@ const Home = ({ route, navigation }) => {
 
               <ModalView
                 data={pickerData.color}
+                label={t(`${selectedYarnColor}`)}
                 text={t('color')}
                 chooseYarn={setSelectedYarnColor}
               //chooseId={setId} 
@@ -168,13 +171,33 @@ const Home = ({ route, navigation }) => {
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.confirmContainer}
+
                 onPress={() => {
                   {
-
                     !mix ? setId(Date.now()) : null
-                    setMix({ selectedAlpaca, selectedAngora, selectedCamel, selectedCash, selectedMerino, selectedLamb, selectedSKid, selectedKid, selectedWool, selectedYak, selectedLinen, selectedSilk, selectedCotton, selectedViscose, selectedElastan, selectedPa, selectedSintetyc })
+                    if (selectedYarnType, length, selectedYarnColor, selectedYarnManufacturer) {
+
+                      setCone({ id, image, selectedYarnType, isMix, mix, length, selectedYarnManufacturer, selectedYarnColor, weight })
+                      //setCone(cone)
+
+
+
+
+                      //console.log(cone.selectedYarnColor)
+                    }
+                    /*  : {
+                       Alert.alert(
+                         "No full yarn data",
+                         "Please choose  Yarn Type, Manufacturer, Color and Weight",
+                         [{
+                           text: "OK",
+                         }]
+                       );
+                     } */
+
 
                   }
+
 
                 }}
               >
@@ -214,8 +237,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   confirmText: {
-    fontSize: 16,
-    color: '#42370B',
+    fontSize: 18,
+    color: '#504412',
+    // color: '#07544b',
     //'#413918',
     fontWeight: 'bold'
   },
@@ -229,7 +253,8 @@ const styles = StyleSheet.create({
   },
   saveYarnText: {
     fontSize: 16,
-    color: '#42370B',
+
+    // color: '#42370B',
     fontWeight: 'bold'
   },
 

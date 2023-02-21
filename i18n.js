@@ -9,6 +9,7 @@ const { en, ru, de } = translations
 
 
 i18n.use(initReactI18next).init({
+  compatibilityJSON: 'v3',
   lng: getLocales()[0].languageCode,
   fallbackLng: 'en',
   resources: {

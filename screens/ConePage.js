@@ -65,8 +65,9 @@ const ConePage = ({ route }) => {
   return (
 
     <ScrollView style={{ flex: 1, }}>
+      {/*   <View style={{ flex: 1, backgroundColor: '#EDFDFA' }}> */}
       <LinearGradient
-        colors={["#D2F0EE", "transparent"]}
+        colors={['#D2F0EE', "transparent"]}
         style={styles.linearGradientContainer}
       >
         <View style={{ flex: 1, height: '100%', justifyContent: 'space-around' }}>
@@ -81,56 +82,56 @@ const ConePage = ({ route }) => {
                 >
                   {yarn.mix && yarn.mix.selectedCash ? (
                     <View style={{}}>
-                      <Text style={styles.yarnMixDataItem}> {t('cashmere')} {t(`${yarn.mix.selectedCash}`)}</Text>
+                      <Text style={styles.yarnMixDataItem}> {t('cashmere')} {yarn.mix.selectedCash}%</Text>
                     </View>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedAlpaca ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('alpaca')} {t(`${yarn.mix.selectedAlpaca}`)}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('alpaca')} {yarn.mix.selectedAlpaca}%</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedAngora ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('angora')} {t(`${yarn.mix.selectedAngora}`)}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('angora')} {yarn.mix.selectedAngora}%</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedCamel ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('camel')} {t(`${yarn.mix.selectedCamel}`)}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('camel')} {yarn.mix.selectedCamel}%</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedWool ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('wool')} {t(`${yarn.mix.selectedWool}`)}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('wool')} {yarn.mix.selectedWool}%</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedMerino ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('merinos')} {t(`${yarn.mix.selectedMerino}`)}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('merinos')} {yarn.mix.selectedMerino}%</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedYak ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('yak')} {t(`${yarn.mix.selectedYak}`)}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('yak')} {yarn.mix.selectedYak}%</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedLamb ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('lamb')} {t(`${yarn.mix.selectedLamb}`)}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('lamb')} {yarn.mix.selectedLamb}%</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedSKid ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('superkid mohair')} {t(`${yarn.mix.selectedSKid}`)}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('superkid mohair')} {yarn.mix.selectedSKid}%</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedKid ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('kid mohair')} {t(`${yarn.mix.selectedKid}`)}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('kid mohair')} {yarn.mix.selectedKid}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedLinen ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  Linen {yarn.mix.selectedLinen}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('linen')} {yarn.mix.selectedLinen}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedSilk ? (
-                    <Text style={styles.yarnMixDataItem}> {" "} Silk {yarn.mix.selectedSilk}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('silk')} {yarn.mix.selectedSilk}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedCotton ? (
-                    <Text style={styles.yarnMixDataItem}> {" "} Cotton {yarn.mix.selectedCotton}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('cotton')} {yarn.mix.selectedCotton}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedViscose ? (
-                    <Text style={styles.yarnMixDataItem}> {" "} Viscose {yarn.mix.selectedViscose}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('viscose')} {yarn.mix.selectedViscose}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedElastan ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  Elastan {yarn.mix.selectedElastan}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('elastan')} {yarn.mix.selectedElastan}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedPa ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  Pa {yarn.mix.selectedPa}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('pa')} {yarn.mix.selectedPa}</Text>
                   ) : null}
                   {yarn.mix && yarn.mix.selectedSintetyc ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}  Sintetyc {yarn.mix.selectedSintetyc}</Text>
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('sintetic')} {yarn.mix.selectedSintetyc}</Text>
                   ) : null}
                 </View>
               </View>
@@ -138,18 +139,18 @@ const ConePage = ({ route }) => {
             <View
               style={styles.yarnDetails}
             >
-              <Text style={styles.yarnDetailsTitle}>
+              <Text style={[styles.yarnDetailsTitle, { color: '#424828' }]}>
                 {yarn.length} {t('mts')} {/* / 100 {t('grams')} */}
               </Text>
-              <Text style={{ fontSize: 14, color: "grey" }}>{t('weight')} </Text>
+              <Text style={{ fontSize: 14, color: '#424828' }}>{t('weight')} </Text>
             </View>
             <View
               style={styles.yarnDetails}
             >
-              <Text style={{ fontSize: 14, fontWeight: "600" }}>
+              <Text style={{ fontSize: 14, fontWeight: "600", color: '#424828' }}>
                 {yarn.selectedYarnManufacturer}{" "}
               </Text>
-              <Text style={{ fontSize: 14, color: "grey" }}>
+              <Text style={{ fontSize: 14, color: '#424828' }}>
                 {t('manufactured by')} {" "}
               </Text>
             </View>
@@ -164,11 +165,11 @@ const ConePage = ({ route }) => {
                         onChangeText={(value) => onChangeNewWeight(value)}
                         value={newWeight}
                         placeholder="500 "
-                        placeholderTextColor={"#867D59"}
+                        placeholderTextColor={"#424828"}
                         keyboardType="numeric"
                       />
                       <View style={{ height: 25, justifyContent: "center" }}>
-                        <Text>grams</Text>
+                        <Text>{t('grams')}</Text>
                       </View>
                       <Pressable
                         style={styles.checkIconContainer}
@@ -181,7 +182,7 @@ const ConePage = ({ route }) => {
                       </Pressable>
                     </>
                   ) : (
-                    <Text style={{ fontSize: 14, fontWeight: "600" }}>
+                    <Text style={{ fontSize: 14, fontWeight: "600", color: '#424828' }}>
                       {yarn.weight} {t('grams')}{" "}
                     </Text>
                   )}
@@ -194,7 +195,7 @@ const ConePage = ({ route }) => {
                     </Pressable>
                   ) : null}
                 </View>
-                <Text style={{ fontSize: 14, color: "grey" }}>
+                <Text style={{ fontSize: 14, color: "#424828" }}>
                   {t('quantity')}{" "}
                 </Text>
               </View>
@@ -234,6 +235,7 @@ const ConePage = ({ route }) => {
           </View>
 
         </View>
+        {/*  </View> */}
       </LinearGradient>
     </ScrollView>
 
@@ -255,13 +257,14 @@ const styles = StyleSheet.create({
     //backgroundColor: "#D7DCCA80",
     //'#EFECE7'
     borderRadius: 10,
-    shadowColor: "# 8C9284",
-    shadowOffset: { width: -2, height: -4 },
-    shadowOpacity: 0.1,
+    //shadowColor: "# 8C9284",
+    //shadowOffset: { width: -2, height: -4 },
+    //shadowOpacity: 0.1,
   },
   yarnTitle: {
     flexDirection: "row",
-    backgroundColor: "#DCFC98",
+    backgroundColor:
+      "#E6F5C8",
     justifyContent: "space-between",
     borderRadius: 10,
     padding: 5,
@@ -270,19 +273,23 @@ const styles = StyleSheet.create({
 
   },
   yarnTitleText: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: '#424828'
+
     // marginRight: 40
   },
   yarnMixData: {
-    backgroundColor: 'pink',
+    //backgroundColor: 'pink',
     marginLeft: 'auto',
     marginHorizontal: 15,
     //flexDirection: "row",
     //alignItems: "flex-end",
   },
   yarnMixDataItem: {
-    fontSize: 14, fontWeight: "600",
+    fontSize: 14, fontWeight: "bold",
+    paddingBottom: 5,
+    color: '#424828'
   },
   yarnDetails: {
     flexDirection: "row",
@@ -432,7 +439,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   saveGaugeButton: {
-    backgroundColor: "#fdccA0",
+    backgroundColor: '#FE9868',
+    // "#fdccA0",
     padding: 8,
     width: 130,
     borderRadius: 5,

@@ -93,7 +93,7 @@ const Search = ({ navigation }) => {
                   <View style={styles.yarnDataContainer}>
                     <View>
                       <View style={styles.titleData}>
-                        <View style={{ width: '65%' }}>
+                        <View style={{ width: '65%', }}>
                           <View style={{ flexDirection: 'row', alignContent: 'center', }}>
                             <Text style={styles.yarnType}>{item.selectedYarnType} </Text>
                             <Text style={styles.yarnWeight}> {item.weight}gr </Text>

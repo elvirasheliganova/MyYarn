@@ -10,6 +10,8 @@ const Details = (props) => {
   const [yarns, setYarns] = useContext(YarnContext)
   const [selectedYarnType, setSelectedYarnType] = useState("Cashmere")
   const [length, onChangeLength] = useState()
+  const [lengthIsVisible, setLengthIsVisible] = useState(false)
+  const [quantityIsVisible, setQuantityIsVisible] = useState(false)
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState("Loro Piana")
   const [selectedYarnColor, setSelectedYarnColor] = useState("White")
   const [id, setId] = useState()
@@ -64,29 +66,61 @@ const Details = (props) => {
       <View style={{
         flex: 1,
         justifyContent: 'center',
-        //backgroundColor: 'yellow'
+        // backgroundColor: 'yellow'
       }}>
-        <View style={{ paddingTop: 10, }}>
+        <View style={{
+          paddingVertical: 5,
+          //height: 40,
+          backgroundColor:
+            //'#BFC3AE'
+            //'#F3B3FD',
+            'pink',
+          marginVertical: 15,
+          marginHorizontal: 10,
+          borderRadius: 10,
+          flexDirection: 'row',
+          alignItems: 'center'
+        }}>
 
           <TextInput
             style={styles.textInput}
-            onChangeText={(value) => props.chooseLength(value)}
+            onChangeText={(value) => { props.chooseLength(value), setLengthIsVisible(true) }}
             value={length}
             placeholder={t('weight')}
             placeholderTextColor={'#746B45'}
             keyboardType="numeric"
           />
+          {lengthIsVisible ?
+            <View style={{ flex: 1, alignItems: 'flex-end' }}>
+              <Text style={{ flex: 1, marginRight: 10, fontWeight: 'bold', color: '#504412' }}>{t('m / 100 gr')}</Text>
+            </View> : null}
         </View>
-        <View style={{ paddingTop: 10, }}>
+        <View style={{
+          paddingVertical: 5,
+          backgroundColor:
+            //'#BFC3AE'
+            //'#F3B3FD',
+            'pink',
+          marginVertical: 15,
+          marginHorizontal: 10,
+          borderRadius: 10,
+          flexDirection: 'row',
+          alignItems: 'center'
+        }}>
 
           <TextInput
             style={styles.textInput}
-            onChangeText={(value) => props.chooseWeight(value)}
+            onChangeText={(value) => { props.chooseWeight(value), setQuantityIsVisible(true) }}
             value={weight}
             placeholder={t('quantity')}
             placeholderTextColor={'#746B45'}
             keyboardType="numeric"
           />
+          {quantityIsVisible ?
+            <View style={{ flex: 1, alignItems: 'flex-end' }}>
+              <Text style={{ flex: 1, marginRight: 10, fontSize: 16, fontWeight: 'bold', color: '#504412' }}>{t('gr')}</Text>
+            </View>
+            : null}
         </View>
 
         {/* <View style={styles.checkboxContainer}>
@@ -123,17 +157,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textInput: {
-    height: 40,
-    backgroundColor:
-      //'#BFC3AE'
-      //'#F3B3FD',
-      'pink',
-    marginVertical: 15,
-    marginHorizontal: 10,
-    borderRadius: 10,
-    padding: 10,
+
+    paddingLeft: 10,
+    paddingRight: 5,
     fontSize: 18,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#504412'
+
+
+
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -163,6 +195,7 @@ const styles = StyleSheet.create({
   },
   confirmText: {
     fontSize: 16,
+    //color: '#504412',
     color: '#42370B',
     //'#413918',
     fontWeight: 'bold'

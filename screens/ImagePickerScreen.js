@@ -33,7 +33,7 @@ const ImagePickerScreen = ({ navigation }) => {
       quality: 1,
     })
     if (!result.canceled) {
-      setMainImage(result.uri)
+      setMainImage(result.assets[0].uri)
     }
   }
   if (hasGalleryPermission === false) {
@@ -67,17 +67,29 @@ const ImagePickerScreen = ({ navigation }) => {
       <LinearGradient
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer} >
-        <View style={{ flex: 1, flexDirection: 'row', alignSelf: 'center' }}>
+        <View style={{
+          flex: 1, flexDirection: 'row',
+          alignSelf: 'center'
+        }}>
           <View style={styles.mainImageContainer}>
             <Pressable onPress={() => pickImage1()} style={[styles.pickImage1Container, { borderWidth: mainImage ? 0 : 1 }]}>
               {mainImage ?
                 <ImageBackground
                   source={{ uri: mainImage }}
-                  style={{ flex: 1, alignSelf: ' center  ', }}
-                  imageStyle={{ width: '100%', height: '100%', borderRadius: 15, resizeMode: 'cover' }} >
+                  style={{
+                    flex: 1,
+
+                    // alignItems: 'center',
+                    //justifyContent: 'center'
+                    alignSelf: 'flex-start',
+                  }}
+                  imageStyle={{
+                    width: '100%', height: '100%', borderRadius: 15, resizeMode: 'cover',
+
+                  }} >
                   <Pressable style={styles.mainImagePressable}
                     onPress={() => setMainImage()}>
-                    <MaterialCommunityIcons name="close-box-outline" size={24} color='#fdccA0' />
+                    <MaterialCommunityIcons name="close-box" size={24} color='#AEC4C2' />
                   </Pressable>
                 </ImageBackground>
                 : <MaterialCommunityIcons name="file-image-plus-outline" size={44} color="grey" />}
@@ -126,7 +138,7 @@ const ImagePickerScreen = ({ navigation }) => {
                           onPress={() => {
                             setImage('')
                           }}>
-                          <MaterialCommunityIcons name="close-box-outline" size={18} color='#fdccA0' />
+                          <MaterialCommunityIcons name="close-box" size={18} color='#AEC4C2' />
                         </Pressable>
                       </ImageBackground>
                     </View>)
@@ -155,7 +167,7 @@ const ImagePickerScreen = ({ navigation }) => {
                           imageStyle={{ flex: 1, height: 100, width: 100, borderRadius: 10, resizeMode: 'cover', }}>
                           <Pressable style={styles.smallDelete}
                             onPress={() => deleteImage(item)}>
-                            <MaterialCommunityIcons name="close-box-outline" size={18} color='#fdccA0' />
+                            <MaterialCommunityIcons name="close-box" size={18} color='#AEC4C2' />
                           </Pressable>
                         </ImageBackground>
                       </View>)
@@ -181,7 +193,9 @@ const ImagePickerScreen = ({ navigation }) => {
                           imageStyle={{ flex: 1, height: 100, width: 100, borderRadius: 10, resizeMode: 'cover', }}>
                           <Pressable style={styles.smallDelete}
                             onPress={() => deleteImage(item)}>
-                            <MaterialCommunityIcons name="close-box-outline" size={18} color='#fdccA0' />
+                            <MaterialCommunityIcons name="close-box" size={18} color='#D5DCDB'
+                            //'#AEC4C2'
+                            />
                           </Pressable>
                         </ImageBackground>
                       </View>)
@@ -195,7 +209,8 @@ const ImagePickerScreen = ({ navigation }) => {
         <View style={{
           width: '100%',
           // marginBottom: 50, marginTop: 20, 
-          borderRadius: 5, alignItems: 'flex-end', backgroundColor: 'lightgreen'
+          borderRadius: 5, alignItems: 'flex-end',
+          //backgroundColor: 'lightgreen'
         }}>
           <Pressable
             style={styles.nextButton}
@@ -218,17 +233,20 @@ const ImagePickerScreen = ({ navigation }) => {
             }}
           >
             <View >
-              <Text style={{ color: 'red' }}>{t('next')}</Text>
+              <Text style={{
+                fontSize: 18,
+                fontWeight: 'bold', paddingRight: 10, color: '#07544b'
+              }}>{t('next')}</Text>
             </View>
             <MaterialCommunityIcons name="arrow-right" size={24} color="#07544b" />
           </Pressable>
-          <View
+          {/*   <View
             style={{
               flexDirection: 'row',
-              margin: 10,
+              margin: 10, backgroundColor: 'pink'
             }}>
 
-          </View>
+          </View> */}
         </View>
       </LinearGradient>
     </SafeAreaView>
@@ -249,9 +267,10 @@ const styles = StyleSheet.create({
   mainImageContainer: {
     //flex: 1,
     marginTop: 30,
-    //backgroundColor: 'pink',
+    // backgroundColor: 'pink',
     width: '75%',
-    aspectRatio: 1 / 1
+    aspectRatio: 1 / 1,
+    alignContent: 'center',
     // alignSelf: 'center'
     /* height: '100%',
     aspectRatio: 1 / 1 */
@@ -275,7 +294,7 @@ const styles = StyleSheet.create({
     height: 30,
     borderRadius: 5,
     position: 'absolute',
-    left: 248,
+    left: '88%',
     top: 3,
     justifyContent: 'center',
     alignItems: 'center'
@@ -288,7 +307,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     alignSelf: 'center',
-    backgroundColor: 'pink'
+    //backgroundColor: 'pink'
   },
   moreImage: {
     height: 100,
@@ -319,7 +338,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDCCA0',
     paddingVertical: 10,
     paddingHorizontal: 20,
-    // marginRight: 10,
+    marginRight: 8,
     borderRadius: 5,
     fontSize: 30,
     fontWeight: '600',

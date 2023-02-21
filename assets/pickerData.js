@@ -9,15 +9,15 @@ const pickerData =
 
       {
         label: "botto giuseppe",
-        value: "Botto Giuseppe / Ботто Джузеппе"
+        value: "Botto giuseppe"
       },
       {
         label: "botto poala",
-        value: "Botto Poala"
+        value: "Botto poala"
       },
       {
         label: "biagoli modesto",
-        value: "Biagoli Modesto"
+        value: "Biagoli modesto"
       },
       {
         label: "cariaggi",
@@ -45,11 +45,11 @@ const pickerData =
       },
       {
         label: "filati naturali",
-        value: "Filati Naturali"
+        value: "Filati naturali"
       },
       {
         label: "filati buratti",
-        value: "Filati Buratti"
+        value: "Filati buratti"
       },
 
       {
@@ -66,7 +66,7 @@ const pickerData =
       },
       {
         label: "filati power",
-        value: "Filati Power"
+        value: "Filati power"
       },
       {
         label: "filpucci",
@@ -122,15 +122,15 @@ const pickerData =
       },
       {
         label: "loro piana",
-        value: "Loro Piana / Лоро Пиана"
+        value: "Loro piana"
       },
       {
         label: "loro festa",
-        value: "Loro Festa"
+        value: "Loro festa"
       },
       {
         label: "millefili",
-        value: "New Mill"
+        value: "Millefili"
       },
       {
         label: "missoni",
@@ -138,11 +138,11 @@ const pickerData =
       },
       {
         label: "natural fantasy",
-        value: "Natural Fantasy"
+        value: "Natural fantasy"
       },
       {
         label: "new mill",
-        value: "New Mill"
+        value: "New mill"
       },
 
       {
@@ -155,7 +155,7 @@ const pickerData =
       },
       {
         label: "ri go",
-        value: "Ri.Go"
+        value: "Ri Go"
       },
       {
         label: "sato seni",
@@ -167,7 +167,7 @@ const pickerData =
       },
       {
         label: "todd duncan",
-        value: "Todd && Dunkan"
+        value: "Todd && Duncan"
       },
       {
         label: "tollegno",
@@ -215,7 +215,7 @@ const pickerData =
       },
       {
         label: "orange",
-        value: "orange"
+        value: "Orange"
       },
       {
         label: "red",
@@ -324,7 +324,7 @@ const pickerData =
       },
       {
         label: "superkid mohair/silk",
-        value: "superkid Mohair/silk"
+        value: "superkid mohair/silk"
       },
       {
         label: "superkid mohair/pa",
@@ -333,7 +333,7 @@ const pickerData =
 
       {
         label: "kid mohair",
-        value: "kid Mohair"
+        value: "kid mohair"
       },
       {
         label: "yak",
@@ -361,13 +361,14 @@ const pickerData =
         value: "elastan"
       },
       {
-        label: "syntetic",
-        value: "syntetic"
-      },
-      {
         label: "pa",
         value: "pa"
       },
+      {
+        label: "syntetic",
+        value: "syntetic"
+      },
+
       {
         label: "other",
         value: "other"

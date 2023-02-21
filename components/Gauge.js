@@ -36,7 +36,7 @@ const Gauge = ({ yarn }) => {
   return (
     <>
       <View style={styles.gaugeTitle}>
-        <Text style={{ fontSize: 18, fontWeight: "600" }}>
+        <Text style={{ fontSize: 20, fontWeight: "bold", color: '#424828' }}>
           {t('gauge')}
         </Text>
       </View>
@@ -67,9 +67,7 @@ const Gauge = ({ yarn }) => {
                   onPress={() => setGaugeImage()}
                 >
                   <MaterialCommunityIcons
-                    name="close-box-outline"
-                    size={14}
-                    color="#fdccA0"
+                    name="close-box" size={18} color='#D5DCDB'
                   />
                 </Pressable>
               ) : null}
@@ -90,55 +88,89 @@ const Gauge = ({ yarn }) => {
                 />
               )}
         </Pressable>
-        {isGauge === false ? (
-          <View style={{}}>
-            <View style={styles.gaugeLineShort} >
-              <View>
-                <Text style={styles.gaugeLineText}>
-                  {" "}{t('yarn gauge is')}{" "}
-                </Text>
+        <View>
+          {isGauge === false ? (
+            <View style={{}}>
+              <View style={styles.gaugeLineShort} >
+                <View style={{}}>
+                  <Text style={styles.gaugeLineText}>
+                    {" "}{t('yarn gauge is')}{" "}
+                  </Text>
+                </View>
+                <TextInput
+                  style={styles.gaugeInputShort}
+                  textAlign={"center"}
+                  onChangeText={(value) => onChangeGauge(value)}
+                  value={gauge}
+                  placeholder={t("32s x 20r")}
+                  placeholderTextColor={"#867D59"}
+                  keyboardType="default"
+                />
               </View>
-              <TextInput
-                style={styles.gaugeInputShort}
-                textAlign={"center"}
-                onChangeText={(value) => onChangeGauge(value)}
-                value={gauge}
-                placeholder="32r x 20s"
-                placeholderTextColor={"#867D59"}
-                keyboardType="default"
-              />
-            </View>
-            <View style={styles.gaugeLineShort}>
-              <View style={{}}>
-                <Text style={styles.gaugeLineText}>
-                  {" "} {t('on needles')}{" "}
-                </Text>
+              <View style={styles.gaugeLineShort}>
+                <View style={{}}>
+                  <Text style={[styles.gaugeLineText, {}]}>
+                    {" "}{t('on needles')}{" "}
+                  </Text>
+                </View>
+                <TextInput
+                  style={styles.gaugeInputShort}
+                  textAlign={"center"}
+                  onChangeText={(value) => onChangeNeedles(value)}
+                  value={needles}
+                  placeholder={t("3mm")}
+                  placeholderTextColor={"#867D59"}
+                  keyboardType="numeric"
+                />
               </View>
-              <TextInput
-                style={styles.gaugeInputShort}
-                textAlign={"center"}
-                onChangeText={(value) => onChangeNeedles(value)}
-                value={needles}
-                placeholder="3mm"
-                placeholderTextColor={"#867D59"}
-                keyboardType="numeric"
-              />
             </View>
-          </View>
-        ) : (
-          <>
-            <View style={{ marginTop: 10, }}>
-              <Text style={[styles.gaugeLineText, { marginBottom: 5 }]}>
-                {t('yarn gauge is')} {" "}{yarn.gauge}{" "}
-              </Text>
-              <Text style={styles.gaugeLineText}>
-                {t('on needles')} {yarn.needles}
-              </Text>
+          ) : (
+            <View >
+
+              {/* <View style={styles.gaugeLineShort} >
+                <View style={{ flexDirection: 'row', marginLeft: 'auto' }} >
+                  <Text style={styles.gaugeLineText}>{" "}{t('yarn gauge is')}{" "}</Text>
+                  <Text
+                    style={[styles.gaugeInputShort, { textAlign: 'center' }]} >{t(`${yarn.gauge}`)}
+                  </Text>
+
+                </View>
+                    <TextInput
+                  style={styles.gaugeInputShort}
+                  textAlign={"center"}
+                  onChangeText={(value) => onChangeGauge(value)}
+                  value={gauge}
+                  placeholder={t('32s x 20r')}
+                  placeholderTextColor={"#867D59"}
+                  keyboardType="default"
+                /> 
+              </View> */}
+              <View style={styles.gaugeLineShort}>
+                <View style={{}}>
+                  <Text style={[styles.gaugeLineText, {}]}>
+                    {" "}{t('yarn gauge is')}{" "}
+                  </Text>
+                </View>
+                <Text
+                  style={[styles.gaugeInputShort, { textAlign: 'center' }]} >{t(`${yarn.gauge}`)}
+                </Text>
+
+              </View>
+              <View style={styles.gaugeLineShort}>
+                <View style={{}}>
+                  <Text style={[styles.gaugeLineText, {}]}>
+                    {" "}{t('on needles')}{" "}
+                  </Text>
+                </View>
+                <Text
+                  style={[styles.gaugeInputShort, { textAlign: 'center' }]} >{t(`${yarn.needles}`)}{t('mm')}
+                </Text>
+
+              </View>
             </View>
-          </>
-        )}
-      </View>
-      {/* <View
+          )}
+        </View>
+        {/* <View
         style={{
           flexDirection: "row",
           marginLeft: 25,
@@ -149,40 +181,48 @@ const Gauge = ({ yarn }) => {
         <View></View>
       </View> */}
 
-      <View
-        style={{
-          flexDirection: "row",
-          marginTop: 10,
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        {isGauge === false ? (
-          <View style={{ backgroundColor: 'pink', flexDirection: 'row', paddingHorizontal: 20 }}>
-            <View>
-              <Text style={styles.gaugeLineText}>
-                {t('is good for')}{" "}
-              </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: 10,
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          {isGauge === false ? (
+            <View style={{ flexDirection: 'row', flex: 1, paddingHorizontal: 5, alignItems: 'center' }}>
+              <View style={{}}>
+                <Text style={[styles.gaugeLineText, { justifyContent: 'center' }]}>
+                  {t('notes')}{" "}
+                </Text>
+              </View>
+              <TextInput
+                style={[styles.gaugeInputLong, { flex: 1, flexWrap: 'wrap', marginLeft: 10 }]}
+                textAlign={'auto'}
+                onChangeText={onChangeGood}
+                value={good}
+                placeholder={t('notes content')}
+                placeholderTextColor={"#867D59"}
+                keyboardType="default"
+              />
             </View>
-            <TextInput
-              style={styles.gaugeInputLong}
-              textAlign={"center"}
-              onChangeText={onChangeGood}
-              value={good}
-              placeholder="arans/stockinet/openwork "
-              placeholderTextColor={"#867D59"}
-              keyboardType="default"
-            />
-          </View>
-        ) : (
-          <View style={{ backgroundColor: 'pink', flexDirection: 'row', paddingHorizontal: 20 }}>
-            <Text style={styles.gaugeLineText}>
-              {t('is good for')}{" "}{yarn.good}
-            </Text>
-          </View>
-        )}
+          ) : (
+            <View style={styles.gaugeLineShort}>
+              <View style={{}}>
+                <Text style={[styles.gaugeLineText, {}]}>
+                  {" "}{t('notes')}{" "}
+                </Text>
+              </View>
+              <Text
+                style={[styles.gaugeInputShort, { textAlign: 'center', flexWrap: 'wrap', flex: 1 }]} >{yarn.good}
+              </Text>
+
+            </View>
+
+          )}
+        </View>
       </View>
-      <Pressable
+      {!isGauge ? <Pressable
         style={styles.saveGaugeButton}
         onPress={() => {
           if (gauge && needles && good && gaugeImage) {
@@ -207,11 +247,16 @@ const Gauge = ({ yarn }) => {
         }}
       >
         <Text
-          style={{ color: "#312d09", fontSize: 16, fontWeight: "bold" }}
-        >
+          style={{
+
+            color: '#504412',
+            //'#424828', 
+            fontSize: 18, fontWeight: "bold"
+          }} >
           {t('save')}
         </Text>
-      </Pressable>
+      </Pressable> : null
+      }
     </>
   )
 }
@@ -225,9 +270,9 @@ const styles = StyleSheet.create({
     //backgroundColor: "#D7DCCA80",
     //'#EFECE7'
     //borderRadius: 10,
-    shadowColor: "# 8C9284",
-    shadowOffset: { width: -2, height: -4 },
-    shadowOpacity: 0.1,
+    //shadowColor: "# 8C9284",
+    //shadowOffset: { width: -2, height: -4 },
+    //shadowOpacity: 0.1,
     //flexDirection: "row",
     // justifyContent: "space-between",
     alignItems: "flex-start",
@@ -237,23 +282,28 @@ const styles = StyleSheet.create({
     // marginBottom: 20,
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#DCFC98",
+    backgroundColor: '#d3e7b1',
+    // "#DCFC98",
     borderRadius: 10,
-    padding: 10,
+    padding: 5,
     marginHorizontal: 20,
-    marginBottom: 5
+    marginBottom: 5,
+
 
   },
   gaugeLineShort: {
     flexDirection: "row",
-    alignItems: "center",
+
+    //alignItems: "flex-end",
     justifyContent: "space-between",
-    height: 25,
+    //height: 25,
     marginBottom: 5,
+    //backgroundColor: 'red'
   },
   gaugeInputShort: {
     backgroundColor: "#BFC3AE",
-    width: 95,
+    // "#BFC3AE",
+    width: '50%',
     marginLeft: 5,
     borderRadius: 5,
     padding: 5,
@@ -262,18 +312,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   gaugeLineText: {
-    color: "#312d09",
+    paddingVertical: 5
+    , color: "#312d09",
     fontSize: 14,
     fontWeight: "bold",
+    flex: 1
+
   },
   gaugeImageMask: {
     flex: 1,
     width: '65%',
     aspectRatio: 1,
-    shadowColor: "# 8C9284",
-    shadowOffset: { width: -2, height: -4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+    //shadowColor: "# 8C9284",
+    //shadowOffset: { width: -2, height: -4 },
+    //shadowOpacity: 0.1,
+    // shadowRadius: 3,
     backgroundColor: "#d4e3d9",
     // marginLeft: 10,
     borderColor: "silver",
@@ -287,10 +340,10 @@ const styles = StyleSheet.create({
     //alignSelf: "flex-end",
     height: '100%',
     width: '100%',
-    shadowColor: "# 8C9284",
-    shadowOffset: { width: -2, height: -4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+    //shadowColor: "# 8C9284",
+    //shadowOffset: { width: -2, height: -4 },
+    //shadowOpacity: 0.1,
+    //shadowRadius: 3,
 
   },
   gaugeImage: {
@@ -302,13 +355,13 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   gaugeImageDelete: {
-    width: 15,
-    height: 15,
+    width: 18,
+    height: 18,
     backgroundColor: "#C7CAB6",
     borderRadius: 5,
     position: "absolute",
-    left: 108,
-    top: 3,
+    left: '90%',
+    top: 5,
     justifyContent: "center",
     alignItems: "center",
   }
@@ -316,21 +369,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     //height: 25,
+
     backgroundColor: "#BFC3AE",
-    width: 230,
+    // width: 230,
     borderRadius: 5,
     padding: 5,
     fontSize: 14,
     fontWeight: "bold",
   },
   saveGaugeButton: {
-    backgroundColor: "#fdccA0",
+    backgroundColor:
+      //'#fdccA0',
+      '#fec0a5',
+    //'#ffc3aa',
+    // '#FBA47A',
+    // "#fdccA0",
     padding: 8,
-    width: 130,
+    width: '43%',
     borderRadius: 5,
-    marginTop: 10,
+    marginVertical: 10,
+    marginRight: 25,
     alignSelf: "flex-end",
     alignItems: "center",
+    // shadowColor: "# 8C9284",
+    //shadowOffset: { width: -2, height: -4 },
+    //shadowOpacity: 0.1,
 
   }
 

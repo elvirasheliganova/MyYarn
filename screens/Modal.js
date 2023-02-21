@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Pressable, Modal, Button, TouchableOpacity } from 'react-native'
 import React, { useState, useContext, useCallback, useEffect } from 'react';
+import Checkbox from 'expo-checkbox'
 import pickerData from '../assets/pickerData';
 import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -31,7 +32,7 @@ const ModalView = (props) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [mixModalVisible, setMixModalVisible] = useState(false);
-  //const [mix, setMix] = useState()
+  //  const [checkVisible, setCheckVisible] = useState(false)
   const [isMix, setIsMix] = useState(false)
   const [pickerVisible, setPickerVisible] = useState(true)
   const { t } = useTranslation();
@@ -74,7 +75,7 @@ const ModalView = (props) => {
 
 
     <View style={[styles.centeredView, {
-      //backgroundColor: 'green' 
+      // backgroundColor: 'green'
     }]}>
       <Modal
         animationType="slide"
@@ -89,26 +90,34 @@ const ModalView = (props) => {
 
             {props.data.map((item, index) =>
             (<Pressable
+              key={index}
               onPress={() => {
+
                 chooseYarn(item.value)
-                console.log(item.value)
+
+                // console.log(item.value)
                 if (item.value === "mix") {
                   chooseMix(true)
 
                   onOpen2ndModal()
                 }
+                setModalVisible(!modalVisible)
                 //   if (item === "yarnType") { chooseId(Date.now()) }
               }}
             >
-              <Text style={{ fontSize: 20 }}>{t(item.label)}</Text>
+              <View style={{ borderColor: 'lightgrey', borderBottomWidth: 2, flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Text style={{ fontSize: 16, marginVertical: 5, }}>{t(`${item.value}`)}</Text>
+
+
+              </View>
             </Pressable>
             )
             )}
-            <Pressable
+            {/*   <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>
               <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
+            </Pressable> */}
           </View>
 
         </ScrollView>
@@ -138,7 +147,7 @@ const ModalView = (props) => {
 
                       style={styles.pickerSelectStyles}
                       //selectedValue={item}
-
+                      //useNativeAndroidPickerStyle={false}
                       placeholder={placeholder}
                       //console.warn(value)
                       //setPickerVisible(false)
@@ -195,7 +204,7 @@ const ModalView = (props) => {
               })}
             </ScrollView>
             <Pressable
-              style={styles.button}
+              style={[styles.button, { height: 40 }]}
               onPress={() => {
 
                 //changeMix(mix)
@@ -227,8 +236,11 @@ const ModalView = (props) => {
       <Pressable
         style={[styles.button, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>{props.text}</Text>
-        <AntDesign name="arrowright" size={24} color="black" />
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: 20 }}>
+          <Text style={styles.textStyle}>{props.text}</Text>
+          <Text style={[styles.textStyle, { fontSize: 16, }]}>{props.label}</Text>
+        </View>
+        {!props.label ? <AntDesign name="arrowright" size={24} color="black" /> : null}
       </Pressable>
     </View>
 
@@ -312,7 +324,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: 'center',
+    //alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -323,7 +335,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
-    height: 40,
+    height: '80%',
     backgroundColor: '#BFC3AE',
     margin: 10,
     borderRadius: 10,
@@ -350,8 +362,8 @@ const styles = StyleSheet.create({
     //margin: 10,
     color: '#504412',
     borderRadius: 10,
-    // padding: 10,
-    fontSize: 18,
+    //padding: 10,
+    fontSize: 20,
     fontWeight: 'bold'
   },
   modalText: {
@@ -372,6 +384,7 @@ const styles = StyleSheet.create({
     marginTop: '27%',
     paddingVertical: 5,
     marginBottom: '30%',
+    height: '80%',
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
@@ -381,13 +394,14 @@ const styles = StyleSheet.create({
   itemsContainer2nd: {
 
     width: '100%',
+
     paddingTop: 10,
     borderRadius: 20,
     padding: 10,
     shadowColor: '#000',
 
     overflow: 'hidden',
-    //backgroundColor: 'pink',
+    // backgroundColor: 'pink',
     /*    shadowOffset: {
          width: 0,
          height: 2,
@@ -398,6 +412,7 @@ const styles = StyleSheet.create({
   },
   item2nd: {
     margin: 10,
+
     width: '100%',
     backgroundColor: 'white',
     alignContent: 'center',
