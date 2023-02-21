@@ -75,7 +75,7 @@ const ModalView = (props) => {
 
 
     <View style={[styles.centeredView, {
-      // backgroundColor: 'green'
+      //backgroundColor: 'green'
     }]}>
       <Modal
         animationType="slide"
@@ -234,11 +234,11 @@ const ModalView = (props) => {
       } */}
 
       <Pressable
-        style={[styles.button, styles.buttonOpen]}
+        style={[styles.button, styles.buttonOpen,]}
         onPress={() => setModalVisible(true)}>
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: 20 }}>
-          <Text style={styles.textStyle}>{props.text}</Text>
-          <Text style={[styles.textStyle, { fontSize: 16, }]}>{props.label}</Text>
+          <Text style={[styles.textStyle, { color: !props.label ? '#504412' : '#746B45', fontSize: 18, }]}>{props.text}</Text>
+          <Text style={[styles.textStyle, { fontSize: 18, flexWrap: 'wrap', width: '50%', textAlign: 'right', height: '100%' }]}>{props.label}</Text>
         </View>
         {!props.label ? <AntDesign name="arrowright" size={24} color="black" /> : null}
       </Pressable>
@@ -335,9 +335,9 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
-    height: '80%',
+    //height: '80%',
     backgroundColor: '#BFC3AE',
-    margin: 10,
+    //margin: 10,
     borderRadius: 10,
     padding: 10,
     fontSize: 18,
@@ -360,10 +360,10 @@ const styles = StyleSheet.create({
     //height: 40,
     //backgroundColor: '#BFC3AE',
     //margin: 10,
-    color: '#504412',
+
     borderRadius: 10,
     //padding: 10,
-    fontSize: 20,
+    // fontSize: 20,
     fontWeight: 'bold'
   },
   modalText: {

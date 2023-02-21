@@ -99,7 +99,7 @@ const Home = ({ route, navigation }) => {
           }}>
             <View style={{
               flex: 1,
-              // backgroundColor: 'blue'
+              //backgroundColor: 'blue'
             }}>
               {/* {selectedYarnType ? <View><Text>{selectedYarnType}</Text></View> : null} */}
               <ModalView
@@ -184,6 +184,13 @@ const Home = ({ route, navigation }) => {
 
 
                       //console.log(cone.selectedYarnColor)
+                    } else {
+                      alert(
+                        t('cone save'),
+                        [{
+                          text: "OK",
+                        }]
+                      )
                     }
                     /*  : {
                        Alert.alert(
