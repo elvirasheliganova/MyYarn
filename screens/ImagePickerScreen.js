@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, Text, View, FlatList, Pressable, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { LinearGradient } from 'expo-linear-gradient';
 import { ImageBackground } from 'react-native';
@@ -49,7 +50,7 @@ const ImagePickerScreen = ({ navigation }) => {
       quality: 1,
     })
     if (!result.canceled) {
-      setImage(prevImage => [...prevImage, result.uri])
+      setImage(prevImage => [...prevImage, result.assets[0].uri])
     }
   }
   if (hasGalleryPermission === false) {
@@ -67,9 +68,11 @@ const ImagePickerScreen = ({ navigation }) => {
       <LinearGradient
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer} >
+
         <View style={{
-          flex: 1, flexDirection: 'row',
-          alignSelf: 'center'
+          flex: 1,
+          flexDirection: 'row',
+          alignSelf: 'center',
         }}>
           <View style={styles.mainImageContainer}>
             <Pressable onPress={() => pickImage1()} style={[styles.pickImage1Container, { borderWidth: mainImage ? 0 : 1 }]}>
@@ -106,9 +109,10 @@ const ImagePickerScreen = ({ navigation }) => {
               <Pressable onPress={() => {
                 if (mainImage) { pickImage2() }
                 else {
-                  Alert.alert(
-                    "No photo chosen",
-                    "Please choose main cone photo from gallery",
+                  alert(
+                    t('no photo'),
+
+
                     [{
                       text: "OK",
                     }]
@@ -222,9 +226,10 @@ const ImagePickerScreen = ({ navigation }) => {
                 setMainImage('')
 
               } else {
-                Alert.alert(
-                  "No photo chosen",
-                  "Please choose main cone photo from gallery",
+                alert(
+                  t('no photo'),
+
+
                   [{
                     text: "OK",
                   }]
@@ -235,10 +240,11 @@ const ImagePickerScreen = ({ navigation }) => {
             <View >
               <Text style={{
                 fontSize: 18,
-                fontWeight: 'bold', paddingRight: 10, color: '#07544b'
+                fontWeight: 'bold',
+                color: '#504412'
               }}>{t('next')}</Text>
             </View>
-            <MaterialCommunityIcons name="arrow-right" size={24} color="#07544b" />
+            <MaterialIcons name="arrow-right" size={28} color="#504412" />
           </Pressable>
           {/*   <View
             style={{
@@ -248,6 +254,7 @@ const ImagePickerScreen = ({ navigation }) => {
 
           </View> */}
         </View>
+
       </LinearGradient>
     </SafeAreaView>
   );
@@ -335,10 +342,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '50%',
     justifyContent: 'center',
-    backgroundColor: '#FDCCA0',
+    backgroundColor: '#fec0a5',
+    //'#FDCCA0',
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginRight: 8,
+    marginBottom: 20,
     borderRadius: 5,
     fontSize: 30,
     fontWeight: '600',

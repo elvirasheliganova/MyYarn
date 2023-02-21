@@ -126,7 +126,8 @@ const translations =
 
 
       'cone save': 'Недостаточно данных. Выберите состав, производителя, цвет, длину на 100 метров и общее количество пряжи',
-      '': '',
+      'no photo': 'Нет фото. Пожалуйста, выберите фото',
+
 
 
 
@@ -273,7 +274,8 @@ const translations =
 
 
       'cone save': 'No full data. Please choose  Yarn Type, Manufacturer, Color and Weight',
-      '': '',
+      'no photo': 'No photo chosen, Please choose main cone photo from gallery',
+
 
 
 

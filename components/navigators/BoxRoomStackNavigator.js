@@ -20,7 +20,7 @@ const BoxRoomStackNavigator = () => {
 
       headerShadowVisible: false,
     }}>
-      <Stack.Screen name={t('yarn box')} component={BoxRoom} options={{ headerStyle: { backgroundColor: '#D2F0EE', }, }} />
+      <Stack.Screen name={t('yarns')} component={BoxRoom} options={{ headerStyle: { backgroundColor: '#D2F0EE', }, }} />
       <Stack.Screen name='ConePage' component={ConePage}
         options={{
           headerStyle: { backgroundColor: '#CBE9E7BF' },

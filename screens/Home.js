@@ -20,6 +20,7 @@ const Home = ({ route, navigation }) => {
   const [selectedYarnType, setSelectedYarnType] = useState('')
   const [length, onChangeLength] = useState()
   const [weight, onChangeWeight] = useState();
+  const [isPressed, setIsPressed] = useState(false)
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState('')
   const [selectedYarnColor, setSelectedYarnColor] = useState('')
   const [selectedAlpaca, setSelectedAlpaca] = useState('')
@@ -169,47 +170,55 @@ const Home = ({ route, navigation }) => {
             /> */}
 
             <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                style={styles.confirmContainer}
+              {!isPressed ?
+                <TouchableOpacity
+                  style={styles.confirmContainer}
 
-                onPress={() => {
-                  {
-                    !mix ? setId(Date.now()) : null
-                    if (selectedYarnType, length, selectedYarnColor, selectedYarnManufacturer) {
+                  onPress={() => {
+                    {
+                      !mix ? setId(Date.now()) : null
 
-                      setCone({ id, image, selectedYarnType, isMix, mix, length, selectedYarnManufacturer, selectedYarnColor, weight })
-                      //setCone(cone)
+                      if (selectedYarnType, length, selectedYarnColor, selectedYarnManufacturer) {
+
+                        setCone({ id, image, selectedYarnType, isMix, mix, length, selectedYarnManufacturer, selectedYarnColor, weight })
+                        //setCone(cone)
+                        setIsPressed(true)
 
 
 
 
-                      //console.log(cone.selectedYarnColor)
-                    } else {
-                      alert(
-                        t('cone save'),
-                        [{
-                          text: "OK",
-                        }]
-                      )
+                        //console.log(cone.selectedYarnColor)
+                      }
+                      else {
+                        alert(
+                          t('cone save'),
+                          [{
+                            text: "OK",
+                          }]
+                        )
+                      }
+                      /*  : {
+                         Alert.alert(
+                           "No full yarn data",
+                           "Please choose  Yarn Type, Manufacturer, Color and Weight",
+                           [{
+                             text: "OK",
+                           }]
+                         );
+                       } */
+
+
                     }
-                    /*  : {
-                       Alert.alert(
-                         "No full yarn data",
-                         "Please choose  Yarn Type, Manufacturer, Color and Weight",
-                         [{
-                           text: "OK",
-                         }]
-                       );
-                     } */
 
 
-                  }
-
-
-                }}
-              >
-                <Text style={styles.confirmText}>{t('save')}</Text>
-              </TouchableOpacity>
+                  }}
+                >
+                  <Text style={styles.confirmText}>{t('save')}</Text>
+                </TouchableOpacity> :
+                <View style={styles.confirmContainer}>
+                  <Text style={styles.confirmText}>{t('save')}</Text>
+                </View>
+              }
 
             </View>
           </View>
