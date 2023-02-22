@@ -70,7 +70,7 @@ const Home = ({ route, navigation }) => {
         [...prevYarns, cone])
 
 
-    // console.log("Final data updated , invoke your function", yarns)
+
   }, [cone]);
 
   useEffect(() => {
