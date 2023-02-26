@@ -109,7 +109,7 @@ const Search = ({ navigation }) => {
                           onPress={() => goToYarnPage(item)}
                           style={styles.moreInfo}
                         >
-                          <Text style={{ fontSize: 16 }}>{t('more info')}</Text>
+                          <Text style={{ fontSize: 14, color: '#504412', }}>{t('more info')}</Text>
                         </Pressable>
                       </View>
                       <FlatList
@@ -180,7 +180,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 5,
     fontWeight: 'bold',
-    color: '#3B3629'
+    color: '#504412'
+    // '#3B3629'
   },
   yarnWeight: {
     fontSize: 18,
