@@ -13,7 +13,7 @@ import { YarnContext } from '../components/YarnContext';
 import { useTranslation } from 'react-i18next';
 
 
-const Home = ({ route, navigation }) => {
+const DetailsPickerScreen = ({ route, navigation }) => {
   const { image } = route.params
   const { t } = useTranslation()
   const [yarns, setYarns] = useContext(YarnContext)
@@ -326,4 +326,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Home
+export default DetailsPickerScreen

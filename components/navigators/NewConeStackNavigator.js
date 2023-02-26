@@ -2,13 +2,13 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ImagePickerScreen from '../../screens/ImagePickerScreen';
-import DetailsPicker from '../../screens/DetailsPicker';
 import { useTranslation } from 'react-i18next';
 
 import 'react-native-gesture-handler';
 
 import i18n from "../../i18n";
-import Home from '../../screens/Home';
+
+import DetailsPickerScreen from '../../screens/DetailsPickerScreen';
 
 //const initI18n = i18n;
 
@@ -31,7 +31,7 @@ function NewConeStackNavigator() {
     }}
       screenProps={{ t, i18n }} >
       <Stack.Screen name="Cone Images" component={ImagePickerScreen} options={{ headerTitle: t('choose pictures') }} />
-      <Stack.Screen name="Cone Details" component={Home} options={{ headerTitle: t('more details') }} />
+      <Stack.Screen name="Cone Details" component={DetailsPickerScreen} options={{ headerTitle: t('more details') }} />
     </Stack.Navigator>
 
   );

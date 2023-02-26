@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+
 
 import React, { useEffect, useContext } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { YarnContext } from '../YarnContext';
 import NewConeStackNavigator from './NewConeStackNavigator';
 import { Ionicons } from '@expo/vector-icons';
-import Search2 from '../../screens/Search2';
+import SearchScreen from '../../screens/SearchScreen';
 import BoxRoomStackNavigator from '../navigators/BoxRoomStackNavigator';
 import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -94,7 +94,7 @@ function BottomTabNavigator(props) {
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="library-shelves" size={24} color={color} />
         }} />
 
-      <Tab.Screen name={t('search')} component={Search2}
+      <Tab.Screen name={t('search')} component={SearchScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />

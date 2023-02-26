@@ -27,7 +27,7 @@ const Search = ({ navigation }) => {
   const searchComposition = value ? yarns.filter((yarn) => t(`${yarn.selectedYarnType}`).toLowerCase().includes(value.toLowerCase())) : null
   // const searchColor = yarns.filter((yarn) => { yarn.selectedYarnColor.includes(value.toLowerCase()), console.log(value) })
   const searchColor = value ? yarns.filter((yarn) => t(`${yarn.selectedYarnColor}`).toLowerCase().includes(value.toLowerCase())) : null
-  const searchManufacturer = yarns.filter(yarn => value && i18n.language === 'ru' ? t(`${yarn.selectedYarnManufacturer}`).includes(value.toLowerCase()) : yarn.selectedYarnManufacturer.includes(value))
+  const searchManufacturer = value ? yarns.filter(yarn => t(`${yarn.selectedYarnManufacturer}`).toLowerCase().includes(value.toLowerCase())) : null
   console.log(yarns)
 
   const goToYarnPage = (cone) => {
