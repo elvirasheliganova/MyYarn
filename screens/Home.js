@@ -39,7 +39,7 @@ const Home = ({ route, navigation }) => {
   const [selectedViscose, setSelectedViscose] = useState('')
   const [selectedElastan, setSelectedElastan] = useState('')
   const [selectedPa, setSelectedPa] = useState('')
-  const [selectedSintetyc, setSelectedSintetyc] = useState('')
+  const [selectedOther, setSelectedOther] = useState('')
   const [id, setId] = useState()
   const [cone, setCone] = useState()
   const [isMix, setIsMix] = useState(false)
@@ -53,7 +53,7 @@ const Home = ({ route, navigation }) => {
         id, image, selectedYarnType, isMix,
         mix,
         length,
-        selectedYarnManufacturer, selectedYarnColor,
+        selectedYarnManufacturer, selectedYarnColor, selectedAlpaca,
         // particularities, 
         weight
       })
@@ -83,7 +83,7 @@ const Home = ({ route, navigation }) => {
   //
   //console.warn(cone)
   // console.warn(mix)
-  //console.log(selectedMerino, selectedCash, selectedCotton)
+  console.log(selectedAngora, selectedAlpaca, selectedCotton)
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, }}
@@ -127,7 +127,7 @@ const Home = ({ route, navigation }) => {
                 chooseViscose={setSelectedViscose}
                 chooseElastan={setSelectedElastan}
                 choosePa={setSelectedPa}
-                chooseSintetyc={setSelectedSintetyc}
+                chooseOther={setSelectedOther}
               />
 
               <ModalView
@@ -178,11 +178,19 @@ const Home = ({ route, navigation }) => {
                     {
                       !mix ? setId(Date.now()) : null
 
-                      if (selectedYarnType, length, selectedYarnColor, selectedYarnManufacturer) {
+                      if (selectedYarnType, length, selectedYarnColor, selectedYarnManufacturer, weight) {
 
-                        setCone({ id, image, selectedYarnType, isMix, mix, length, selectedYarnManufacturer, selectedYarnColor, weight })
+                        setCone({
+                          id, image, selectedYarnType, isMix, mix, length,
+                          selectedYarnManufacturer, selectedYarnColor, weight,
+                          selectedAlpaca, selectedAngora, selectedCamel, selectedCash,
+                          selectedCotton, selectedElastan, selectedKid, selectedSKid,
+                          selectedLamb, selectedLinen, selectedMerino, selectedPa,
+                          selectedSilk, selectedViscose, selectedWool, selectedYak, selectedOther
+                        })
                         //setCone(cone)
                         setIsPressed(true)
+                        console.log(cone)
 
 
 

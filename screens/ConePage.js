@@ -61,7 +61,7 @@ const ConePage = ({ route }) => {
         );
       });
     }, [yarn.particularities]); */
-  console.log(yarn.selectedYarnType)
+  console.log(yarn)
   return (
 
     <ScrollView style={{ flex: 1, }}>
@@ -70,7 +70,10 @@ const ConePage = ({ route }) => {
         colors={['#D2F0EE', "transparent"]}
         style={styles.linearGradientContainer}
       >
-        <View style={{ flex: 1, height: '100%', justifyContent: 'space-around' }}>
+        <View style={{
+          flex: 1, height: '100%', justifyContent: 'space-around',
+        }}>
+
           <View style={styles.mainDataContainer}>
             <View style={styles.yarnTitle} >
               <View style={{}}>
@@ -80,58 +83,58 @@ const ConePage = ({ route }) => {
                 <View style={styles.yarnMixData}
                 // horizontal={true} showsHorizontalScrollIndicator={false}
                 >
-                  {yarn.mix && yarn.mix.selectedCash ? (
+                  {yarn.selectedCash ? (
                     <View style={{}}>
-                      <Text style={styles.yarnMixDataItem}> {t('cashmere')} {yarn.mix.selectedCash}%</Text>
+                      <Text style={styles.yarnMixDataItem}> {t('cashmere')} {yarn.selectedCash}%</Text>
                     </View>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedAlpaca ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('alpaca')} {yarn.mix.selectedAlpaca}%</Text>
+                  {yarn.selectedAlpaca ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('alpaca')} {yarn.selectedAlpaca}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedAngora ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('angora')} {yarn.mix.selectedAngora}%</Text>
+                  {yarn.selectedAngora ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('angora')} {yarn.selectedAngora}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedCamel ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('camel')} {yarn.mix.selectedCamel}%</Text>
+                  {yarn.selectedCamel ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('camel')} {yarn.selectedCamel}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedWool ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('wool')} {yarn.mix.selectedWool}%</Text>
+                  {yarn.selectedWool ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('wool')} {yarn.selectedWool}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedMerino ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('merinos')} {yarn.mix.selectedMerino}%</Text>
+                  {yarn.selectedMerino ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('merinos')} {yarn.selectedMerino}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedYak ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('yak')} {yarn.mix.selectedYak}%</Text>
+                  {yarn.selectedYak ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('yak')} {yarn.selectedYak}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedLamb ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('lamb')} {yarn.mix.selectedLamb}%</Text>
+                  {yarn.selectedLamb ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('lamb')} {yarn.selectedLamb}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedSKid ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('superkid mohair')} {yarn.mix.selectedSKid}%</Text>
+                  {yarn.selectedSKid ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('superkid mohair')} {yarn.selectedSKid}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedKid ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('kid mohair')} {yarn.mix.selectedKid}</Text>
+                  {yarn.selectedKid ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('kid mohair')} {yarn.selectedKid}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedLinen ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('linen')} {yarn.mix.selectedLinen}</Text>
+                  {yarn.selectedLinen ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('linen')} {yarn.selectedLinen}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedSilk ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('silk')} {yarn.mix.selectedSilk}</Text>
+                  {yarn.selectedSilk ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('silk')} {yarn.selectedSilk}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedCotton ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('cotton')} {yarn.mix.selectedCotton}</Text>
+                  {yarn.selectedCotton ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('cotton')} {yarn.selectedCotton}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedViscose ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('viscose')} {yarn.mix.selectedViscose}</Text>
+                  {yarn.selectedViscose ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('viscose')} {yarn.selectedViscose}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedElastan ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('elastan')} {yarn.mix.selectedElastan}</Text>
+                  {yarn.selectedElastan ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('elastan')} {yarn.selectedElastan}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedPa ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('pa')} {yarn.mix.selectedPa}</Text>
+                  {yarn.selectedPa ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('pa')} {yarn.selectedPa}%</Text>
                   ) : null}
-                  {yarn.mix && yarn.mix.selectedSintetyc ? (
-                    <Text style={styles.yarnMixDataItem}>{" "}{t('sintetic')} {yarn.mix.selectedSintetyc}</Text>
+                  {yarn.selectedOther ? (
+                    <Text style={styles.yarnMixDataItem}>{" "}{t('other')} {yarn.selectedOther}%</Text>
                   ) : null}
                 </View>
               </View>
@@ -245,14 +248,13 @@ const ConePage = ({ route }) => {
 const styles = StyleSheet.create({
   linearGradientContainer: {
     flex: 1,
-
+    paddingHorizontal: 20,
     backgroundColor: '#C7CAB6',
 
   },
   mainDataContainer: {
     flex: 1,
-
-    paddingHorizontal: 20,
+    width: '100%',
     paddingBottom: 15,
     //backgroundColor: "#D7DCCA80",
     //'#EFECE7'
@@ -264,18 +266,21 @@ const styles = StyleSheet.create({
   yarnTitle: {
     flexDirection: "row",
     backgroundColor:
-      "#E6F5C8",
+      // '#EBFFFF',
+      '#DCFC98',
+    // "#E6F5C8",
     justifyContent: "space-between",
     borderRadius: 10,
     padding: 5,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginVertical: 10,
 
   },
   yarnTitleText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: '#424828'
+    color: '#07544b',
+    //'#424828'
 
     // marginRight: 40
   },
@@ -329,7 +334,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imagesContainer: {
-    marginHorizontal: 20,
+    flex: 1,
+    width: '100%',
+    //marginHorizontal: 20,
     //marginVertical: 6,
     marginBottom: 25,
     shadowColor: "# 8C9284",

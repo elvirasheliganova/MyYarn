@@ -65,30 +65,30 @@ const BoxRoom = ({ navigation }) => {
                   <View style={styles.detailsData}>
                     <View style={styles.yarnTypeData}>
                       <Text style={styles.yarnTypeDataText}>{t(`${item.selectedYarnType}`)}</Text>
-                      {item.selectedYarnType === 'Mix' &&
+                      {item.selectedYarnType === 'mix' &&
                         <View style={styles.mixData}>
-                          {item.mix.selectedAlpaca && <Text style={styles.yarnDataText}>Alpaca {item.mix.selectedAlpaca} </Text>}
-                          {item.mix.selectedAngora && <Text style={styles.yarnDataText}>Angora {item.mix.selectedAngora} </Text>}
-                          {item.mix.selectedCamel && <Text style={styles.yarnDataText}>Camel {item.mix.selectedCamel} </Text>}
-                          {item.mix.selectedMerino && <Text style={styles.yarnDataText}>Merino {item.mix.selectedMerino} </Text>}
-                          {item.mix.selectedCash && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Cash {item.mix.selectedCash} </Text>}
-                          {item.mix.selectedWool && <Text style={styles.yarnDataText}>Wool {item.mix.selectedWool} </Text>}
-                          {item.mix.selectedLamb && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Lamb{item.mix.selectedLamb} </Text>}
-                          {item.mix.selectedSKidPa && <Text style={styles.yarnDataText}>SuperKid Mohair/Pa {item.mix.selectedSKidPa} </Text>}
-                          {item.mix.selectedSKidSilk && <Text style={styles.yarnDataText}>SuperKid Mohair/Silk {item.mix.selectedSKidSilk} </Text>}
-                          {item.mix.selectedYak && <Text style={styles.yarnDataText}>Yak {item.mix.selectedYak} </Text>}
-                          {item.mix.selectedCotton && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Silk {item.mix.selectedSilk} </Text>}
-                          {item.mix.selectedSilk && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Cotton {item.mix.selectedCotton} </Text>}
-                          {item.mix.selectedViscose && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Viscose {item.mix.selectedViscose} </Text>}
-                          {item.mix.selectedElastan && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Elastan{item.mix.selectedElastan} </Text>}
-                          {item.mix.selectedPa && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Pa {item.mix.selectedPa} </Text>}
-                          {item.mix.selectedSintetyc && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>Sintetic {item.mix.selectedSintetyc} </Text>}
+                          {item.selectedAlpaca && <Text style={styles.yarnDataText}>{t('alpaca')} {item.selectedAlpaca}%</Text>}
+                          {item.selectedAngora && <Text style={styles.yarnDataText}>{t('angora')} {item.selectedAngora}% </Text>}
+                          {item.selectedCamel && <Text style={styles.yarnDataText}> {t('camel')} {item.selectedCamel}%  </Text>}
+                          {item.selectedMerino && <Text style={styles.yarnDataText}>{t('merino')} {item.selectedMerino}% </Text>}
+                          {item.selectedCash && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('cashemere')} {item.selectedCash}% </Text>}
+                          {item.selectedWool && <Text style={styles.yarnDataText}>{t('wool')} {item.mix.selectedWool}% </Text>}
+                          {item.selectedLamb && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('lamb')}{item.selectedLamb}% </Text>}
+                          {item.selectedLinen && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('linen')}{item.selectedLinen}% </Text>}
+                          {item.selectedKid && <Text style={styles.yarnDataText}>{t('kid mohair')} {item.selectedKid}% </Text>}
+                          {item.selectedSKid && <Text style={styles.yarnDataText}>{t('superkid mohair')} {item.selectedSKid}%</Text>}
+                          {item.selectedYak && <Text style={styles.yarnDataText}>{t('yak')} {item.mix.selectedYak}% </Text>}
+                          {item.selectedCotton && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('silk')} {item.selectedSilk}% </Text>}
+                          {item.selectedSilk && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('cotton')} {item.selectedCotton}%</Text>}
+                          {item.selectedViscose && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('viscose')} {item.selectedViscose}% </Text>}
+                          {item.selectedElastan && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('elastan')} {item.selectedElastan}% </Text>}
+                          {item.selectedPa && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('pa')} {item.selectedPa}% </Text>}
+                          {item.selectedOther && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('other')} {item.selectedOther}% </Text>}
+                        </View>}
 
-                        </View>
-                      }
                     </View>
-                    <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', color: '#504412' }}>{item.length} m</Text>
-                    <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', color: '#504412' }}>{t(`${item.selectedYarnManufacturer}`)}</Text>
+                    <Text style={{ marginRight: 5, marginBottom: 2, paddingLeft: 8, fontWeight: '600', color: '#504412' }}>{item.length} {t('mts')} / 100 {t('grams')} </Text>
+                    <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', paddingLeft: 8, color: '#504412' }}>{t(`${item.selectedYarnManufacturer}`)}</Text>
                   </View>
                 </Pressable>
               </View>
@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
   },
   detailsData: {
     width: '100%',
+    flex: 1,
     paddingHorizontal: 15,
     paddingBottom: 10
   },
@@ -135,16 +136,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#d2d9c0',
     borderRadius: 5,
-    padding: 2,
+    padding: 5,
     marginBottom: 5,
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
     justifyContent: 'space-between'
   },
   yarnTypeDataText: {
-    marginRight: 25,
+    marginRight: 15,
     fontSize: 18,
     fontWeight: 'bold',
     color: '#07544b',
+    // backgroundColor: 'lightgreen'
   },
   yarnDataText: {
     fontSize: 14,
@@ -152,9 +154,10 @@ const styles = StyleSheet.create({
     color: '#07544b'
   },
   mixData: {
-    flexDirection: 'row',
-    maxWidth: '60%',
-    flexWrap: 'wrap'
+    // flexDirection: 'row',
+    flex: 1,
+    // flexWrap: 'wrap',
+    //backgroundColor: 'pink'
   }
 
 })

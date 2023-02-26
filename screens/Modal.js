@@ -172,8 +172,9 @@ const ModalView = (props) => {
                                                   item === 'viscose' ? props.chooseViscose(value) :
                                                     item === "pa" ? props.choosePa(value) :
                                                       item === "elastan" ? props.chooseElastan(value) :
-                                                        item === "sintetyc" ? props.chooseSintetic(value) :
-                                                          null
+                                                        item === "synthetic" ? props.chooseSynthetic(value) :
+                                                          item === "other" ? props.chooseOther(value) :
+                                                            null
                       }
 
 

@@ -34,7 +34,7 @@ const translations =
       'yak': 'Як (WY)',
       'pa': 'ПА (PA)',
       'elastan': 'Эластан (EL)',
-      'syntetic': 'Синтетика',
+
       'other': 'Другое',
       'mix': 'Смесовка',
 
@@ -182,7 +182,7 @@ const translations =
       'yak': 'Yak (WY)',
       'pa': 'PA (PA)',
       'elastan': 'Elastan (EL)',
-      'syntetic': 'Sintetyc',
+
       'other': 'Other',
       'mix': 'Mix',
 
@@ -205,7 +205,7 @@ const translations =
       'E.Miroglio': 'E.Miroglio',
       'Fabifil': 'Fabifil',
       'Falconeri': 'Falconeri',
-      'Fil Pa': 'Fil Pa / Фил Па',
+      'Fil Pa': 'Fil Pa ',
       'Filati buratti': 'Filati Buratti',
       'Filati naturali': 'Filati Naturali',
       'Filati power': 'Filati Power',
