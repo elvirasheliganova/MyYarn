@@ -4,10 +4,10 @@ import {
   TouchableOpacity, Pressable, Alert
 } from 'react-native'
 import React, { useState, useContext, useCallback, useEffect } from 'react';
-import ModalView from './Modal'
+import ModalView from '../components/Modal'
 import pickerData from '../assets/pickerData'
 import Details from '../components/Details'
-import Button from '../components/Button';
+
 import { LinearGradient } from 'expo-linear-gradient';
 import { YarnContext } from '../components/YarnContext';
 import { useTranslation } from 'react-i18next';

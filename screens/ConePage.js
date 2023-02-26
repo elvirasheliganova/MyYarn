@@ -15,7 +15,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { particularitiesLabels } from "./DetailsPicker";
+
 import { useTranslation } from "react-i18next";
 import Gauge from "../components/Gauge";
 

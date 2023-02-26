@@ -4,7 +4,7 @@ import Checkbox from 'expo-checkbox'
 import pickerData from '../assets/pickerData';
 import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native-gesture-handler';
-import { YarnContext } from '../components/YarnContext';
+import { YarnContext } from './YarnContext';
 import { Picker } from '@react-native-picker/picker';
 import modalData from '../assets/modalData'
 import RNPickerSelect from 'react-native-picker-select-updated';

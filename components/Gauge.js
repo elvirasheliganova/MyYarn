@@ -228,7 +228,7 @@ const Gauge = ({ yarn }) => {
                 </Text>
               </View>
               <Text
-                style={[styles.gaugeInputShort, { textAlign: 'left', flexWrap: 'wrap', flex: 1, color: "#312d09" }]} >{yarn.good}
+                style={[styles.gaugeInputShort, { textAlign: 'left', flexWrap: 'wrap', flex: 1, color: "#312d09", paddingLeft: 15 }]} >{yarn.good}
               </Text>
 
             </View>
