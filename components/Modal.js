@@ -70,6 +70,10 @@ const ModalView = (props) => {
     value: '',
     color: '#9EA0A4',
   }
+  const myArray = modalData.composition
+  const index = myArray.indexOf('mix')
+  const x = myArray.splice(index, 1)
+  console.log(myArray)
 
   return (
 
@@ -135,53 +139,58 @@ const ModalView = (props) => {
             <ScrollView style={styles.itemsContainer2nd}
 
             >
-              {modalData.composition.map((item) => {
-                return (
-                  <View
-                    style={styles.item2nd}
-                    key={item}>
-                    <Text style={{ fontWeight: '600' }}>% {t(item)}</Text>
 
 
-                    <RNPickerSelect
+              {
 
-                      style={styles.pickerSelectStyles}
-                      //selectedValue={item}
-                      //useNativeAndroidPickerStyle={false}
-                      placeholder={placeholder}
-                      //console.warn(value)
-                      //setPickerVisible(false)
-                      /*  //setId(Date.now())
-                       //itemValue != '0' &&
-                       //</View>item === 'merinos' ? console.log(item, 'hi') */
-                      items={modalData.percentage}
-                      onValueChange={(value) =>
-                        item === "alpaca" ? props.chooseAlpaca(value) :
-                          item === "angora" ? props.chooseAngora(value) :
-                            item === "camel" ? props.chooseCamel(value) :
-                              item === "cashmere" ? props.chooseCash(value) :
-                                item === "wool" ? props.chooseWool(value) :
-                                  item === "merinos" ? props.chooseMerino(value) :
-                                    item === "lamb" ? props.chooseLamb(value) :
-                                      item === "superkid mohair" ? props.chooseSKid(value) :
-                                        item === "kid mohair" ? props.chooseKid(value) :
-                                          item === "yak" ? props.chooseYak(value) :
-                                            item === "linen" ? props.chooseLinen(value) :
-                                              item === "silk" ? props.chooseSilk(value) :
-                                                item === "cotton" ? props.chooseCotton(value) :
-                                                  item === 'viscose' ? props.chooseViscose(value) :
-                                                    item === "pa" ? props.choosePa(value) :
-                                                      item === "elastan" ? props.chooseElastan(value) :
-                                                        item === "synthetic" ? props.chooseSynthetic(value) :
-                                                          item === "other" ? props.chooseOther(value) :
-                                                            null
-                      }
+                myArray.map((item) => {
+
+                  return (
+                    <View
+                      style={styles.item2nd}
+                      key={item}>
+                      <Text style={{ fontWeight: '600' }}>% {t(item)}</Text>
 
 
+                      <RNPickerSelect
 
-                      itemStyle={{ fontSize: 14, height: 60, fontWeight: '600', color: '#201C0C', marginTop: 5, }}
-                    >
-                      {/*             {console.warn(pickerVisible)}
+                        style={styles.pickerSelectStyles}
+                        //selectedValue={item}
+                        //useNativeAndroidPickerStyle={false}
+                        placeholder={placeholder}
+                        //console.warn(value)
+                        //setPickerVisible(false)
+                        /*  //setId(Date.now())
+                         //itemValue != '0' &&
+                         //</View>item === 'merinos' ? console.log(item, 'hi') */
+                        items={modalData.percentage}
+                        onValueChange={(value) =>
+                          item === "alpaca" ? props.chooseAlpaca(value) :
+                            item === "angora" ? props.chooseAngora(value) :
+                              item === "camel" ? props.chooseCamel(value) :
+                                item === "cashmere" ? props.chooseCash(value) :
+                                  item === "wool" ? props.chooseWool(value) :
+                                    item === "merinos" ? props.chooseMerino(value) :
+                                      item === "lamb" ? props.chooseLamb(value) :
+                                        item === "superkid mohair" ? props.chooseSKid(value) :
+                                          item === "kid mohair" ? props.chooseKid(value) :
+                                            item === "yak" ? props.chooseYak(value) :
+                                              item === "linen" ? props.chooseLinen(value) :
+                                                item === "silk" ? props.chooseSilk(value) :
+                                                  item === "cotton" ? props.chooseCotton(value) :
+                                                    item === 'viscose' ? props.chooseViscose(value) :
+                                                      item === "pa" ? props.choosePa(value) :
+                                                        item === "elastan" ? props.chooseElastan(value) :
+                                                          item === "synthetic" ? props.chooseSynthetic(value) :
+                                                            item === "other" ? props.chooseOther(value) :
+                                                              null
+                        }
+
+
+
+                        itemStyle={{ fontSize: 14, height: 60, fontWeight: '600', color: '#201C0C', marginTop: 5, }}
+                      >
+                        {/*             {console.warn(pickerVisible)}
                       {
                         modalData.percentage.map((item, index) => {
                           return (
@@ -198,11 +207,11 @@ const ModalView = (props) => {
 
 
 
-                    </RNPickerSelect>
+                      </RNPickerSelect>
 
 
-                  </View>)
-              })}
+                    </View>)
+                })}
             </ScrollView>
             <Pressable
               style={[styles.button, { height: 40 }]}

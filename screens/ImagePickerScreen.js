@@ -136,7 +136,7 @@ const ImagePickerScreen = ({ navigation }) => {
 
                       <ImageBackground
                         source={{ uri: item }}
-                        style={{ height: 100, width: 100, marginRight: 20 }}
+                        style={{ height: 100, width: 100, marginHorizontal: 8 }}
                         imageStyle={{ flex: 1, height: 100, width: 100, borderRadius: 10, resizeMode: 'cover' }}>
                         <Pressable style={styles.smallDelete}
                           onPress={() => {
@@ -159,15 +159,15 @@ const ImagePickerScreen = ({ navigation }) => {
               </View>
 
               : image.length === 2 ?
-                <View style={styles.moreImagesContainer}>
+                <View style={[styles.moreImagesContainer, {}]}>
                   <View style={{}}>
                     <FlatList
                       data={image}
                       renderItem={({ item }) =>
-                      (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
+                      (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }} >
                         <ImageBackground
                           source={{ uri: item }}
-                          style={{ height: 100, width: 100, marginRight: 20 }}
+                          style={{ height: 100, width: 100, marginHorizontal: 8 }}
                           imageStyle={{ flex: 1, height: 100, width: 100, borderRadius: 10, resizeMode: 'cover', }}>
                           <Pressable style={styles.smallDelete}
                             onPress={() => deleteImage(item)}>
@@ -185,15 +185,15 @@ const ImagePickerScreen = ({ navigation }) => {
                   </Pressable>
                 </View>
 
-                : <View style={[styles.moreImagesContainer, { width: '110%' }]}>
-                  <View style={{ width: '100%' }}>
+                : <View style={[styles.moreImagesContainer, { alignSelf: 'center' }]}>
+                  <View style={{}}>
                     <FlatList
                       data={image}
                       renderItem={({ item }) =>
-                      (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }} >
+                      (<View style={{ flex: 1 }} >
                         <ImageBackground
                           source={{ uri: item }}
-                          style={{ height: 100, width: 100, marginRight: 20 }}
+                          style={{ height: 100, width: 100, marginHorizontal: 8 }}
                           imageStyle={{ flex: 1, height: 100, width: 100, borderRadius: 10, resizeMode: 'cover', }}>
                           <Pressable style={styles.smallDelete}
                             onPress={() => deleteImage(item)}>
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
   mainImageContainer: {
     //flex: 1,
     marginTop: 30,
-    // backgroundColor: 'pink',
+    //backgroundColor: 'pink',
     width: '75%',
     aspectRatio: 1 / 1,
     alignContent: 'center',
@@ -309,12 +309,12 @@ const styles = StyleSheet.create({
 
   moreImagesContainer: {
     marginTop: 50,
-    marginLeft: 20,
+    // marginLeft: 20,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
     alignSelf: 'center',
-    //backgroundColor: 'pink'
+    // backgroundColor: 'pink'
   },
   moreImage: {
     height: 100,
@@ -325,7 +325,8 @@ const styles = StyleSheet.create({
     borderColor: 'silver',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 20,
+    marginHorizontal: 8
+    //marginRight: 20,
 
   },
   smallDelete: {

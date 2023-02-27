@@ -1,5 +1,5 @@
 const modalData = {
-  composition: ['alpaca', 'angora', 'camel', 'cashmere', 'wool', 'merinos', ' mix', 'lamb', 'superkid mohair', 'kid mohair', 'yak', 'linen', 'silk', 'cotton', 'viscose', 'elastan', 'pa', 'synthetic', 'other'],
+  composition: ['alpaca', 'angora', 'camel', 'cashmere', 'wool', 'merinos', 'mix', 'lamb', 'superkid mohair', 'kid mohair', 'yak', 'linen', 'silk', 'cotton', 'viscose', 'elastan', 'pa', 'synthetic', 'other'],
   percentage: [
     { label: '0', value: '0' },
     { label: '5', value: '5' },
