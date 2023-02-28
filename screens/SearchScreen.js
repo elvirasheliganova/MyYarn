@@ -1,4 +1,4 @@
-import { View, Text, TextInput, FlatList, Image, Pressable, StyleSheet } from 'react-native'
+import { View, Text, TextInput, FlatList, Image, Pressable, StyleSheet, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback } from 'react-native'
 import Checkbox from 'expo-checkbox'
 import React, { useContext, useState, useCallback } from 'react'
 import { YarnContext } from '../components/YarnContext';
@@ -59,79 +59,84 @@ const Search = ({ navigation }) => {
     })
   }, [])
   return (
+    <KeyboardAvoidingView
+      style={{ flex: 1, justifyContent: 'center' }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={{ flex: 1, }} >
+          <LinearGradient
+            colors={['#D2F0EE', 'transparent']}
+            style={styles.gradientContainer}
+          >
+            <View style={{ paddingTop: 40 /* paddingTop: value ? 50 : 100, height: value ? 150 : 250, */ }}>
+              <Text style={{ fontSize: 24, color: '#07544b', fontWeight: 'bold' }}>{t('search by')}</Text>
+              <View style={{ /* flexDirection: 'row', */ justifyContent: 'space-between', paddingVertical: 15, }} >
+                {Object.keys(checkedBoxes).map((checkedBox) => {
+                  return (
+                    <View style={{ flexDirection: 'row', marginVertical: 5, alignItems: 'flex-end' }} key={checkedBox}>
+                      <Checkbox
+                        style={{ marginRight: 8, }}
+                        value={checkedBoxes[checkedBox]}
+                        onValueChange={onChangeChekedBoxes(checkedBox)}
+                        color={checkedBoxes[checkedBox] ? '#4630EB' : undefined}
 
-    <View style={{ flex: 1, justifyContent: 'center' }} >
-      <LinearGradient
-        colors={['#D2F0EE', 'transparent']}
-        style={styles.gradientContainer}
-      >
-        <View style={{ paddingTop: 40 /* paddingTop: value ? 50 : 100, height: value ? 150 : 250, */ }}>
-          <Text style={{ fontSize: 24, color: '#07544b', fontWeight: 'bold' }}>{t('search by')}</Text>
-          <View style={{ /* flexDirection: 'row', */ justifyContent: 'space-between', paddingVertical: 15, }} >
-            {Object.keys(checkedBoxes).map((checkedBox) => {
-              return (
-                <View style={{ flexDirection: 'row', marginVertical: 5, alignItems: 'flex-end' }} key={checkedBox}>
-                  <Checkbox
-                    style={{ marginRight: 8, }}
-                    value={checkedBoxes[checkedBox]}
-                    onValueChange={onChangeChekedBoxes(checkedBox)}
-                    color={checkedBoxes[checkedBox] ? '#4630EB' : undefined}
-
-                  />
-                  <Text style={{ fontSize: 14, color: '#504412', fontWeight: 'bold', }}>{t(`${checkedBoxesLabels[checkedBox]}`)}</Text>
-                </View>
-              )
-            })}
-          </View>
-        </View>
-        <View
-          style={styles.texInputContainer}>
-          <TextInput
-            multiline
-            onChangeText={(text) => { onChangeText(text) }}
-            value={value}
-            style={{ padding: 10, }} />
-        </View>
-
-        {value ?
-          <View style={{ flex: 1, }}>
-            <View style={{}}>
-              <FlatList
-                // data={Object.keys(checkedBoxes)[0] ? searchComposition : Object.keys(checkedBoxes)[1] ? searchWeight : Object.keys(checkedBoxes)[2] ? searchColor : searchManufacturer}
-                data={checkedBoxes.isComposition ? searchComposition : checkedBoxes.isWeight ? searchWeight : checkedBoxes.isColor ? searchColor : checkedBoxes.isArticle ? searchArticle : searchManufacturer}
-                showsVerticalScrollIndicator={false}
-                renderItem={({ item, index }) =>
-                  <View style={styles.yarnDataContainer}>
-                    <View>
-                      <View style={styles.titleData}>
-                        <View style={{ width: '65%' }}>
-                          <View style={{ alignContent: 'center' }}>
-                            <Text style={styles.yarnType}>{t(`${item.selectedYarnType}`)} </Text>
-                            <Text style={[styles.yarnType, { color: '#6D645A' }]}>{item.article}</Text>
-                            <Text style={styles.yarnWeight}>{t(`${item.weight}`)} {t('grams')}</Text>
-                          </View>
-                        </View>
-                        <Pressable
-                          onPress={() => goToYarnPage(item)}
-                          style={styles.moreInfo}
-                        >
-                          <Text style={{ fontSize: 14, color: '#504412', }}>{t('more info')}</Text>
-                        </Pressable>
-                      </View>
-                      <FlatList
-                        data={item.image}
-                        renderItem={({ item, index }) =>
-                          <Pressable >
-                            <Image source={{ uri: item }} style={styles.image} />
-                          </Pressable>
-                        }
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
                       />
+                      <Text style={{ fontSize: 14, color: '#504412', fontWeight: 'bold', }}>{t(`${checkedBoxesLabels[checkedBox]}`)}</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                      <Text>{t(`${item.length}`)} {t('mts')} / 100 {t('grams')}</Text>
-                      {/*  <SearchDataBox data={item.selectedYarnManufacturer} />
+                  )
+                })}
+              </View>
+            </View>
+            <View
+              style={styles.texInputContainer}>
+              <TextInput
+                multiline
+                autoCorrect={false}
+                spellCheck={false}
+                onChangeText={(text) => { onChangeText(text) }}
+                value={value}
+                style={{ padding: 10, }} />
+            </View>
+
+            {value ?
+              <View style={{ flex: 1, }}>
+                <View style={{}}>
+                  <FlatList
+                    // data={Object.keys(checkedBoxes)[0] ? searchComposition : Object.keys(checkedBoxes)[1] ? searchWeight : Object.keys(checkedBoxes)[2] ? searchColor : searchManufacturer}
+                    data={checkedBoxes.isComposition ? searchComposition : checkedBoxes.isWeight ? searchWeight : checkedBoxes.isColor ? searchColor : checkedBoxes.isArticle ? searchArticle : searchManufacturer}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({ item, index }) =>
+                      <View style={styles.yarnDataContainer}>
+                        <View>
+                          <View style={styles.titleData}>
+                            <View style={{ width: '65%' }}>
+                              <View style={{ alignContent: 'center' }}>
+                                <Text style={styles.yarnType}>{t(`${item.selectedYarnType}`)} </Text>
+                                <Text style={[styles.yarnType, { color: '#6D645A' }]}>{item.article}</Text>
+                                <Text style={styles.yarnWeight}>{t(`${item.weight}`)} {t('grams')}</Text>
+                              </View>
+                            </View>
+                            <Pressable
+                              onPress={() => goToYarnPage(item)}
+                              style={styles.moreInfo}
+                            >
+                              <Text style={{ fontSize: 14, color: '#504412', }}>{t('more info')}</Text>
+                            </Pressable>
+                          </View>
+                          <FlatList
+                            data={item.image}
+                            renderItem={({ item, index }) =>
+                              <Pressable >
+                                <Image source={{ uri: item }} style={styles.image} />
+                              </Pressable>
+                            }
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                          />
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                          <Text>{t(`${item.length}`)} {t('mts')} / 100 {t('grams')}</Text>
+                          {/*  <SearchDataBox data={item.selectedYarnManufacturer} />
                       {item.particularities.isWorsted === true ?
                         <SearchDataBox data={'Worsted'} />
                         : null
@@ -144,14 +149,16 @@ const Search = ({ navigation }) => {
                         <SearchDataBox data={'Angled'} />
                         : null
                       } */}
-                    </View>
-                  </View>
-                }
-              />
-            </View>
-          </View> : null}
-      </LinearGradient>
-    </View>
+                        </View>
+                      </View>
+                    }
+                  />
+                </View>
+              </View> : null}
+          </LinearGradient>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   )
 
 }
