@@ -21,7 +21,8 @@ const modalData = {
     { label: '85', value: '85' },
     { label: '90', value: '90' },
     { label: '95', value: '95' },
-  ]
+  ],
+  mixComposition: ['alpaca', 'angora', 'camel', 'cashmere', 'wool', 'merinos', 'lamb', 'superkid mohair', 'kid mohair', 'yak', 'linen', 'silk', 'cotton', 'viscose', 'elastan', 'pa', 'synthetic', 'other'],
 }
 //console.log(modalData.composition)
 

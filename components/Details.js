@@ -12,6 +12,7 @@ const Details = (props) => {
   const [length, onChangeLength] = useState()
   const [lengthIsVisible, setLengthIsVisible] = useState(false)
   const [quantityIsVisible, setQuantityIsVisible] = useState(false)
+  const [articleIsVisible, setArticleIsVisible] = useState(false)
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState("Loro Piana")
   const [selectedYarnColor, setSelectedYarnColor] = useState("White")
   const [id, setId] = useState()
@@ -19,6 +20,7 @@ const Details = (props) => {
   const [mix, setMix] = useState()
   const [isMix, setIsMix] = useState(false)
   const [weight, onChangeWeight] = useState();
+  const [article, onChangeArticle] = useState()
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
       {/* <View>
@@ -117,6 +119,35 @@ const Details = (props) => {
             keyboardType="numeric"
           />
           {quantityIsVisible ?
+            <View style={{ flex: 1, alignItems: 'flex-end' }}>
+              <Text style={{ flex: 1, marginRight: 10, fontSize: 16, fontWeight: 'bold', color: '#504412' }}>{t('gr')}</Text>
+            </View>
+            : null}
+        </View>
+
+        <View style={{
+          paddingVertical: 5,
+          backgroundColor:
+            //'#BFC3AE'
+            //'#F3B3FD',
+            'pink',
+          marginVertical: 15,
+          marginHorizontal: 10,
+          borderRadius: 10,
+          flexDirection: 'row',
+          alignItems: 'center'
+        }}>
+
+          <TextInput
+            style={styles.textInput}
+            autoCorrect={false}
+            onChangeText={(value) => { props.chooseArticle(value), setArticleIsVisible(true) }}
+            value={article}
+            placeholder={t('article')}
+            placeholderTextColor={'#746B45'}
+            keyboardType="default"
+          />
+          {articleIsVisible ?
             <View style={{ flex: 1, alignItems: 'flex-end' }}>
               <Text style={{ flex: 1, marginRight: 10, fontSize: 16, fontWeight: 'bold', color: '#504412' }}>{t('gr')}</Text>
             </View>

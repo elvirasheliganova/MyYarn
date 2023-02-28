@@ -20,6 +20,7 @@ const DetailsPickerScreen = ({ route, navigation }) => {
   const [selectedYarnType, setSelectedYarnType] = useState('')
   const [length, onChangeLength] = useState()
   const [weight, onChangeWeight] = useState();
+  const [article, onChangeArticle] = useState()
   const [isPressed, setIsPressed] = useState(false)
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState('')
   const [selectedYarnColor, setSelectedYarnColor] = useState('')
@@ -47,15 +48,15 @@ const DetailsPickerScreen = ({ route, navigation }) => {
 
 
   useEffect(() => {
-    if (mix)
+    if (id)
       // console.log(mix)
       setCone({
-        id, image, selectedYarnType, isMix,
-        mix,
-        length,
-        selectedYarnManufacturer, selectedYarnColor, selectedAlpaca,
-        // particularities, 
-        weight
+        id, image, selectedYarnType, isMix, mix, length,
+        selectedYarnManufacturer, selectedYarnColor, weight, article,
+        selectedAlpaca, selectedAngora, selectedCamel, selectedCash,
+        selectedCotton, selectedElastan, selectedKid, selectedSKid,
+        selectedLamb, selectedLinen, selectedMerino, selectedPa,
+        selectedSilk, selectedViscose, selectedWool, selectedYak, selectedOther
       })
 
     /*  if (mix)
@@ -63,7 +64,7 @@ const DetailsPickerScreen = ({ route, navigation }) => {
          [...prevCone,  mix]) */
 
     // console.log("Final data updated , invoke your function", yarns)
-  }, [mix]);
+  }, [id]);
   useEffect(() => {
     if (cone)
       setYarns(prevYarns =>
@@ -155,6 +156,7 @@ const DetailsPickerScreen = ({ route, navigation }) => {
                 image={image}
                 chooseLength={onChangeLength}
                 chooseWeight={onChangeWeight}
+                chooseArticle={onChangeArticle}
               /* selectedYarnType={selectedYarnType}
               selectedYarnManufacturer={selectedYarnManufacturer}
               selectedYarnColor={selectedYarnColor} */ />
@@ -176,18 +178,14 @@ const DetailsPickerScreen = ({ route, navigation }) => {
 
                   onPress={() => {
                     {
-                      !mix ? setId(Date.now()) : null
+
 
                       if (selectedYarnType, length, selectedYarnColor, selectedYarnManufacturer, weight) {
 
-                        setCone({
-                          id, image, selectedYarnType, isMix, mix, length,
-                          selectedYarnManufacturer, selectedYarnColor, weight,
-                          selectedAlpaca, selectedAngora, selectedCamel, selectedCash,
-                          selectedCotton, selectedElastan, selectedKid, selectedSKid,
-                          selectedLamb, selectedLinen, selectedMerino, selectedPa,
-                          selectedSilk, selectedViscose, selectedWool, selectedYak, selectedOther
-                        })
+
+                        setId(Date.now())
+
+
                         //setCone(cone)
                         setIsPressed(true)
                         console.log(cone)
@@ -206,13 +204,13 @@ const DetailsPickerScreen = ({ route, navigation }) => {
                         )
                       }
                       /*  : {
-                         Alert.alert(
-                           "No full yarn data",
-                           "Please choose  Yarn Type, Manufacturer, Color and Weight",
-                           [{
-                             text: "OK",
-                           }]
-                         );
+                Alert.alert(
+                  "No full yarn data",
+                  "Please choose  Yarn Type, Manufacturer, Color and Weight",
+                  [{
+                    text: "OK",
+                  }]
+                );
                        } */
 
 

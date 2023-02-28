@@ -70,10 +70,7 @@ const ModalView = (props) => {
     value: '',
     color: '#9EA0A4',
   }
-  const myArray = modalData.composition
-  const index = myArray.indexOf('mix')
-  const x = myArray.splice(index, 1)
-  console.log(myArray)
+
 
   return (
 
@@ -143,7 +140,7 @@ const ModalView = (props) => {
 
               {
 
-                myArray.map((item) => {
+                modalData.mixComposition.map((item) => {
 
                   return (
                     <View

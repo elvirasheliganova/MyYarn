@@ -64,33 +64,36 @@ const BoxRoom = ({ navigation }) => {
                   </Pressable>
                   <View style={styles.detailsData}>
                     <View style={styles.yarnTypeData}>
-                      <Text style={styles.yarnTypeDataText}>{t(`${item.selectedYarnType}`)}</Text>
+                      <View style={{}} >
+                        <Text style={[styles.yarnTypeDataText, { color: '#6D645A' }]}>{t(`${item.selectedYarnType}`)}</Text>
+                        <Text style={styles.yarnTypeDataText}>{item.article}</Text>
+                      </View>
                       {item.selectedYarnType === 'mix' &&
                         <View style={styles.mixData}>
                           <View style={{ marginLeft: 'auto' }}>
                             {item.selectedAlpaca && <Text style={styles.yarnDataText}>{t('alpaca')} {item.selectedAlpaca}%</Text>}
                             {item.selectedAngora && <Text style={styles.yarnDataText}>{t('angora')} {item.selectedAngora}% </Text>}
-                            {item.selectedCamel && <Text style={styles.yarnDataText}> {t('camel')} {item.selectedCamel}%  </Text>}
-                            {item.selectedMerino && <Text style={styles.yarnDataText}>{t('merino')} {item.selectedMerino}% </Text>}
-                            {item.selectedCash && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('cashemere')} {item.selectedCash}% </Text>}
+                            {item.selectedCamel && <Text style={styles.yarnDataText}>{t('camel')} {item.selectedCamel}%  </Text>}
+                            {item.selectedMerino && <Text style={styles.yarnDataText}>{t('merinos')} {item.selectedMerino}% </Text>}
+                            {item.selectedCash && <Text style={styles.yarnDataText}>{t('cashemere')} {item.selectedCash}% </Text>}
                             {item.selectedWool && <Text style={styles.yarnDataText}>{t('wool')} {item.mix.selectedWool}% </Text>}
-                            {item.selectedLamb && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('lamb')}{item.selectedLamb}% </Text>}
-                            {item.selectedLinen && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('linen')}{item.selectedLinen}% </Text>}
+                            {item.selectedLamb && <Text style={styles.yarnDataText}>{t('lamb')}{item.selectedLamb}% </Text>}
+                            {item.selectedLinen && <Text style={styles.yarnDataText}>{t('linen')}{item.selectedLinen}% </Text>}
                             {item.selectedKid && <Text style={styles.yarnDataText}>{t('kid mohair')} {item.selectedKid}% </Text>}
                             {item.selectedSKid && <Text style={styles.yarnDataText}>{t('superkid mohair')} {item.selectedSKid}%</Text>}
                             {item.selectedYak && <Text style={styles.yarnDataText}>{t('yak')} {item.mix.selectedYak}% </Text>}
-                            {item.selectedCotton && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('silk')} {item.selectedSilk}% </Text>}
-                            {item.selectedSilk && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('cotton')} {item.selectedCotton}%</Text>}
-                            {item.selectedViscose && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('viscose')} {item.selectedViscose}% </Text>}
-                            {item.selectedElastan && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('elastan')} {item.selectedElastan}% </Text>}
-                            {item.selectedPa && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('pa')} {item.selectedPa}% </Text>}
-                            {item.selectedOther && <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#07544b' }}>{t('other')} {item.selectedOther}% </Text>}
+                            {item.selectedCotton && <Text style={styles.yarnDataText}>{t('silk')} {item.selectedSilk}% </Text>}
+                            {item.selectedSilk && <Text style={styles.yarnDataText}>{t('cotton')} {item.selectedCotton}%</Text>}
+                            {item.selectedViscose && <Text style={styles.yarnDataText}>{t('viscose')} {item.selectedViscose}% </Text>}
+                            {item.selectedElastan && <Text style={styles.yarnDataText}>{t('elastan')} {item.selectedElastan}% </Text>}
+                            {item.selectedPa && <Text style={styles.yarnDataText}>{t('pa')} {item.selectedPa}% </Text>}
+                            {item.selectedOther && <Text style={styles.yarnDataText}>{t('other')} {item.selectedOther}% </Text>}
                           </View>
                         </View>}
 
                     </View>
-                    <Text style={{ marginRight: 5, marginBottom: 2, paddingLeft: 8, fontWeight: '600', color: '#504412' }}>{item.length} {t('mts')} / 100 {t('grams')} </Text>
-                    <Text style={{ marginRight: 5, marginBottom: 2, fontWeight: '600', paddingLeft: 8, color: '#504412' }}>{t(`${item.selectedYarnManufacturer}`)}</Text>
+                    <Text style={{ marginBottom: 2, paddingLeft: 8, fontWeight: '600', color: '#504412' }}>{item.length} {t('mts')} / 100 {t('grams')} </Text>
+                    <Text style={{ marginBottom: 2, fontWeight: '600', paddingLeft: 8, color: '#504412' }}>{t(`${item.selectedYarnManufacturer}`)}</Text>
                   </View>
                 </Pressable>
               </View>
@@ -145,6 +148,7 @@ const styles = StyleSheet.create({
   },
   yarnTypeDataText: {
     marginRight: 15,
+
     fontSize: 18,
     fontWeight: 'bold',
     color: '#07544b',
@@ -153,7 +157,8 @@ const styles = StyleSheet.create({
   yarnDataText: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#07544b',
+    color: '#6D645A'
+    //color: '#07544b',
 
   },
   mixData: {

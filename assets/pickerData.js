@@ -62,7 +62,7 @@ const pickerData =
       },
       {
         label: "filatura di pollone",
-        value: "Filatura di Pollone"
+        value: "Filatura di pollone"
       },
       {
         label: "filati power",
