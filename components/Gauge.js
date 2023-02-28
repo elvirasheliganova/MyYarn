@@ -39,7 +39,10 @@ const Gauge = ({ yarn }) => {
 
       <View style={styles.gaugeImageData} >
         <View style={styles.gaugeTitle}>
-          <Text style={{ fontSize: 20, fontWeight: "bold", color: '#07544b', }}>
+          <Text style={{
+            fontSize: 20, fontWeight: "bold", color: '#504412'
+            // color: '#07544b', 
+          }}>
             {t('gauge')}
           </Text>
         </View>
@@ -262,8 +265,8 @@ const Gauge = ({ yarn }) => {
       >
         <Text
           style={{
-
-            color: '#07544b',
+            color: '#504412',
+            //color: '#07544b',
             //'#424828', 
             fontSize: 18, fontWeight: "bold"
           }} >

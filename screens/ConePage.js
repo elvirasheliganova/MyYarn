@@ -64,7 +64,9 @@ const ConePage = ({ route }) => {
   console.log(yarn)
   return (
 
-    <ScrollView style={{ flex: 1, }}>
+    <ScrollView style={{ flex: 1 }}
+      showsVerticalScrollIndicator={false}
+    >
       {/*   <View style={{ flex: 1, backgroundColor: '#EDFDFA' }}> */}
       <LinearGradient
         colors={['#D2F0EE', "transparent"]}
@@ -78,6 +80,7 @@ const ConePage = ({ route }) => {
             <View style={styles.yarnTitle} >
               <View style={{}}>
                 <Text style={styles.yarnTitleText}>{t(`${yarn.selectedYarnType}`)}{" "}</Text>
+                <Text style={[styles.yarnTitleText, { color: '#6D645A' }]}>{t(`${yarn.article}`)}{" "}</Text>
               </View>
               <View style={{ alignContent: 'flex-end', width: '65%' }}>
                 <View style={styles.yarnMixData}
@@ -151,7 +154,7 @@ const ConePage = ({ route }) => {
               style={styles.yarnDetails}
             >
               <Text style={{ fontSize: 14, fontWeight: "600", color: '#424828' }}>
-                {yarn.selectedYarnManufacturer}{" "}
+                {t(`${yarn.selectedYarnManufacturer}`)}{" "}
               </Text>
               <Text style={{ fontSize: 14, color: '#424828' }}>
                 {t('manufactured by')} {" "}
@@ -279,7 +282,8 @@ const styles = StyleSheet.create({
   yarnTitleText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: '#07544b',
+    color: '#504412'
+    //color: '#07544b',
     //'#424828'
 
     // marginRight: 40

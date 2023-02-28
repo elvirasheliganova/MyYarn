@@ -20,7 +20,7 @@ const DetailsPickerScreen = ({ route, navigation }) => {
   const [selectedYarnType, setSelectedYarnType] = useState('')
   const [length, onChangeLength] = useState()
   const [weight, onChangeWeight] = useState();
-  const [article, onChangeArticle] = useState()
+  const [article, onChangeArticle] = useState('')
   const [isPressed, setIsPressed] = useState(false)
   const [selectedYarnManufacturer, setSelectedYarnManufacturer] = useState('')
   const [selectedYarnColor, setSelectedYarnColor] = useState('')
@@ -84,7 +84,7 @@ const DetailsPickerScreen = ({ route, navigation }) => {
   //
   //console.warn(cone)
   // console.warn(mix)
-  console.log(selectedAngora, selectedAlpaca, selectedCotton)
+  //console.log(selectedAngora, selectedAlpaca, selectedCotton)
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, }}

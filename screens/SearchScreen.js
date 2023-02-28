@@ -14,7 +14,8 @@ const Search = ({ navigation }) => {
     isComposition: false,
     isWeight: false,
     isColor: false,
-    isManufactirer: false
+    isManufactirer: false,
+    isArticle: false
   })
 
   //const searchComposition = yarns.filter(yarn => yarn.selectedYarnType.includes(value))
@@ -28,7 +29,10 @@ const Search = ({ navigation }) => {
   // const searchColor = yarns.filter((yarn) => { yarn.selectedYarnColor.includes(value.toLowerCase()), console.log(value) })
   const searchColor = value ? yarns.filter((yarn) => t(`${yarn.selectedYarnColor}`).toLowerCase().includes(value.toLowerCase())) : null
   const searchManufacturer = value ? yarns.filter(yarn => t(`${yarn.selectedYarnManufacturer}`).toLowerCase().includes(value.toLowerCase())) : null
-  console.log(yarns)
+
+  const searchArticle = value ? yarns.filter(yarn => yarn.article.includes(value)) : null
+
+  console.log(searchArticle)
 
   const goToYarnPage = (cone) => {
     {
@@ -44,7 +48,8 @@ const Search = ({ navigation }) => {
     isComposition: "composition",
     isWeight: "quantity",
     isColor: "color",
-    isManufactirer: "manufacturer"
+    isManufactirer: "manufacturer",
+    isArticle: "article"
   }
 
   const onChangeChekedBoxes = useCallback((checkedBox) => (newValue) => {
@@ -93,7 +98,7 @@ const Search = ({ navigation }) => {
             <View style={{}}>
               <FlatList
                 // data={Object.keys(checkedBoxes)[0] ? searchComposition : Object.keys(checkedBoxes)[1] ? searchWeight : Object.keys(checkedBoxes)[2] ? searchColor : searchManufacturer}
-                data={checkedBoxes.isComposition ? searchComposition : checkedBoxes.isWeight ? searchWeight : checkedBoxes.isColor ? searchColor : searchManufacturer}
+                data={checkedBoxes.isComposition ? searchComposition : checkedBoxes.isWeight ? searchWeight : checkedBoxes.isColor ? searchColor : checkedBoxes.isArticle ? searchArticle : searchManufacturer}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item, index }) =>
                   <View style={styles.yarnDataContainer}>
@@ -102,6 +107,7 @@ const Search = ({ navigation }) => {
                         <View style={{ width: '65%' }}>
                           <View style={{ alignContent: 'center' }}>
                             <Text style={styles.yarnType}>{t(`${item.selectedYarnType}`)} </Text>
+                            <Text style={[styles.yarnType, { color: '#6D645A' }]}>{item.article}</Text>
                             <Text style={styles.yarnWeight}>{t(`${item.weight}`)} {t('grams')}</Text>
                           </View>
                         </View>

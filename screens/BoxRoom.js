@@ -65,8 +65,8 @@ const BoxRoom = ({ navigation }) => {
                   <View style={styles.detailsData}>
                     <View style={styles.yarnTypeData}>
                       <View style={{}} >
-                        <Text style={[styles.yarnTypeDataText, { color: '#6D645A' }]}>{t(`${item.selectedYarnType}`)}</Text>
-                        <Text style={styles.yarnTypeDataText}>{item.article}</Text>
+                        <Text style={[styles.yarnTypeDataText, { color: '#504412' }]}>{t(`${item.selectedYarnType}`)}</Text>
+                        <Text style={[styles.yarnTypeDataText, { color: '#6D645A' }]}>{item.article}</Text>
                       </View>
                       {item.selectedYarnType === 'mix' &&
                         <View style={styles.mixData}>
@@ -92,8 +92,10 @@ const BoxRoom = ({ navigation }) => {
                         </View>}
 
                     </View>
-                    <Text style={{ marginBottom: 2, paddingLeft: 8, fontWeight: '600', color: '#504412' }}>{item.length} {t('mts')} / 100 {t('grams')} </Text>
-                    <Text style={{ marginBottom: 2, fontWeight: '600', paddingLeft: 8, color: '#504412' }}>{t(`${item.selectedYarnManufacturer}`)}</Text>
+                    <View style={{ marginTop: 10 }}>
+                      <Text style={{ marginBottom: 2, paddingLeft: 8, fontWeight: '600', color: '#504412' }}>{item.length} {t('mts')} / 100 {t('grams')} </Text>
+                      <Text style={{ marginBottom: 2, fontWeight: '600', paddingLeft: 8, color: '#504412' }}>{t(`${item.selectedYarnManufacturer}`)}</Text>
+                    </View>
                   </View>
                 </Pressable>
               </View>

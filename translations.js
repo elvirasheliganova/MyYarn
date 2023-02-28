@@ -107,6 +107,7 @@ const translations =
       'weight': 'Длина пряжи в 100 гр',
       'quantity': 'Вес пряжи вceго',
       'article': 'Артикул',
+      'yarn name': 'Ламора',
       'm / 100 gr': 'м / 100 гр ',
       'gr': 'гр',
       'manufactured by': 'Производитель',
