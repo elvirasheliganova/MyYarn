@@ -337,6 +337,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
     marginLeft: 'auto',
+    alignItems: 'center'
     //shadowColor: "# 8C9284",
     //shadowOffset: { width: -1, height: -2 },
     //shadowOpacity: 0.1,
