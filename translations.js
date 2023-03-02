@@ -65,6 +65,7 @@ const translations =
       'Filmar': 'Filmar / Филмар',
       'Filpucci': 'Filpucci / Филпуччи',
       'Fullonica': 'Fullonica / Фуллоника',
+      'G & G': 'G & G / Джи энд Джи',
       'Hasegawa': 'Hasegawa / Хасегава',
       'Igea': 'Igea / Игеа',
       'Ilaria': 'Ilaria / Илария',

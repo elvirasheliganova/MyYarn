@@ -5,7 +5,6 @@ import { MaterialIcons } from '@expo/vector-icons'
 import * as ImagePicker from 'expo-image-picker'
 import { LinearGradient } from 'expo-linear-gradient';
 import { ImageBackground } from 'react-native';
-import TranslateText from '../components/TranslateText';
 import { useTranslation } from 'react-i18next';
 
 
@@ -64,7 +63,6 @@ const ImagePickerScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
-
       <LinearGradient
         colors={['#D2F0EE', 'transparent']}
         style={styles.gradientContainer} >
@@ -79,17 +77,8 @@ const ImagePickerScreen = ({ navigation }) => {
               {mainImage ?
                 <ImageBackground
                   source={{ uri: mainImage }}
-                  style={{
-                    flex: 1,
-
-                    // alignItems: 'center',
-                    //justifyContent: 'center'
-                    alignSelf: 'flex-start',
-                  }}
-                  imageStyle={{
-                    width: '100%', height: '100%', borderRadius: 15, resizeMode: 'cover',
-
-                  }} >
+                  style={{ flex: 1, alignSelf: 'flex-start', }}
+                  imageStyle={{ width: '100%', height: '100%', borderRadius: 15, resizeMode: 'cover' }} >
                   <Pressable style={styles.mainImagePressable}
                     onPress={() => setMainImage()}>
                     <MaterialCommunityIcons name="close-box" size={24} color='#AEC4C2' />
@@ -111,8 +100,6 @@ const ImagePickerScreen = ({ navigation }) => {
                 else {
                   alert(
                     t('no photo'),
-
-
                     [{
                       text: "OK",
                     }]
@@ -155,7 +142,6 @@ const ImagePickerScreen = ({ navigation }) => {
                   <MaterialCommunityIcons name="file-image-plus-outline" size={30} color="grey" />
                 </Pressable>
                 <View style={styles.moreImage}></View>
-
               </View>
 
               : image.length === 2 ?
@@ -198,7 +184,6 @@ const ImagePickerScreen = ({ navigation }) => {
                           <Pressable style={styles.smallDelete}
                             onPress={() => deleteImage(item)}>
                             <MaterialCommunityIcons name="close-box" size={18} color='#D5DCDB'
-                            //'#AEC4C2'
                             />
                           </Pressable>
                         </ImageBackground>
@@ -210,12 +195,7 @@ const ImagePickerScreen = ({ navigation }) => {
                 </View>}
         </View>
 
-        <View style={{
-          width: '100%',
-          // marginBottom: 50, marginTop: 20, 
-          borderRadius: 5, alignItems: 'flex-end',
-          //backgroundColor: 'lightgreen'
-        }}>
+        <View style={{ width: '100%', borderRadius: 5, alignItems: 'flex-end' }}>
           <Pressable
             style={styles.nextButton}
             onPress={() => {
@@ -228,8 +208,6 @@ const ImagePickerScreen = ({ navigation }) => {
               } else {
                 alert(
                   t('no photo'),
-
-
                   [{
                     text: "OK",
                   }]
@@ -242,47 +220,32 @@ const ImagePickerScreen = ({ navigation }) => {
                 fontSize: 18,
                 fontWeight: 'bold',
                 color: '#504412'
-              }}>{t('next')}</Text>
+              }}>
+                {t('next')}
+              </Text>
             </View>
             <MaterialIcons name="arrow-right" size={28} color="#504412" />
           </Pressable>
-          {/*   <View
-            style={{
-              flexDirection: 'row',
-              margin: 10, backgroundColor: 'pink'
-            }}>
-
-          </View> */}
         </View>
-
       </LinearGradient>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+
   gradientContainer: {
     flex: 1,
     width: '100%',
     height: '100%',
     paddingHorizontal: 20,
     backgroundColor: '#C7CAB6',
-
-
-
   },
   mainImageContainer: {
-    //flex: 1,
     marginTop: 30,
-    //backgroundColor: 'pink',
     width: '75%',
     aspectRatio: 1 / 1,
     alignContent: 'center',
-    // alignSelf: 'center'
-    /* height: '100%',
-    aspectRatio: 1 / 1 */
-
-
   },
   pickImage1Container: {
     flex: 1,
@@ -295,7 +258,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor: 'silver',
   },
-
   mainImagePressable: {
     width: 30,
     height: 30,
@@ -306,15 +268,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-
   moreImagesContainer: {
     marginTop: 50,
-    // marginLeft: 20,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    alignSelf: 'center',
-    // backgroundColor: 'pink'
+    alignSelf: 'center'
   },
   moreImage: {
     height: 100,
@@ -326,8 +285,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 8
-    //marginRight: 20,
-
   },
   smallDelete: {
     width: 20,
@@ -344,7 +301,6 @@ const styles = StyleSheet.create({
     width: '50%',
     justifyContent: 'center',
     backgroundColor: '#fec0a5',
-    //'#FDCCA0',
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginRight: 8,
@@ -352,8 +308,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     fontSize: 30,
     fontWeight: '600',
-    color: '#07544b',
-
+    color: '#07544b'
   },
   nextButtonText: {
     fontSize: 30,
@@ -361,12 +316,7 @@ const styles = StyleSheet.create({
     color: '#07544b',
     marginRight: 10
   },
-  button: {
-    backgroundColor: '#61e3a5',
-    padding: 10,
-    borderRadius: 10,
-    margin: 10,
-  },
+
 })
 
 export default ImagePickerScreen

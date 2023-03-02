@@ -85,6 +85,11 @@ const pickerData =
         value: "Dundaga"
       },
       {
+        label: "g & g",
+        value: "G & G"
+      },
+
+      {
         label: "hasegawa",
         value: "Hasegawa"
       },
@@ -363,10 +368,6 @@ const pickerData =
       {
         label: "pa",
         value: "pa"
-      },
-      {
-        label: "syntetic",
-        value: "syntetic"
       },
 
       {

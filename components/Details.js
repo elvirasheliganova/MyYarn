@@ -147,11 +147,11 @@ const Details = (props) => {
             placeholderTextColor={'#746B45'}
             keyboardType="default"
           />
-          {articleIsVisible ?
+          {/* {articleIsVisible ?
             <View style={{ flex: 1, alignItems: 'flex-end' }}>
               <Text style={{ flex: 1, marginRight: 10, fontSize: 16, fontWeight: 'bold', color: '#504412' }}>{t('gr')}</Text>
             </View>
-            : null}
+            : null} */}
         </View>
 
         {/* <View style={styles.checkboxContainer}>

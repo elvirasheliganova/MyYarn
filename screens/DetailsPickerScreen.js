@@ -1,13 +1,12 @@
 import {
-  View, Text, TextInput, StyleSheet,
+  View, Text, StyleSheet,
   KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard,
-  TouchableOpacity, Pressable, Alert
+  TouchableOpacity,
 } from 'react-native'
-import React, { useState, useContext, useCallback, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ModalView from '../components/Modal'
 import pickerData from '../assets/pickerData'
 import Details from '../components/Details'
-
 import { LinearGradient } from 'expo-linear-gradient';
 import { YarnContext } from '../components/YarnContext';
 import { useTranslation } from 'react-i18next';
@@ -49,7 +48,6 @@ const DetailsPickerScreen = ({ route, navigation }) => {
 
   useEffect(() => {
     if (id)
-      // console.log(mix)
       setCone({
         id, image, selectedYarnType, isMix, mix, length,
         selectedYarnManufacturer, selectedYarnColor, weight, article,
@@ -58,33 +56,19 @@ const DetailsPickerScreen = ({ route, navigation }) => {
         selectedLamb, selectedLinen, selectedMerino, selectedPa,
         selectedSilk, selectedViscose, selectedWool, selectedYak, selectedOther
       })
-
-    /*  if (mix)
-       setYarns(prevCone =>
-         [...prevCone,  mix]) */
-
-    // console.log("Final data updated , invoke your function", yarns)
   }, [id]);
+
   useEffect(() => {
     if (cone)
       setYarns(prevYarns =>
         [...prevYarns, cone])
-
-
-    // console.log("Final data updated , invoke your function", yarns)
   }, [cone]);
 
   useEffect(() => {
     if (isMix)
       setIsMix(false)
-
-
-
   }, [yarns]);
-  //
-  //console.warn(cone)
-  // console.warn(mix)
-  //console.log(selectedAngora, selectedAlpaca, selectedCotton)
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, }}
@@ -93,23 +77,13 @@ const DetailsPickerScreen = ({ route, navigation }) => {
         <LinearGradient
           colors={['#D2F0EE', 'transparent']}
           style={styles.gradientContainer} >
-          <View style={{
-            // justifyContent: 'center',
-            flex: 1,
-            // backgroundColor: 'lightpink',
-
-          }}>
-            <View style={{
-              flex: 1,
-              //backgroundColor: 'blue'
-            }}>
-              {/* {selectedYarnType ? <View><Text>{selectedYarnType}</Text></View> : null} */}
+          <View style={{ flex: 1, }}>
+            <View style={{ flex: 1 }}>
               <ModalView
                 data={pickerData.yarnType}
                 text={t('composition')}
                 label={t(`${selectedYarnType}`)}
                 chooseYarn={setSelectedYarnType}
-                //chooseId={setId}
                 chooseMix={setIsMix}
                 changeMix={(mix) => setMix(mix)}
                 chooseAlpaca={setSelectedAlpaca}
@@ -136,7 +110,6 @@ const DetailsPickerScreen = ({ route, navigation }) => {
                 label={t(`${selectedYarnManufacturer}`)}
                 text={t('manufacturer')}
                 chooseYarn={setSelectedYarnManufacturer}
-              //chooseId={setId} 
               />
 
               <ModalView
@@ -144,56 +117,26 @@ const DetailsPickerScreen = ({ route, navigation }) => {
                 label={t(`${selectedYarnColor}`)}
                 text={t('color')}
                 chooseYarn={setSelectedYarnColor}
-              //chooseId={setId} 
               />
             </View>
-            <View style={{
-              flex: 1,
-              //backgroundColor: 'grey',
-              //justifyContent: 'center'
-            }}>
+            <View style={{ flex: 1 }}>
               <Details
                 image={image}
                 chooseLength={onChangeLength}
                 chooseWeight={onChangeWeight}
                 chooseArticle={onChangeArticle}
-              /* selectedYarnType={selectedYarnType}
-              selectedYarnManufacturer={selectedYarnManufacturer}
-              selectedYarnColor={selectedYarnColor} */ />
+              />
             </View>
-            {/*  <Button 
-            id={id}
-            image={image}
-            selectedYarnType={selectedYarnType}
-            selectedYarnManufacturer={selectedYarnManufacturer}
-            selectedYarnColor={selectedYarnColor}
-            length={length}
-            weight={weight}
-            /> */}
 
             <View style={styles.buttonContainer}>
               {!isPressed ?
                 <TouchableOpacity
                   style={styles.confirmContainer}
-
                   onPress={() => {
                     {
-
-
                       if (selectedYarnType, length, selectedYarnColor, selectedYarnManufacturer, weight) {
-
-
                         setId(Date.now())
-
-
-                        //setCone(cone)
                         setIsPressed(true)
-                        console.log(cone)
-
-
-
-
-                        //console.log(cone.selectedYarnColor)
                       }
                       else {
                         alert(
@@ -203,20 +146,7 @@ const DetailsPickerScreen = ({ route, navigation }) => {
                           }]
                         )
                       }
-                      /*  : {
-                Alert.alert(
-                  "No full yarn data",
-                  "Please choose  Yarn Type, Manufacturer, Color and Weight",
-                  [{
-                    text: "OK",
-                  }]
-                );
-                       } */
-
-
                     }
-
-
                   }}
                 >
                   <Text style={styles.confirmText}>{t('save')}</Text>
@@ -232,21 +162,18 @@ const DetailsPickerScreen = ({ route, navigation }) => {
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView >
   )
-
 }
 
 const styles = StyleSheet.create({
   gradientContainer: {
     flex: 1,
-
-    //justifyContent: 'center',
     backgroundColor: '#C7CAB6'
   },
   buttonContainer: {
     width: 300,
     marginVertical: 20,
-    alignSelf: 'center', justifyContent: 'center',
-    //justifyContent: 'space-between',
+    alignSelf: 'center',
+    justifyContent: 'center',
     flexDirection: 'row',
   },
   confirmContainer: {
@@ -261,67 +188,9 @@ const styles = StyleSheet.create({
   confirmText: {
     fontSize: 18,
     color: '#504412',
-    // color: '#07544b',
-    //'#413918',
     fontWeight: 'bold'
-  },
-  saveYarnContainer: {
-    height: 45,
-    backgroundColor: '#fdccA0',
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 20
-  },
-  saveYarnText: {
-    fontSize: 16,
+  }
 
-    // color: '#42370B',
-    fontWeight: 'bold'
-  },
-
-
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
 })
 
 export default DetailsPickerScreen

@@ -1,5 +1,5 @@
 const modalData = {
-  composition: ['alpaca', 'angora', 'camel', 'cashmere', 'wool', 'merinos', 'mix', 'lamb', 'superkid mohair', 'kid mohair', 'yak', 'linen', 'silk', 'cotton', 'viscose', 'elastan', 'pa', 'synthetic', 'other'],
+  composition: ['alpaca', 'angora', 'camel', 'cashmere', 'wool', 'merinos', 'mix', 'lamb', 'superkid mohair', 'kid mohair', 'yak', 'linen', 'silk', 'cotton', 'viscose', 'elastan', 'pa', 'other'],
   percentage: [
     { label: '0', value: '0' },
     { label: '5', value: '5' },
@@ -22,7 +22,7 @@ const modalData = {
     { label: '90', value: '90' },
     { label: '95', value: '95' },
   ],
-  mixComposition: ['alpaca', 'angora', 'camel', 'cashmere', 'wool', 'merinos', 'lamb', 'superkid mohair', 'kid mohair', 'yak', 'linen', 'silk', 'cotton', 'viscose', 'elastan', 'pa', 'synthetic', 'other'],
+  mixComposition: ['alpaca', 'angora', 'camel', 'cashmere', 'wool', 'merinos', 'lamb', 'superkid mohair', 'kid mohair', 'yak', 'linen', 'silk', 'cotton', 'viscose', 'elastan', 'pa', 'other'],
 }
 //console.log(modalData.composition)
 
