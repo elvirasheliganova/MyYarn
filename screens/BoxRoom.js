@@ -9,15 +9,11 @@ import { useTranslation } from 'react-i18next';
 
 const BoxRoom = ({ navigation }) => {
 
-
   const { t } = useTranslation()
   const [yarns, setYarns] = useContext(YarnContext)
   const [loading, setLoading] = useState(true);
 
-
-
   useEffect(() => {
-
     yarns && setLoading(false), []
   })
 
@@ -32,9 +28,6 @@ const BoxRoom = ({ navigation }) => {
         [...prevYarns.slice(0, coneIndex), ...prevYarns.slice(coneIndex + 1)])
     }
   }
-
-
-
   return (
     <View style={{ flex: 1, alignItems: 'center', }}>
       <LinearGradient
@@ -48,9 +41,7 @@ const BoxRoom = ({ navigation }) => {
             renderItem={({ item, index }) => (
               <View style={{ backgroundColor: '#EBFFFF', marginVertical: 10, borderRadius: 10, }} key={item.id} >
                 <Pressable
-
                   onPress={() => { goToYarnPage(item) }}
-
                 >
                   <Pressable style={styles.delete}
                     onPress={() => {
@@ -90,7 +81,6 @@ const BoxRoom = ({ navigation }) => {
                             {item.selectedOther && <Text style={styles.yarnDataText}>{t('other')} {item.selectedOther}% </Text>}
                           </View>
                         </View>}
-
                     </View>
                     <View style={{ marginTop: 10 }}>
                       <Text style={{ marginBottom: 2, paddingLeft: 8, fontWeight: '600', color: '#504412' }}>{item.length} {t('mts')} / 100 {t('grams')} </Text>
@@ -99,7 +89,6 @@ const BoxRoom = ({ navigation }) => {
                   </View>
                 </Pressable>
               </View>
-
             )}
             showsVerticalScrollIndicator={false}
           />
@@ -150,7 +139,6 @@ const styles = StyleSheet.create({
   },
   yarnTypeDataText: {
     marginRight: 15,
-
     fontSize: 18,
     fontWeight: 'bold',
     color: '#07544b',
@@ -160,14 +148,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     color: '#6D645A'
-    //color: '#07544b',
-
   },
   mixData: {
-
     flex: 1,
     alignItems: 'flex-start',
-
   }
 
 })
