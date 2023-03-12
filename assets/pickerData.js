@@ -263,6 +263,10 @@ const pickerData =
         label: "black",
         value: "Black"
       },
+      {
+        label: "multicolor",
+        value: "Multicolor"
+      },
     ],
 
   weight:
