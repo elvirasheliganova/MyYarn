@@ -50,7 +50,7 @@ const ConePage = ({ route }) => {
       quality: 1,
     });
     {
-      setGaugeImage(result.uri);
+      setGaugeImage(result.assets[0].uri);
     }
   };
   /*   const particularitiesList = useMemo(() => {
@@ -61,7 +61,7 @@ const ConePage = ({ route }) => {
         );
       });
     }, [yarn.particularities]); */
-  console.log(yarn)
+  // console.log(yarn)
   return (
 
     <ScrollView style={{ flex: 1 }}
@@ -80,7 +80,7 @@ const ConePage = ({ route }) => {
             <View style={styles.yarnTitle} >
               <View style={{}}>
                 <Text style={styles.yarnTitleText}>{t(`${yarn.selectedYarnType}`)}{" "}</Text>
-                <Text style={[styles.yarnTitleText, { color: '#6D645A' }]}>{t(`${yarn.article}`)}{" "}</Text>
+                <Text style={[styles.yarnTitleText, { color: '#6D645A', fontSize: yarn.article ? 18 : 14 }]}>{yarn.article ? yarn.article : t('noName')}{" "}</Text>
               </View>
               <View style={{ alignContent: 'flex-end', width: '65%' }}>
                 <View style={styles.yarnMixData}
@@ -282,8 +282,8 @@ const styles = StyleSheet.create({
   yarnTitleText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: '#504412'
-    //color: '#07544b',
+    color: '#504412',
+
     //'#424828'
 
     // marginRight: 40

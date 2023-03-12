@@ -57,7 +57,7 @@ const BoxRoom = ({ navigation }) => {
                     <View style={styles.yarnTypeData}>
                       <View style={{}} >
                         <Text style={[styles.yarnTypeDataText, { color: '#504412' }]}>{t(`${item.selectedYarnType}`)}</Text>
-                        <Text style={[styles.yarnTypeDataText, { color: '#6D645A' }]}>{item.article}</Text>
+                        <Text style={[styles.yarnTypeDataText, { color: '#6D645A', fontSize: item.article ? 18 : 14, flexWrap: 'wrap', flexDirection: 'row', }]}>{item.article ? item.article : t('noName')}</Text>
                       </View>
                       {item.selectedYarnType === 'mix' &&
                         <View style={styles.mixData}>
@@ -138,7 +138,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   yarnTypeDataText: {
-    marginRight: 15,
+    flex: 1,
+    // marginRight: 15,
     fontSize: 18,
     fontWeight: 'bold',
     color: '#07544b',
@@ -150,6 +151,7 @@ const styles = StyleSheet.create({
     color: '#6D645A'
   },
   mixData: {
+    paddingLeft: 10,
     flex: 1,
     alignItems: 'flex-start',
   }
