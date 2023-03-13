@@ -1,21 +1,12 @@
 import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  TextInput,
-  Pressable,
-  StyleSheet,
-  ScrollView
+  View, Text, FlatList, Image, TextInput, Pressable, StyleSheet, ScrollView
 } from "react-native";
 import React, { useState, useContext, useEffect, useMemo } from "react";
 import { YarnContext } from "../components/YarnContext";
 import { LinearGradient } from "expo-linear-gradient";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { useTranslation } from "react-i18next";
 import Gauge from "../components/Gauge";
 
@@ -25,49 +16,37 @@ const ConePage = ({ route }) => {
   const [yarns, setYarns] = useContext(YarnContext);
   const { coneId, cone } = route.params;
   const yarn = yarns.find((yarn) => yarn.id === coneId);
-  const [gauge, onChangeGauge] = useState(null);
-  const [needles, onChangeNeedles] = useState(null);
-  const [good, onChangeGood] = useState(null);
   const [newWeight, onChangeNewWeight] = useState(null);
   const [isGauge, setIsGauge] = useState(false);
   const [gaugeImage, setGaugeImage] = useState();
   const [edit, setEdit] = useState(false);
 
-  const saveData = async () => {
+  /* const saveData = async () => {
     await AsyncStorage.setItem("yarns", JSON.stringify(yarns));
-  };
+  }; */
 
   useEffect(() => {
     if (yarn.gauge) setIsGauge(true);
     else setIsGauge(false);
   }, []);
 
-  const pickImage3 = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-    {
-      setGaugeImage(result.assets[0].uri);
-    }
-  };
-  /*   const particularitiesList = useMemo(() => {
-      return Object.keys(yarn.particularities).map((particularity) => {
-        return (
-          yarn.particularities[particularity] &&
-          particularitiesLabels[particularity]
-        );
+  /*   const pickImage3 = async () => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
       });
-    }, [yarn.particularities]); */
-  // console.log(yarn)
+      {
+        setGaugeImage(result.assets[0].uri);
+      }
+    }; */
+
   return (
 
     <ScrollView style={{ flex: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      {/*   <View style={{ flex: 1, backgroundColor: '#EDFDFA' }}> */}
       <LinearGradient
         colors={['#D2F0EE', "transparent"]}
         style={styles.linearGradientContainer}
@@ -75,7 +54,6 @@ const ConePage = ({ route }) => {
         <View style={{
           flex: 1, height: '100%', justifyContent: 'space-around',
         }}>
-
           <View style={styles.mainDataContainer}>
             <View style={styles.yarnTitle} >
               <View style={{}}>
@@ -84,7 +62,6 @@ const ConePage = ({ route }) => {
               </View>
               <View style={{ alignContent: 'flex-end', width: '65%' }}>
                 <View style={styles.yarnMixData}
-                // horizontal={true} showsHorizontalScrollIndicator={false}
                 >
                   {yarn.selectedCash ? (
                     <View style={{}}>
@@ -208,16 +185,6 @@ const ConePage = ({ route }) => {
             ) : null}
 
             <View style={styles.yarnDetails} >
-              {/*     {particularitiesList.map((particularity, index) => (
-                <Text style={{ fontSize: 14, fontWeight: "600" }} key={index}>
-                  {particularity}
-                </Text>
-              ))}
-              {particularitiesList.length && (
-                <Text style={{ fontSize: 14, color: "grey", marginLeft: 100 }}>
-                  Particularity
-                </Text>
-              )} */}
             </View>
           </View>
           <View style={styles.imagesContainer}>
@@ -235,13 +202,10 @@ const ConePage = ({ route }) => {
               showsHorizontalScrollIndicator={false}
             />
           </View>
-
           <View style={styles.gaugeContainer}>
             <Gauge yarn={yarn} />
           </View>
-
         </View>
-        {/*  </View> */}
       </LinearGradient>
     </ScrollView>
 
@@ -259,19 +223,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     paddingBottom: 15,
-    //backgroundColor: "#D7DCCA80",
-    //'#EFECE7'
     borderRadius: 10,
-    //shadowColor: "# 8C9284",
-    //shadowOffset: { width: -2, height: -4 },
-    //shadowOpacity: 0.1,
   },
   yarnTitle: {
     flexDirection: "row",
-    backgroundColor:
-      // '#EBFFFF',
-      '#DCFC98',
-    // "#E6F5C8",
+    backgroundColor: '#DCFC98',
     justifyContent: "space-between",
     borderRadius: 10,
     padding: 5,
@@ -283,17 +239,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: '#504412',
-
-    //'#424828'
-
-    // marginRight: 40
   },
   yarnMixData: {
-    //backgroundColor: 'pink',
     marginLeft: 'auto',
     marginHorizontal: 15,
-    //flexDirection: "row",
-    //alignItems: "flex-end",
   },
   yarnMixDataItem: {
     fontSize: 14, fontWeight: "bold",
@@ -340,8 +289,6 @@ const styles = StyleSheet.create({
   imagesContainer: {
     flex: 1,
     width: '100%',
-    //marginHorizontal: 20,
-    //marginVertical: 6,
     marginBottom: 25,
     shadowColor: "# 8C9284",
     shadowOffset: { width: -2, height: -4 },
@@ -354,112 +301,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     resizeMode: "cover",
   },
-  gaugeContainer: {
-
-    // backgroundColor: "#c4d2c9",
-    //marginHorizontal: 20,
-    //padding: 10,
-    // borderRadius: 10,
-    // marginBottom: 50
-
-  },
-  gaugeImageData: {
-    flexDirection: "row",
-    //justifyContent: "space-between",
-    alignItems: "flex-start",
-
-  },
-  gaugeTitle: {
-    marginBottom: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#DCFC98",
-    borderRadius: 10,
-    padding: 5,
-
-  },
-  gaugeLineShort: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: 25,
-    marginBottom: 5,
-  },
-  gaugeInputShort: {
-
-    backgroundColor: "#BFC3AE",
-    width: 95,
-    marginLeft: 5,
-    borderRadius: 5,
-    padding: 5,
-    marginBottom: 5,
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  gaugeLineText: {
-    color: "#312d09",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  gaugeImageMask: {
-    height: 130,
-    width: 130,
-    shadowColor: "# 8C9284",
-    shadowOffset: { width: -2, height: -4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    backgroundColor: "#d4e3d9",
-    marginLeft: 10,
-    borderColor: "silver",
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  gaugeImageContainer: {
-    flex: 1,
-    alignSelf: "flex-start",
-    shadowColor: "# 8C9284",
-    shadowOffset: { width: -2, height: -4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-  },
-  gaugeImage: {
-    height: 130,
-    width: 130,
-    borderRadius: 10,
-    resizeMode: "cover",
-  },
-  gaugeImageDelete: {
-    width: 15,
-    height: 15,
-    backgroundColor: "#C7CAB6",
-    borderRadius: 5,
-    position: "absolute",
-    left: 110,
-    top: 3,
-    justifyContent: "center",
-    alignItems: "center",
-  }
-  , gaugeInputLong: {
-    height: 25,
-    backgroundColor: "#BFC3AE",
-    width: 230,
-    borderRadius: 5,
-    padding: 5,
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  saveGaugeButton: {
-    backgroundColor: '#FE9868',
-    // "#fdccA0",
-    padding: 8,
-    width: 130,
-    borderRadius: 5,
-    marginTop: 10,
-    alignSelf: "flex-end",
-    alignItems: "center",
-
-  }
+  gaugeContainer: {}
 
 })
 export default ConePage;
