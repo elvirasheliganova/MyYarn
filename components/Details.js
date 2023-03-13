@@ -12,6 +12,8 @@ const Details = (props) => {
   const [weight, onChangeWeight] = useState();
   const [article, onChangeArticle] = useState()
 
+
+
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
       <View style={{

@@ -1,5 +1,156 @@
 const translations =
 {
+  en: {
+    translation: {
+      'new yarn': 'New yarn',
+      'next': 'Next',
+      'choose': 'Choose ...',
+      'choose pictures': 'Choose pictures',
+      'more details': 'More details',
+      'done': 'Done',
+      'save': 'Save',
+      'change': 'Change',
+      'yarn box': 'Yarn Box',
+
+      'search': 'Search',
+
+      'composition': 'Composition',
+
+      'cashmere': 'Cashmere (WS)',
+      'alpaca': 'Alpaca (WP)',
+      'angora': 'Angora (WA)',
+      'camel': 'Camel (WK)',
+      'wool': 'Wool (WO)',
+      'merinos': 'Merinos (WV)',
+      'lamb': 'Lamb (WV)',
+      'linen': 'Linen (Li)',
+      'superkid mohair/pa': 'Super Kid Mohair/PA (WM)',
+      'superkid mohair/silk': 'Super Kid Mohair/Silk (WM)',
+      'kid mohair': 'Kid Mohair (VM)',
+      'superkid mohair': 'Super Kid Mohair (WM)',
+      'silk': 'Silk (SE)',
+      'cotton': 'Cotton (CO)',
+      'viscose': 'Viscose (VI)',
+      'yak': 'Yak (WY)',
+      'pa': 'PA (PA)',
+      'elastan': 'Elastan (EL)',
+
+      'other': 'Other',
+      'mix': 'Mix',
+
+      'manufacturer': 'Manufacturer',
+
+      'Botto poala': 'Botto Poala',
+      'Botto giuseppe': 'Botto Giuseppe',
+      'Biagoli modesto': 'Biagoli Modesto',
+      'Papi fabio': 'Papi Fabio',
+      'GTI Ricignolo': 'GTI Ricignolo',
+      'Hinchcliff': 'Hinchcliff',
+      'Loro piana': 'Loro Piana',
+      'Cariaggi': 'Cariaggi',
+      'Millefili': 'Millefilli',
+      'Todd Duncan': 'Todd && Duncan',
+      'Casa del Filato': 'Casa delFilato',
+      'Cervinia': 'Cervinia',
+      'Donegal': 'Donegal',
+      'Dundaga': 'Dundaga',
+      'E.Miroglio': 'E.Miroglio',
+      'Fabifil': 'Fabifil',
+      'Falconeri': 'Falconeri',
+      'Fil Pa': 'Fil Pa ',
+      'Filati buratti': 'Filati Buratti',
+      'Filati naturali': 'Filati Naturali',
+      'Filati power': 'Filati Power',
+      'Filatura di pollone': 'Fillatura di Pollone',
+      'Filmar': 'Filmar',
+      'Filpucci': 'Filpucci',
+      'Fullonica': 'Fullonica',
+      'Hasegawa': 'Hasegawa',
+      'Igea': 'Igea',
+      'Ilaria': 'Ilaria',
+      'Kauni': 'Kauni',
+      'Lanecardate': 'Lanecardate',
+      'Lineapiu': 'Lineapiu',
+      'Linsieme': 'Linsieme',
+      'Loro festa': 'Loro Festa',
+      'Missoni': 'Missonin/ Миссони',
+      'Natural fantasy': 'Natural Fantasy',
+      'New mill': 'New Mill',
+      'Profilio': 'Profilio',
+      'Ri Go': 'Ri.Go',
+      'Sato Seni': 'Sato Seni',
+      'Sessia': 'Sessia',
+      'Tollegno': 'Tollegno',
+      'Woolhalla': 'Woolhalla',
+      'Zegna Baruffa': 'Zegna Baruffa',
+
+      'color': 'Color',
+
+      'White': 'White',
+      'Beige': 'Beige',
+      'Ivory': ' Ivory',
+      'Yellow': 'Yellow',
+      'Pink': 'Pink',
+      'Orange': 'Orange',
+      'Red': 'Red',
+      'Bordeaux': 'Bordeaux',
+      'Brown': 'Brown',
+      'Blue': 'Blue',
+      'Lightblue': 'Lightblue',
+      'Violet': 'Violet',
+      'Green': 'Green',
+      'Grey': 'Grey',
+      'Darkgrey': 'Darkgrey',
+      'Black': 'Black',
+      'Multicolor': 'Multicolor',
+
+      'yarns': 'Yarns',
+      'weight': 'Length per 100 gr',
+      'm / 100 gr': 'm / 100 gr ',
+      'gr': 'gr',
+      'quantity': 'Yarn quantity',
+      'article': 'Yarn name',
+      'noName': 'None',
+      'manufactured by': 'Manufacturer',
+      'gauge': 'Gauge',
+      'save gauge': 'Save Gauge',
+      'grams': 'gr',
+      'mts': 'm',
+      'yarn gauge is': 'Yarn gauge is:',
+      '32s x 20r': '32s x 20r',
+      '3mm': '3m',
+      'mm': 'mm',
+      'on needles': 'Needles :',
+      'notes': 'Notes:',
+      'notes content': 'Exs: Yarn special quality',
+
+      'search by': 'Search',
+      'more info': 'More info',
+
+
+      'cone save': 'No full data. Please choose  Yarn Type, Manufacturer, Color and Weight',
+      'no photo': 'No photo chosen, Please choose main cone photo from gallery',
+
+
+
+
+
+
+      //'other': 'Другое',
+
+
+      'carded': '',
+      'worsted': '',
+      'angled': '',
+      'confirm': '',
+      'save yarn': '',
+
+
+
+
+
+    },
+  },
   ru: {
     translation: {
       'new yarn': 'Новая пряжа',
@@ -103,11 +254,13 @@ const translations =
       'Grey': 'Серый',
       'Darkgrey': 'Графит',
       'Black': 'Черный',
+      'Multicolor': 'Мультиколор',
 
       'yarns': 'Коробка с пряжей',
       'weight': 'Длина пряжи в 100 гр',
       'quantity': 'Вес пряжи вceго',
       'article': 'Артикул',
+      'noName': 'артикул неизвестен',
       'yarn name': 'Ламора',
       'm / 100 gr': 'м / 100 гр ',
       'gr': 'гр',
@@ -122,7 +275,7 @@ const translations =
       'mm': 'мм',
       'on needles': 'Спицы :',
       'notes': 'Заметки:',
-      'notes content': 'Например, особенности пряжи',
+      'notes content': 'Например, особенности пряжи ...',
 
       'search by': 'Поиск',
       'more info': 'Подробнее',
@@ -151,155 +304,7 @@ const translations =
 
     },
   },
-  en: {
-    translation: {
-      'new yarn': 'New yarn',
-      'next': 'Next',
-      'choose': 'Choose ...',
-      'choose pictures': 'Choose pictures',
-      'more details': 'More details',
-      'done': 'Done',
-      'save': 'Save',
-      'change': 'Change',
-      'yarn box': 'Yarn Box',
 
-      'search': 'Search',
-
-      'composition': 'Composition',
-
-      'cashmere': 'Cashmere (WS)',
-      'alpaca': 'Alpaca (WP)',
-      'angora': 'Angora (WA)',
-      'camel': 'Camel (WK)',
-      'wool': 'Wool (WO)',
-      'merinos': 'Merinos (WV)',
-      'lamb': 'Lamb (WV)',
-      'linen': 'Linen (Li)',
-      'superkid mohair/pa': 'Super Kid Mohair/PA (WM)',
-      'superkid mohair/silk': 'Super Kid Mohair/Silk (WM)',
-      'kid mohair': 'Kid Mohair (VM)',
-      'superkid mohair': 'Super Kid Mohair (WM)',
-      'silk': 'Silk (SE)',
-      'cotton': 'Cotton (CO)',
-      'viscose': 'Viscose (VI)',
-      'yak': 'Yak (WY)',
-      'pa': 'PA (PA)',
-      'elastan': 'Elastan (EL)',
-
-      'other': 'Other',
-      'mix': 'Mix',
-
-      'manufacturer': 'Manufacturer',
-
-      'Botto poala': 'Botto Poala',
-      'Botto giuseppe': 'Botto Giuseppe',
-      'Biagoli modesto': 'Biagoli Modesto',
-      'Papi fabio': 'Papi Fabio',
-      'GTI Ricignolo': 'GTI Ricignolo',
-      'Hinchcliff': 'Hinchcliff',
-      'Loro piana': 'Loro Piana',
-      'Cariaggi': 'Cariaggi',
-      'Millefili': 'Millefilli',
-      'Todd Duncan': 'Todd && Duncan',
-      'Casa del Filato': 'Casa delFilato',
-      'Cervinia': 'Cervinia',
-      'Donegal': 'Donegal',
-      'Dundaga': 'Dundaga',
-      'E.Miroglio': 'E.Miroglio',
-      'Fabifil': 'Fabifil',
-      'Falconeri': 'Falconeri',
-      'Fil Pa': 'Fil Pa ',
-      'Filati buratti': 'Filati Buratti',
-      'Filati naturali': 'Filati Naturali',
-      'Filati power': 'Filati Power',
-      'Filatura di pollone': 'Fillatura di Pollone',
-      'Filmar': 'Filmar',
-      'Filpucci': 'Filpucci',
-      'Fullonica': 'Fullonica',
-      'Hasegawa': 'Hasegawa',
-      'Igea': 'Igea',
-      'Ilaria': 'Ilaria',
-      'Kauni': 'Kauni',
-      'Lanecardate': 'Lanecardate',
-      'Lineapiu': 'Lineapiu',
-      'Linsieme': 'Linsieme',
-      'Loro festa': 'Loro Festa',
-      'Missoni': 'Missonin/ Миссони',
-      'Natural fantasy': 'Natural Fantasy',
-      'New mill': 'New Mill',
-      'Profilio': 'Profilio',
-      'Ri Go': 'Ri.Go',
-      'Sato Seni': 'Sato Seni',
-      'Sessia': 'Sessia',
-      'Tollegno': 'Tollegno',
-      'Woolhalla': 'Woolhalla',
-      'Zegna Baruffa': 'Zegna Baruffa',
-
-      'color': 'Color',
-
-      'White': 'White',
-      'Beige': 'Beige',
-      'Ivory': ' Ivory',
-      'Yellow': 'Yellow',
-      'Pink': 'Pink',
-      'Orange': 'Orange',
-      'Red': 'Red',
-      'Bordeaux': 'Bordeaux',
-      'Brown': 'Brown',
-      'Blue': 'Blue',
-      'Lightblue': 'Lightblue',
-      'Violet': 'Violet',
-      'Green': 'Green',
-      'Grey': 'Grey',
-      'Darkgrey': 'Darkgrey',
-      'Black': 'Black',
-
-      'yarns': 'Yarn Box',
-      'weight': 'Length per 100 gr',
-      'm / 100 gr': 'm / 100 gr ',
-      'gr': 'gr',
-      'quantity': 'Yarn quantity',
-      'article': 'Yarn name',
-      'manufactured by': 'Manufacturer',
-      'gauge': 'Gauge',
-      'save gauge': 'Save Gauge',
-      'grams': 'gr',
-      'mts': 'm',
-      'yarn gauge is': 'Yarn gauge is:',
-      '32s x 20r': '32s x 20r',
-      '3mm': '3m',
-      'mm': 'mm',
-      'on needles': 'Needles :',
-      'notes': 'Notes:',
-      'notes content': 'Exs: Yarn special quality',
-
-      'search by': 'Search',
-      'more info': 'More info',
-
-
-      'cone save': 'No full data. Please choose  Yarn Type, Manufacturer, Color and Weight',
-      'no photo': 'No photo chosen, Please choose main cone photo from gallery',
-
-
-
-
-
-
-      //'other': 'Другое',
-
-
-      'carded': '',
-      'worsted': '',
-      'angled': '',
-      'confirm': '',
-      'save yarn': '',
-
-
-
-
-
-    },
-  },
 }
 
 export default translations

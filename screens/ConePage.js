@@ -5,8 +5,6 @@ import React, { useState, useContext, useEffect, useMemo } from "react";
 import { YarnContext } from "../components/YarnContext";
 import { LinearGradient } from "expo-linear-gradient";
 import { Feather } from "@expo/vector-icons";
-import * as ImagePicker from "expo-image-picker";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
 import Gauge from "../components/Gauge";
 
@@ -21,26 +19,10 @@ const ConePage = ({ route }) => {
   const [gaugeImage, setGaugeImage] = useState();
   const [edit, setEdit] = useState(false);
 
-  /* const saveData = async () => {
-    await AsyncStorage.setItem("yarns", JSON.stringify(yarns));
-  }; */
-
   useEffect(() => {
     if (yarn.gauge) setIsGauge(true);
     else setIsGauge(false);
   }, []);
-
-  /*   const pickImage3 = async () => {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-      });
-      {
-        setGaugeImage(result.assets[0].uri);
-      }
-    }; */
 
   return (
 

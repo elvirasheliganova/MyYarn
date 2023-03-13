@@ -17,13 +17,11 @@ const Search = ({ navigation }) => {
     isArticle: false
   })
 
-
   const searchWeight = yarns.filter(yarn => parseInt(yarn.weight) >= value)
   const searchComposition = value ? yarns.filter((yarn) => t(`${yarn.selectedYarnType}`).toLowerCase().includes(value.toLowerCase())) : null
   const searchColor = value ? yarns.filter((yarn) => t(`${yarn.selectedYarnColor}`).toLowerCase().includes(value.toLowerCase())) : null
   const searchManufacturer = value ? yarns.filter(yarn => t(`${yarn.selectedYarnManufacturer}`).toLowerCase().includes(value.toLowerCase())) : null
   const searchArticle = value ? yarns.filter(yarn => yarn.article.includes(value)) : null
-
 
   const goToYarnPage = (cone) => {
     {
