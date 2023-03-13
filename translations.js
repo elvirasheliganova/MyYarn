@@ -130,6 +130,7 @@ const translations =
 
       'cone save': 'No full data. Please choose  Yarn Type, Manufacturer, Color and Weight',
       'no photo': 'No photo chosen, Please choose main cone photo from gallery',
+      'add gauge data': 'Please, add gauge photo, yarn gauge data and needles number. And your thoughts about the yarn',
 
 
 
@@ -283,7 +284,7 @@ const translations =
 
       'cone save': 'Недостаточно данных. Выберите состав, производителя, цвет, длину на 100 метров и общее количество пряжи',
       'no photo': 'Нет фото. Пожалуйста, выберите фото',
-
+      'add gauge data': 'Добавьте, пожалуйста, фото образца, плотность и номер спиц. А также ваше впечатление от пряжи.',
 
 
 
@@ -297,11 +298,6 @@ const translations =
       'angled': '',
       'confirm': '',
       'save yarn': '',
-
-
-
-
-
     },
   },
 

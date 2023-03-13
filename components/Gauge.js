@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Pressable, ImageBackground, StyleSheet, Alert } from 'react-native'
+import { View, Text, TextInput, Pressable, ImageBackground, StyleSheet } from 'react-native'
 import React, { useState, useContext, useEffect } from 'react'
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
@@ -204,9 +204,9 @@ const Gauge = ({ yarn }) => {
             saveData(yarns);
 
           } else {
-            Alert.alert(
-              "No full gauge data",
-              "Please enter gauge, needles, photo and what your yarn is good for",
+            alert(
+              t('add gauge data'),
+              // t('add gauge data'),
               [{
                 text: "OK",
               },]
