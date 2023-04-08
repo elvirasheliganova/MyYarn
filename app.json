@@ -20,7 +20,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.elvirashelygan.MyYarn",
-      "buildNumber": 5
+      "buildNumber":"5"
     },
     "android": {
       "package": "com.MyYarn",
